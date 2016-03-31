@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="css/amazeui.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+
+    <title>编辑地址</title>
+</head>
+<body style="background:#ececec">
+<header data-am-widget="header"
+        class="am-header am-header-default" data-am-sticky>
+    <div class="am-header-left am-header-nav">
+        <a href="address.html" class="">
+
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset=utf-8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 12 20&quot;&gt;&lt;path d=&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill=&quot;%23fff&quot;/&gt;&lt;/svg&gt;" alt=""/>
+        </a>
+    </div>
+
+    <h1 class="am-header-title">我的配送地址</h1>
+</header>
+
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="your-modal">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">信息
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            操作成功
+        </div>
+    </div>
+</div>
+
+
+<div class="pet_content pet_content_list pet_topci">
+    <form action="javascript:void(0);" method="get" class="am-form" data-am-validator id="saveAddressForm">
+        <fieldset>
+
+            <div class="am-form-group">
+                <label >选择站点</label>
+                <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
+                    <!--站点选择菜单-->
+                    <ul class="am-tabs-nav am-nav am-nav-tabs" id="pointListNavUl"></ul>
+                    <!--站点选择子菜单-->
+                    <div class="am-tabs-bd" id="pointListInfo"></div>
+                </div>
+            </div>
+
+    
+            <div class="am-form-group">
+                <label for="getZhandian" >
+                    <input type="text" id="getZhandian" readonly="readonly" placeholder="请选择站点" required/>
+                </label>
+            </div>
+            <div class="am-form-group">
+                <label for="inputFloor">楼层：</label>
+                <input type="number" id="inputFloor"  placeholder="请填写您所在的楼层" required/>
+            </div>
+
+            <div class="am-form-group">
+                <label for="inputBuilding">楼号：</label>
+                <input type="text" id="inputBuilding" placeholder="请填写您所在的楼号" required/>
+            </div>
+
+            <div class="am-form-group">
+                <label for="inputCompanyName">公司名称：</label>
+                <input type="text" id="inputCompanyName" placeholder="请填写您所在的公司名称" required/>
+            </div>
+
+
+
+            <button class="am-btn am-btn-secondary" type="submit" style="width: 100%;">完成</button>
+        </fieldset>
+    </form>
+
+
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/amazeui.js"></script>
+
+<script type="text/javascript" src="js/address/editAddress.js"></script>
+<script type="text/javascript" src="js/ajaxUtils.js"></script>
+<script type="text/javascript" src="js/front-engine.js"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        // 初始化页面
+        EditAddress.init();
+    });
+
+
+    $('#saveAddressForm').validator({
+        submit: function() {
+            var formValidity = this.isFormValid();
+            if(formValidity){
+
+               var  address_id =$.frontEngine.getUrlParameter("addressId");//获取url中id(param);
+                if(address_id==null || address_id=="" || typeof(address_id)=="undefined"){
+                    address_id="";
+                }
+                // 验证成功的逻辑
+                //var url=$('#saveAddressForm').attr('action');
+                var url=location.origin+"/lunch/api";
+                var changeUrl="address.html";
+                var type=$('#saveAddressForm').attr('method');
+
+                var addressId= $("#getZhandian").attr("counterPointId"); //addressId
+                var counterpointfloorId= $("#getZhandian").attr("floorId");   //counterpointfloorId
+                var layer=  $("#inputFloor").val();     //layer
+                var number=  $("#inputBuilding").val(); //number
+                var companyName=  $("#inputCompanyName").val(); //companyName
+                var address=layer+"楼"+number+"号"+companyName;
+                var jsonData = {
+                    'getDataIdent':'Y',
+                    'apiNumber':'703_updateUserAddress',
+                    'params':'{"addressId":"'+address_id+'","userId":"00066871e24640788596fc2bd66ee699","counterpointfloorId":"'+counterpointfloorId+'","address":"'+address+'","layer":"'+layer+'","number":"'+number+'","companyName":"'+companyName+'"}'
+                }
+
+                $.frontEngine.common_doSave(url,changeUrl,type,"",jsonData);
+
+
+
+
+            }else{
+                // 验证失败的逻辑
+                return false;
+            }
+
+        }
+    });
+
+</script>
+
+
+
+</body>
+</html>

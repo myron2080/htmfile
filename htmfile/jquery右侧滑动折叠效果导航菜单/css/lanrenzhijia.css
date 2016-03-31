@@ -1,0 +1,231 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* 代码整理：懒人之家 www.lanrenzhijia.com */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	position: relative;
+	right: 0;
+ -webkit-transition: right .3s;
+ transition: right .3s;
+}
+body.open {
+	right: 250px;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* CSS RESET DONE */
+
+html, body {
+	height: 100%;
+}
+body {
+	color: #fff;
+	margin: 0 auto;
+	font: 1em/1.3em Times, serif;
+	font-family: 'Montserrat', serif;
+	background-color: #00CDAE;
+}
+.header {
+	margin-bottom: 40px;
+	position: relative;
+}
+.clearfix {
+	clear: both;
+}
+.container {
+	position: relative;
+	padding: 40px 10%;
+	text-align: center;
+	height: 100%;
+}
+p {
+	text-align: left;
+	font-size: 16px;
+	line-height: 40px;
+	margin: 0 200px;
+	padding-bottom: 50px;
+}
+h1 {
+	margin: 40px 0;
+	font-size: 40px;
+	line-height: 40px;
+	font-weight: bold;
+}
+a {
+	text-decoration: none;
+	color: #fff;
+	margin: 0 10px;
+}
+.btn {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	position: relative;
+	display: inline-block;
+	padding: 10px 20px;
+	height: 50px;
+	background-color: #838383;
+	border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-webkit-box-shadow: 0 3px 0 0 #636363;
+	box-shadow: 0 3px 0 0 #636363;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	text-shadow: 0px 1px 1px #888;
+}
+.btn:active,  .btn.active {
+	top: 1px;
+	-webkit-box-shadow: 0 1px 0 0 #636363;
+	box-shadow: 0 1px 0 0 #636363;
+}
+.btn.submit {
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
+	margin: 0;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+.btn-small {
+	height: 30px;
+	font-size: 12px;
+	line-height: 10px;
+}
+a.btn-small span.btn {
+	height: 30px;
+}
+a.menu-icon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 23px;
+}
+ul.side-menu {
+	position: fixed;
+	top: 0;
+	right: -250px;
+	width: 250px;
+	height: 100%;
+	background-color: #444;
+	z-index: -1;
+ -webkit-transition: right .3s;
+ transition: right .3s;
+}
+ul.side-menu.open {
+	right: 0;
+}
+ul.side-menu li {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	padding: 0 20px;
+	text-align: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #555;
+ -webkit-transition: top .3s;
+ transition: top .3s;
+}
+ul.side-menu li.row {
+	border: 0;
+	position: static;
+	top: 0;
+	height: 0;
+	-webkit-transition: none;
+	transition: none;
+}
+ul.side-menu li.metro {
+	position: absolute;
+	padding: 0;
+	height: 125px;
+	text-align: center;
+	background-color: #CCC;
+}
+ul.side-menu li.metro.half {
+	width: 50%;
+}
+ul.side-menu li.metro.full {
+	width: 100%;
+}
+ul.side-menu h2.title {
+	text-align: left;
+	padding: 0 20px;
+	position: relative;
+	top: -60px;
+	font-size: 23px;
+	line-height: 60px;
+	height: 60px;
+	background-color: #555;
+ -webkit-transition: top .3s;
+ transition: top .3s;
+}
+ul.side-menu li a {
+	display: block;
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+	height: inherit;
+	line-height: inherit;
+}
+ul.side-menu li.metro a {
+	margin: 42px 0;
+	height: 40px;
+	font-size: 40px;
+}
+/* Colors */
+    ul.side-menu li.metro.blue {
+	background-color: #5c84db;
+}
+ul.side-menu li.metro.light-blue {
+	background-color: #2FC2EF;
+}
+ul.side-menu li.metro.purple {
+	background-color: #a24fea;
+}
+ul.side-menu li.metro.red {
+	background-color: #e54747;
+}
+ul.side-menu li.metro.pink {
+	background-color: #ea4c89;
+}
+ul.side-menu li.metro.green {
+	background-color: #85e500;
+}
+ul.side-menu li.metro.orange {
+	background-color: #e28f00;
+}
+ul.side-menu li.metro.teal {
+	background-color: #00e2e2;
+}
+/* 代码整理：懒人之家 www.lanrenzhijia.com */

@@ -1,0 +1,156 @@
+
+<!doctype html>
+<html lang="en" data-framework="angularjs">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../js/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/neoui-0.1.css">
+        <link rel="stylesheet" href="../css/app.css">
+        <script type="text/javascript" src="../../jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="../js/bootstrap/bootstrap.min.js"></script>
+    <style type="text/css">
+        .loading{
+            background: #6998ff;          /*设置进度条的颜色*/
+            height:3px;                 /*设置进度条的高度*/
+            position:fixed;              /*设定进度条跟随屏幕滚动*/
+            top:0;                      /*将进度条固定在页面顶部*/
+            z-index:99999               /* 提高进度条的优先层级，避免被其他层遮挡*/
+        }
+        .title{
+            font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', Roboto, Arial, Sans-serif;
+            font-size: 49px;
+            background:-webkit-linear-gradient(left,#f00,#ff0 25%,#0f0 40%,#0ff 55%,#00f 70%,#f00);
+            -webkit-background-clip:text;/*只有webkit内核支持text的剪切模式*/
+            color:transparent;
+            text-shadow: 1px 1px 0 rgba(227, 218, 219, 1), 3px 3px 0 rgba(227, 218, 219, 0.9), 5px 5px 0 rgba(227, 218, 219, 0.8), 7px 7px 0 rgba(227, 218, 219, 0.7), 9px 9px 0 rgba(227, 218, 219, 0.6), 11px 11px 0 rgba(227, 218, 219, 0.5), 13px 13px 0 rgba(227, 218, 219, 0.4), 15px 15px 0 rgba(227, 218, 219, 0.3), 17px 17px 0 rgba(227, 218, 219, 0.2), 19px 19px 0 rgba(227, 218, 219, 0.1), 21px 21px 0 rgba(227, 218, 219, 0.08), 22px 22px 0 rgba(227, 218, 219, 0.07);
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        window.onload =function() {
+            $('.loading').animate({'width': '100%'}, 500);
+            $('.loading').fadeOut();
+        }
+
+
+        var a = new Array(100),i=0;
+        eval((a).join('a[i]=++i;'));
+
+
+    </script>
+
+</head>
+
+<body  class="container md-container-full" ng-app="modal3" ng-controller="modalController" >
+
+
+<div class="loading"></div>
+
+<div class="col-md-12">
+    <div class="row">
+        <text class="title col-md-2" text-anchor="middle" x="50%" y="0" dy="100px">neoui-ffzx</text>
+
+
+<!--<section   id="modal"  >
+    <section class="example">
+
+        <div class="row">
+            <div class="col-md-10">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="md-btn md-btn-coral" ng-click="open( 'slide' )">SLIDE</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="md-btn md-btn-coral" ng-click="open( 'slide' )">SLIDE</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="md-btn md-btn-coral" ng-click="open( 'bottom' )">BOTTOM</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="md-btn md-btn-coral" ng-click="open( 'scale' )">SCALE</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="md-btn md-btn-coral" ng-click="open( 'fadein' )">FADEIN</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="md-btn md-btn-coral" ng-click="open( 'flip' )">FLIP</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="md-btn md-btn-coral" ng-click="open( 'vertical' )">VERTICAL</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="md-btn md-btn-coral" ng-click="open( 'sign' )">SIGN</button>
+                    </div>
+                </div>
+
+               &lt;!&ndash; <div class="row">
+                    <div class="col-md-3">
+                        <button style="width: auto;" class="md-btn md-btn-primary" ng-click="modal = showLoading()">Show Loading</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button style="width: auto;" class="md-btn md-btn-primary" ng-click="modal = showProgress()">Show Progress</button>
+                    </div>
+                </div>&ndash;&gt;
+            </div>
+        </div>
+    </section>
+
+
+</section>-->
+
+        <nav id="navbar-example" class="navbar navbar-default navbar-static col-md-10" role="navigation">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse"
+                        data-target=".bs-js-navbar-scrollspy">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+                <ul class="nav navbar-nav">
+                    <li><a href="#ios">iOS</a></li>
+                    <li><a href="#svn">SVN</a></li>
+                    <li><a href="#jmeter">jmeter</a></li>
+                    <li><a href="#ejb" >ejb</a></li>
+                    <li><a href="#spring" >spring</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div data-spy="scroll" data-target="#navbar-example" data-offset="0"
+         style="height:200px;overflow:auto; position: relative;">
+        <h4 id="ios">iOS</h4>
+        <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
+            TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。
+        </p>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <h4 id="svn">SVN</h4>
+        <p>Apache Subversion，通常缩写为 SVN，是一款开源的版本控制系统软件。Subversion 由 CollabNet 公司在 2000 年创建。但是现在它已经发展为 Apache Software Foundation 的一个项目，因此拥有丰富的开发人员和用户社区。
+        </p>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <h4 id="jmeter">jMeter</h4>
+        <p>jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。
+        </p>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <h4 id="ejb">EJB</h4>
+        <p>Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+        </p>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <h4 id="spring">Spring</h4>
+        <p>Spring 框架是一个开源的 Java 平台，为快速开发功能强大的 Java 应用程序提供了完备的基础设施支持。
+        </p>
+        <p>Spring 框架最初是由 Rod Johnson 编写的，在 2003 年 6 月首次发布于 Apache 2.0 许可证下。
+        </p>
+    </div>
+</div>
+        <script src="../js/requires/requires.js" defer="true" async="true" data-main="../js/bootstrap.js"></script>
+    </body>
+</html>

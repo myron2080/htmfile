@@ -1,0 +1,238 @@
+.doc-content-container {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.doc-content {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px 15px;
+  max-width: 770px;
+
+  @media (min-width: 641px) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  @media (min-width: 1025px) {
+    padding-top: 45px;
+  }
+
+  // header counter
+  counter-reset: header2;
+
+  h2 {
+    counter-increment: header2;
+    counter-reset: header3;
+  }
+
+  h2:before {
+    content: counter(header2) ". ";
+  }
+
+  h3 {
+    counter-increment: header3;
+    counter-reset: header4;
+  }
+
+  h3:before {
+    content: counter(header2) "." counter(header3) " "
+  }
+
+  h4 {
+    counter-increment: header4;
+  }
+
+  h4:before {
+    content: counter(header2) "." counter(header3) "." counter(header4) " "
+  }
+
+  h2:before,
+  h3:before,
+  h4:before {
+    color: #999 !important;
+    font-weight: 400
+  }
+
+  h1 tt,
+  h1 code,
+  h2 tt,
+  h2 code,
+  h3 tt,
+  h3 code,
+  h4 tt,
+  h4 code,
+  h5 tt,
+  h5 code,
+  h6 tt,
+  h6 code {
+    font-size: inherit;
+  }
+
+  h1,
+  h2 {
+    padding-bottom: .3em;
+    border-bottom: 1px solid #eee;
+  }
+
+  h1 {
+    font-size: 1.75em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.25em;
+  }
+  h4 {
+    font-size: 1.15em;
+  }
+  h5 {
+    font-size: 1em;
+  }
+  h6 {
+    font-size: 1em;
+    color: #777;
+  }
+
+  blockquote {
+    border-left: 4px solid #dddddd;
+    padding: 0 15px;
+    color: #777777;
+  }
+}
+
+/* doc content */
+blockquote code {
+  white-space: normal;
+}
+
+/*
+
+table {
+  padding: 0;
+}
+table tr {
+  border-top: 1px solid #cccccc;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+table tr td {
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+  margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+  margin-bottom: 0;
+}
+*/
+
+.doc-highlight {
+  position: relative;
+}
+
+.code-actions {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  display: flex;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-top: none;
+  font-size: 14px;
+
+  span {
+    cursor: pointer;
+  }
+
+  a + span {
+    border-left: 1px solid #dedede;
+  }
+
+  span,
+  a {
+    display: block;
+    padding: 3px 15px;
+    color: #777;
+
+    &:hover,
+    &:active {
+      background: $global-primary;
+      color: #fff;
+    }
+  }
+}
+
+// copy status
+.code-status {
+  $success-bg: darken($global-success, 8);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px 10px;
+  font-size: 13px;
+  background: $success-bg;
+  color: #fff;
+  transform: translateY(-120%);
+
+  &:after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    content: "";
+    border: 6px solid $success-bg;
+    border-color: $success-bg transparent transparent transparent;
+    transform: translate(-50%, 100%);
+  }
+
+  &.error {
+    background: $global-alert;
+
+    &:after {
+      border-top-color: $global-alert;
+    }
+  }
+}
+
+.copy-status-enter {
+  transform: translateY(-140%);
+  opacity: 0.1;
+
+  &.copy-status-enter-active {
+    opacity: 1;
+    transform: translateY(-120%);
+    transition: all .25s;
+  }
+}
+
+.copy-status-leave {
+  opacity: 1;
+  transform: translateY(-120%);
+
+  &.copy-status-leave-active {
+    opacity: 0.1;
+    transform: translateY(-140%);
+    transition: all .25s;
+  }
+}

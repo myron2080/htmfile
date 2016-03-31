@@ -1,0 +1,26 @@
+{
+  "resultMsg": "接口调用成功！",
+  "resultData": {
+    "bannerList": [
+      {
+        "id": "001",
+        "title": "banner001",
+        "picPath": "http://dev:8098/lunch/images/dataSource_193_lunch/lunch_Banner/images/891b07dd-7300-4a2c-8c45-bff24fd334c8_size.jpg",
+        "url": ""
+      },
+      {
+        "id": "d9ef95f8-bad4-444a-ad81-75be348096c1",
+        "title": "234234",
+        "picPath": "http://dev:8098/lunch/images/dataSource_193_lunch/lunch_Banner/images/fedcf389-1383-4743-9ac1-e7ab10e93a6a_size.jpg",
+        "url": ""
+      },
+      {
+        "id": "cd629ce6-7a70-49f9-81cb-50d38cc8d8a2",
+        "title": "12312",
+        "picPath": "http://dev:8098/lunch/images/dataSource_193_lunch/lunch_Banner/images/35f527e8-3d20-44e4-8f2a-d08c9659976c_size.jpg",
+        "url": ""
+      }
+    ]
+  },
+  "resultType": 1
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+
+    <link rel="stylesheet" type="text/css" href="./css/tabTest.css"/>
+    <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+    <title>tabTest</title>
+
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#tabMenu ul li").unbind('click').on('click', function (e) {
+
+                var menuid = this.id;
+                // alert(menuid);
+                $("#tabContent ul").attr('style', 'display:none');
+                $("." + menuid).attr('style', 'display:inline');
+            });
+        });
+
+
+        function ClassA(sColor) {
+            this.color = sColor;
+        }
+        ClassA.prototype.sayColor = function () {
+            alert(this.color);
+        };
+        function ClassB(sColor, sName) {
+            callA.call(this, sColor);
+            this.name = sName;
+        }
+        ClassB.prototype = new ClassA();
+        ClassB.prototype.sayName = function () {
+            alert(this.name);
+        };
+    </script>
+</head>
+<body>
+
+<div id="tabMenu">
+    <ul>
+        <li id="Menu1">Menu1</li>
+        <li id="Menu2">Menu2</li>
+        <li id="Menu3">Menu3</li>
+        <li id="Menu4">Menu4</li>
+    </ul>
+</div>
+<div id="tabContent">
+    <ul id="Content1" class="Menu1">
+        <li>Content1</li>
+    </ul>
+    <ul id="Content2" class="Menu2">
+        <li>Content2</li>
+    </ul>
+    <ul id="Content3" class="Menu3">
+        <li>Content3</li>
+    </ul>
+    <ul id="Content4" class="Menu4">
+        <li>Content4</li>
+    </ul>
+</div>
+
+
+</body>
+</html>

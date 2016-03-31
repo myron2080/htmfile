@@ -1,0 +1,748 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;border: none;padding: 0px;margin: 0px;">
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7;  IE=EDGE">
+        <meta content="" name="keywords" />
+
+        <meta content="" name="description" />
+        <meta name="generator" content="ucloud "/>
+        <title>解密亚马逊AWS大规模重启服务器背后的故事</title>
+
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <link href="../../www/css/responsive.css" tppabs=" /www/css/responsive.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="../../www/css/bootstrap.min.css-v=2015063020.css" tppabs=" /www/css/bootstrap.min.css?v=2015063020"  type="text/css"/>
+        <link rel="stylesheet" href="../../www/css/ucom.min.css-v=2015063020.css" tppabs=" /www/css/ucom.min.css?v=2015063020"  type="text/css"/>
+        <link rel="stylesheet" href="../../www/css/themes/start/jquery-ui-1.8.20.custom.css-v=2015063020.css" tppabs=" /www/css/themes/start/jquery-ui-1.8.20.custom.css?v=2015063020"  type="text/css"/>
+        <link rel="shortcut icon" href="/www/img/favicon.ico">
+        <!-- WPA Button Begin -->
+        <!--script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzkzODA2NDk0NF80NjUzNF80MDAwMTg4MTEzXw"></script-->
+        <!-- WPA Button END -->
+
+        <script>
+            var version = '2015063020';
+        </script>
+
+        <script type="text/javascript" src="../../www/js/sea-modules/seajs/seajs/2.0.0/sea.js-v=2015063020" tppabs=" /www/js/sea-modules/seajs/seajs/2.0.0/sea.js?v=2015063020"></script>
+        <script type="text/javascript" src="../../www/js/config.js-v=2015063020" tppabs=" /www/js/config.js?v=2015063020"></script>
+        <script type="text/javascript" src="../../../api.map.baidu.com/api-key=7cdc0fa246f1408b387883851a2e87b7=1.1&services=true" tppabs="http://api.map.baidu.com/api?key=7cdc0fa246f1408b387883851a2e87b7=1.1&services=true"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','../../../www.google-analytics.com/analytics.js'/*tpa=http://www.google-analytics.com/analytics.js*/,'ga');
+
+          ga('create', 'UA-48580821-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    </head>
+
+    <body>
+        <div class="topbar">
+            <div class="wh topbar-main">
+                <div class="top-tel">服务热线：4000 -188 -113</div>
+                <iframe width="500px" height="30px" src="../../../account.ucloud.cn/cas/status" tppabs="https://account.ucloud.cn/cas/status" frameborder="0" name="inside-app-iframe" id="inside-app-iframe" class="vt"></iframe>
+                <!-- <iframe width="500px" height="30px" src="http://account.wentianle.web.ucloud.cn/cas/status" frameborder="0" name="inside-app-iframe" id="inside-app-iframe" class="vt"></iframe> -->
+            </div>
+        </div>
+        <div class="top">
+            <a href="../../index.htm" tppabs=" /" class="left"><span class="logo"></span></a><ul class="menu right">
+                        <li class="nav">
+                        <a href="../../index.htm" tppabs=" /" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">首页</a>
+                    </li>
+                        <li class="nav nav-solu">
+                    <a href="../../solution/push_system.htm" tppabs=" /solution/game" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">解决方案</a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro">
+                            <a href="../../solution/push_system.htm" tppabs=" /solution/game">游戏</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../../solution/cloud_data_center.htm" tppabs=" /solution/education">在线教育</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../../solution/broadband_data_analysis.htm" tppabs=" /solution/dsp">数字营销&大数据</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../../solution/broadband_lifecycle_management.htm" tppabs=" /solution/ebs">O2O&电商</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../../solution/interactive_system.htm" tppabs=" /solution/saas">PaaS/SaaS</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../../solution/online_system.htm" tppabs=" /solution/app">移动App</a>
+                        </li>
+                    </ul>
+                    </li>
+                        <li class="nav nav-product">
+                        <a href="../../product/uhost_main.htm" tppabs=" /product/uhost_main" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">产品&服务</a>
+                        <ul class="dropdown-menu hover-menu">
+                            <li class="nav-pro">
+                                <span class="xt ">计算和网络</span>
+                                <a class="h" href="../../product/uhost_main.htm" tppabs=" /product/uhost_main">云主机 UHost</a>
+                                <a class="h" href="javascript:if(confirm(' /product/phost_main  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location=' /product/phost_main'" tppabs=" /product/phost_main">物理主机 UPHost</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../../product/hybrid_main.htm" tppabs=" /product/hybrid_main">混合云 UHybrid</a>
+                                <a class="h" href="../../product/ulb_main.htm" tppabs=" /product/ulb_main">负载均衡 ULB</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../../product/unet_main.htm" tppabs=" /product/unet_main">网络 UNet</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">存储和CDN</span>
+                                <a class="h" href="../../product/udisk_main.htm" tppabs=" /product/udisk_main">云硬盘 UDisk</a>
+                                <a class="h" href="../../product/udb_main.htm" tppabs=" /product/udb_main">云数据库 UDB</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../../product/umem_main.htm" tppabs=" /product/umem_main">云内存存储 UMem</a>
+                                <a class="h" href="../../product/ufile_main.htm" tppabs=" /product/ufile_main">对象存储 UFile</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../../product/ucdn_main.htm" tppabs=" /product/ucdn_main">云分发 UCDN</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">数据分析</span>
+                                <a class="h" href="../../product/uddp_main.htm" tppabs=" /product/uddp_main">分布式数据处理 UDDP</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">管理</span>
+                                <a class="h" href="../../product/api_main.htm" tppabs=" /product/api_main">开放API</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">数据中心</span>
+                                <a class="h" href="../../support/region.htm" tppabs=" /support/region">数据中心介绍</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">服务</span>
+                                <a href="javascript:if(confirm(' /product/uicp_main  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location=' /product/uicp_main'" tppabs=" /product/uicp_main" class="h">备案</a>
+                            </li>
+                            <li class="nav-price">
+                            <a class="h" href="../../price/index.htm" tppabs=" /price/index"><i class="icon-pic mr10"></i>价格计算器</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--
+                        <li class="nav nav-case">
+                    <a href="/whyucloud/case_game" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">客户案例</a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_game">移动游戏</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_webgame">网页游戏</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_app">移动App</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_b2c">电子商务</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_saas">SAAS应用</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_web">专业网站</a>
+                        </li>
+                    </ul>
+                    </li>
+                    -->
+                        <li class="nav nav-support">
+                    <a href="../../support.htm" tppabs=" /support" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">技术支持</a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/index.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/index.html'" tppabs="http://docs.ucloud.cn/index.html" target="_blank">产品使用说明</a></li>
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/beian.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/beian.html'" tppabs="http://docs.ucloud.cn/beian.html" target="_blank">备案服务</a></li>
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/testing.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/testing.html'" tppabs="http://docs.ucloud.cn/testing.html" target="_blank">测试数据</a></li>
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/api/index.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/api/index.html'" tppabs="http://docs.ucloud.cn/api/index.html" target="_blank">API 文档</a></li>
+                    </ul>
+                    </li>
+                        <li class="nav nav-about">
+                    <a href="../../about.htm" tppabs=" /about" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        关于我们
+                    </a>
+                    <a href="../../about/career_main.htm" tppabs=" /about/career_main" class="join-us-icon"><img src="../../www/img/www/hring.png" tppabs=" /www/img/www/hring.png"/></a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro">
+                        <span class="xt ">关于我们</span>
+                        <a class="h" href="../../about.htm" tppabs=" /about">公司简介</a>
+                        <a class="h" href="../../about/contact_main.htm" tppabs=" /about/contact_main">联系我们</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">动态</span>
+                        <a class="h" href="../../about/news.htm" tppabs=" /about/news">新闻动态</a>
+                        <a class="h" href="../../about/media_main.htm" tppabs=" /about/media_main">媒体报道</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt "></span>
+                        <a class="h" href="../../about/safety.htm" tppabs=" /about/safety">安全资讯</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">人才招聘</span>
+                        <a class="h" href="../../about/career_main.htm" tppabs=" /about/career_main">加入我们</a>
+                        <a class="h" href="javascript:if(confirm('http://campus.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://campus.ucloud.cn/'" tppabs="http://campus.ucloud.cn/" target="_blank">校园招聘</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">市场合作</span>
+                        <a class="h" href="../../about/partners_main.htm" tppabs=" /about/partners_main">合作伙伴</a>
+                        <a class="h" href="../../about/link_main.htm" tppabs=" /about/link_main">友情链接</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">创业扶持</span>
+                        <a class="h" href="javascript:if(confirm('http://incubator.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://incubator.ucloud.cn/'" tppabs="http://incubator.ucloud.cn/" target="_blank">创业孵化器</a>
+                        </li>
+                    </ul>
+                    </li>
+                    <!-- <li class="nav-line"></li> -->
+                    <!--  -->
+                    <!--     <li class="nav nav-beian"> -->
+                    <!--  -->
+                    <!-- </li> -->
+                </ul>
+            </div>
+
+    <div class="bg-ef clear pt50 pb50">
+    <div class="main height">
+        <div class="inner height">
+            <div class="article-content height-main">
+                <h4 class="h"><a href="javascript:if(confirm(' /ucloud  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location=' /ucloud'" tppabs=" /ucloud"><i class="icon-home mr5"></i>首页>></a><a href="../../about.htm" tppabs=" /about">关于我们>></a><a href="../../about/safety.htm" tppabs=" /about/safety">安全资讯>></a></h4>
+                <div class="bord-dashed"></div>
+                <h5>解密亚马逊AWS大规模重启服务器背后的故事</h5>
+                <h6>2014-10-10</h6>
+                <div class="rich_media_meta_list" style="margin: 0px 0px 18px; padding: 0px; overflow: hidden; line-height: 20px;">&nbsp;</div>
+
+<div class="rich_media_content" id="js_content" style="margin: 0px; padding: 0px; overflow: hidden; color: rgb(62, 62, 62); min-height: 350px;">
+<blockquote>
+<p><em><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">9</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">月</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">23</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">日，</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">XEN</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">官方来了个帽子戏法，一口气爆出</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">3</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">个漏洞。</span><strong><span style="color:rgb(84, 141, 212)"><span style="font-family:微软雅黑,sans-serif">随后，就有关于亚马逊</span><span style="font-family:arial,sans-serif">AWS</span><span style="font-family:微软雅黑,sans-serif">大规模重启服务器的消息爆出。这次重启事件不论是影响到的产品、还是持续的时间都是史无前例的</span></span></strong><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">，整个修复周期持续</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">5</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">天，从</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">9</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">月</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">25</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">日下午</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">7</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">点到</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">9</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">月</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">30</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">日下午</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">5</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">点，影响的产品包括</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">EC2</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">、</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">RDS</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">、</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">ElastiCache</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">、</span><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">RedShift</span><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">，</span><strong><span style="color:rgb(84, 141, 212)"><span style="font-family:微软雅黑,sans-serif">其中</span><span style="font-family:arial,sans-serif">EC2</span><span style="font-family:微软雅黑,sans-serif">最为严重，大约占到</span><span style="font-family:arial,sans-serif">AWS EC2</span><span style="font-family:微软雅黑,sans-serif">总量的</span><span style="font-family:arial,sans-serif">10%</span></span></strong><span style="color:rgb(29, 29, 29); font-family:微软雅黑,sans-serif">。</span></em></p>
+</blockquote>
+
+<p>由于是发生在美国，所以国内这块的报道较少，很多同学可能还不知道是什么漏洞，让亚马逊做如此大范围的重启操作。下面我们一块看看这三兄弟到底是啥来头。</p>
+
+<h3>这次的三个漏洞，危害有哪些？</h3>
+
+<p><strong><span style="background-color:rgb(0, 112, 192); color:rgb(255, 255, 255); font-family:arial,sans-serif">1、CVE-2014-7154</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>这个可以说是三兄弟中的老大，为何？因为它在关键位置有人，因为它老爹是dom0。dom0在XEN架构中的地位非常重要，它包含控制硬件的驱动和控制虚拟机的工具集。所以它会影响到整个物理机上面所有的虚拟机，这样的漏洞是最恐怖的，波及范围广，修补起来又需要重启，那就得业务中断啊，还有，如果重启起不来咋办？？</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(0, 112, 192); color:rgb(255, 255, 255); font-family:arial,sans-serif">2、CVE-2014-7155</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>这个可以排行老二，客户机可以利用该漏洞加载自己的IDT或GDT，可能导致虚拟机的宕机，还可以获取root权限。看到这里我们也不要太慌张，因为这里不是虚拟机逃逸，而是获取虚拟机的root权限。危害也不小，&ldquo;黑阔&rdquo;又多了一个提权利器。</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(0, 112, 192); color:rgb(255, 255, 255); font-family:arial,sans-serif">3、CVE-2014-7156</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>与上述那俩老大哥比起来，就个漏洞危害就要差一些了。利用该漏洞，可能导致虚拟机的宕机，但宕机也不是小事，不容小觑，只是生不逢时。</p>
+
+<p>&nbsp;</p>
+
+<h3>神马是XEN？</h3>
+
+<p>在进行技术分析之前，我们先了解一下关于XEN的背景知识。</p>
+
+<p>&nbsp;</p>
+
+<p>VMware大家都很熟悉了，无论是WorkStation还是企业级的ESX，XEN就是类似于ESX的一个软件，不过是开源的（类似的还有KVM）。现在KVM已经是Linux官方加入到内核中的虚拟化技术。</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>XEN最早由剑桥大学开发，现在被Citrix收购，亚马逊的AWS就是基于XEN技术的。</p>
+
+<p>&nbsp;</p>
+
+<p>通过下图我们来了解下XEN技术架构：</p>
+
+<p><img src="../../../mmbiz.qpic.cn/mmbiz/2iak9icUD6zoPg8FibpibsGUMrZcfjxk7TOic6zA1Iic4BQicWF6yRLJb08yNHZEGgQDmRdNVFjkzGQibvib0buekysJQTQ/0.jpg" tppabs="http://mmbiz.qpic.cn/mmbiz/2iak9icUD6zoPg8FibpibsGUMrZcfjxk7TOic6zA1Iic4BQicWF6yRLJb08yNHZEGgQDmRdNVFjkzGQibvib0buekysJQTQ/0" style="box-sizing:border-box !important; height:auto !important; margin:0px; max-width:100%; padding:0px; visibility:visible !important; width:auto !important; word-wrap:break-word !important" /></p>
+
+<p>从上面可以看出，XEN hypervisor直接运行在硬件之上，负责处理CPU、内存、中断等。它是运行完bootloader之后第一个运行的程序。在hypervisor之上允许虚拟机，在XEN里面，一个虚拟机实例被称为domain或者guest。其中，domain0是一个特殊的domain，它包含所有控制硬件的驱动，同时包含控制管理虚拟机的工具集。</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>除了domain0之外，其它的虚拟机就是我们熟悉的guest，大致分为两种类型：Paravirtualization（PV）半虚拟化 和 Full Virtualization（HVM）全虚拟化。</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>PV是由XEN引入的，后来被其它虚拟化平台采用。半虚拟化是一种高效、轻量的虚拟化技术，它不需要物理机CPU含有虚拟化扩展，但却需要一个Xen-PV-enabled内核和PV驱动，说白了就是需要修改虚机系统的内核，好在Linux、BSD、OpenSolaris等提供了该内核，但是Windows就不行了，因为只有微软可以修改它的内核。</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>HVM使用了物理机CPU的虚拟化扩展来虚拟出虚拟机。该技术需要Intel VT或者AMD-V硬件扩展。Xen使用Qemu来仿真PC硬件，包括BIOS、IDE硬盘控制器、VGA、USB控制器、网卡等等。由于使用虚拟机硬件扩展来提高仿真性能，所以HVM不需要修改内核，因此其上可以运行Windows系统。</p>
+
+<p>&nbsp;</p>
+
+<h3>技术揭秘</h3>
+
+<p>现在我们大致了解了这三漏洞有啥危害了，下面我们跟着官方的漏洞通告和补丁文件，来具体分析下这些漏洞。</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(0, 112, 192); color:rgb(255, 255, 255); font-family:arial,sans-serif">1、CVE-2014-7154</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>CVE-2014-7154说的是在HVMOP_track_dirty_vram里面存在竟态条件，HVMOP_track_dirty_vram是一个用来控制脏显存跟踪设置的函数。下面是官方给出的补丁：</p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif; font-size:1em">p2m_type_t t;</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">- struct sh_dirty_vram *dirty_vram = d-&gt;arch.hvm_domain.dirty_vram;</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">+ struct sh_dirty_vram *dirty_vram;</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">struct p2m_domain *p2m = p2m_get_hostp2m(d);</span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">if ( end_pfn &lt; begin_pfn || end_pfn &gt; p2m-&gt;max_mapped_pfn + 1 )</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">@@ -3495,6 +3495,8 @@ int shadow_track_dirty_vram(struct domai</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">p2m_lock(p2m_get_hostp2m(d));</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">paging_lock(d);</span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">+ dirty_vram = d-&gt;arch.hvm_domain.dirty_vram;</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">+</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">if ( dirty_vram &amp;&amp; (!nr ||</span></p>
+
+<p>&nbsp;</p>
+
+<p>从补丁中可以看出，在没有打补丁的代码里，系统在获取paging_lock之前，已经获取到了dirty_vram的值。这里有一个潜在的问题，两个并发的hypercall会尝试同时释放dirty_vram，那么两者中，第二个尝试进行释放的是一个野指针。另外，两个并发的hypercall也可能会尝试同时创建一个新的dirty_vram结构体，那么最先创建的那块内存会泄漏，因为第二个dirty_vram创建之后，两个指针都指向新的dirty_vram结构体。</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>所以修补起来也很简单，就是将获取</p>
+
+<p>d-&gt;arch.hvm_domain.dirty_vram</p>
+
+<p>的值放到获取了paging_lock之后。</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(0, 112, 192); color:rgb(255, 255, 255); font-family:arial,sans-serif">2、CVE-2014-7155</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>CVE-2014-7155讲的是在x86的HLT、LGDT、LIDT、LMSW指令模拟时没有做特权检查，这些指令都是用来加载全局描述附表、中断描述符表或者局部描述符表等。恶意的客户机程序可以安装自己的IDT（中断描述符表），这些恶意行为会导致客户机宕机，或者进行提权。</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif; font-size:1em">case 0xf4: /* hlt */</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">+ generate_exception_if(!mode_ring0(), EXC_GP, 0);</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">ctxt-&gt;retire.flags.hlt = 1;</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">break;</span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">@@ -3710,6 +3711,7 @@ x86_emulate(</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">break;</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">case 2: /* lgdt */</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">case 3: /* lidt */</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">+ generate_exception_if(!mode_ring0(), EXC_GP, 0);</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">generate_exception_if(ea.type != OP_MEM, EXC_UD, -1);</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">fail_if(ops-&gt;write_segment == NULL);</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">memset(&amp;reg, 0, sizeof(reg));</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">@@ -3738,6 +3740,7 @@ x86_emulate(</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">case 6: /* lmsw */</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">fail_if(ops-&gt;read_cr == NULL);</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">fail_if(ops-&gt;write_cr == NULL);</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">+ generate_exception_if(!mode_ring0(), EXC_GP, 0);</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">if ( (rc = ops-&gt;read_cr(0, &amp;cr0, ctxt)) )</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">goto done;</span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>从补丁中可以看出，系统通过在模拟htl、lgdt、lidt、lmsw的时候，增加了generate_exception_if()宏来解决该问题。该宏对运行在非ring0模式下的htl等指令，会产生EXC_GP异常。下面是generate_exception_if的宏定义：</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif; font-size:1em">#define generate_exception_if(p, e, ec) \</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">({ if ( (p) ) { \</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">fail_if(ops-&gt;inject_hw_exception == NULL); \</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">rc = ops-&gt;inject_hw_exception(e, ec, ctxt) ? : X86EMUL_EXCEPTION; \</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">goto done; \</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">} \</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">})</span></p>
+
+<p>&nbsp;</p>
+
+<p>从</p>
+
+<p>generate_exception_if(!mode_ring0(), EXC_GP, 0)</p>
+
+<p>可以看出，对运行在ring0模式的指令不做任何操作，对运行在非ring0模式的指令，执行了检查。首先看是否定义了inject_hw_exception函数，如果没有定义，则ops-&gt;injdect_hw_exception == NULL的结果为真，根据fail_if的宏定义可以发现直接产生X86EMUL_UNHANDLEABLE：</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif; font-size:1em">#define fail_if(p) \</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">do { \</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">rc = (p) ? X86EMUL_UNHANDLEABLE : X86EMUL_OKAY; \</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">if ( rc ) goto done; \</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">} while (0)</span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>如果在ops中定义了inject_hw_excption，则调用hvmemul_inject_hw_exceptio()函数来设置该异常的相关信息：</p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif; font-size:1em">static int hvmemul_inject_hw_exception(</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">uint8_t vector,</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">int32_t error_code,</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">struct x86_emulate_ctxt *ctxt)</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">{</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">struct hvm_emulate_ctxt *hvmemul_ctxt =</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">container_of(ctxt, struct hvm_emulate_ctxt, ctxt);</span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">hvmemul_ctxt-&gt;exn_pending = 1;</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">hvmemul_ctxt-&gt;exn_vector = vector;</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">hvmemul_ctxt-&gt;exn_error_code = error_code;</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">hvmemul_ctxt-&gt;exn_insn_len = 0;</span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">return X86EMUL_OKAY;</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">}</span></p>
+
+<p>&nbsp;</p>
+
+<p>通过查看宏定义，发现X86EMUL_OKAY的值为0：</p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">/* Completed successfully. State modified appropriately. */</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">#define X86EMUL_OKAY 0</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">/* Unhandleable access or emulation. No state modified. */</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">#define X86EMUL_UNHANDLEABLE 1</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">/* Exception raised and requires delivery. */</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">#define X86EMUL_EXCEPTION 2</span></p>
+
+<p>&nbsp;</p>
+
+<p>所以当inject_hw_exception不为NULL的时候，generate_exception_if在调用hvmemul_inject_hw_exception设置完相应的异常信息之后，产生X86EMUL_EXCEPTION异常。从上面的宏定义可以看出，不论是X86EMUL_UNHANDLEABLE异常还是X86EMUL_EXCEPTION异常，都会导致指令不执行。</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(0, 112, 192); color:rgb(255, 255, 255); font-family:arial,sans-serif">3、CVE-2014-7156</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>CVE-2014-7156讲的是在x86中模拟软中断的时候，没有做特权检查，恶意的HVM客户机上面的代码能够使客户机宕机。</p>
+
+<p>&nbsp;</p>
+
+<p>补丁说明只允许在实模式中进行软中断模拟，所以补丁也很简单，检测到在非实模式下模拟软中断的时候就退出：</p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">case 0xcd: /* int imm8 */</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">src.val = insn_fetch_type(uint8_t);</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">swint:</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">+ fail_if(!in_realmode(ctxt, ops)); /* XSA-106 */</span></p>
+
+<p><span style="color:rgb(29, 29, 29); font-family:arial,sans-serif">fail_if(ops-&gt;inject_sw_interrupt == NULL)</span></p>
+
+<p>&nbsp;</p>
+
+<h3>总结</h3>
+
+<p>其实我们看看3个补丁，发现貌似没做啥啊，只是换了换代码的位置，或加了一个函数或者宏。这说明XEN其实已经有解决问题的方案，只不过在某些指令的处理上，没有考虑到所有的使用场景，因此漏掉了相应的检查。那是不是其它指令在某些场景下还会有类似的问题呢？嘿嘿，我只能说漏洞时时有，这阵子特别多，所以我们多关注关注XEN的官方漏洞通告页面就知道了。</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>再看看IaaS云老大亚马逊AWS，不得不说他们的响应速度很快，对安全也重视，没有侥幸心理，该补的补，该重启的重启，重视安全的态度由此可见。但话说回来，出发点虽好，但是有没有更好的处理方式呢，既可以修补漏洞又可以不重启服务器的？</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>必须有！UCloud的内核团队这方面有很深入的研究：内核热补丁。通过该技术可以给运行中的Linux服务器打上内核补丁，既可以解决存在的问题，最重要的是不需要重启服务器。这项技术在UCloud已经广泛使用，已经免重启修复过十几个内核BUG。</p>
+
+<p>&nbsp;</p>
+
+<p>本月16日在上海QCon的活动上，欢迎大家就内核相关的问题与UCloud资深工程师邱模炯进行交流。</p>
+
+<div>&nbsp;</div>
+</div>
+
+                <div class="bord-dashed"></div>
+                <span class="pull-right">
+                    <i class="foot-page"></i>
+                </span>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="try-infor reg">
+    <span class="reg01">注册即享云主机免费试用套餐</span>
+    <span class="loged01">UCloud专业云计算服务商</span>
+    <a class="bottn btn-try-blue reg01" href="javascript:if(confirm('http://account.ucloud.cn/cas/register  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://account.ucloud.cn/cas/register'" tppabs="http://account.ucloud.cn/cas/register">立即注册</a>
+    <a class="bottn btn-try-blue loged01" href="javascript:if(confirm('http://console.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://console.ucloud.cn/'" tppabs="http://console.ucloud.cn/">进入控制台</a>
+</div>
+<div class="footer">
+    <div class="foot-main">
+        <ul class="last">
+            <li><a href="../../product/uhost_main.htm" tppabs=" /product/uhost_main" class="f14">产品</a></li>
+            <li class="mt30"><a href="../../product/uhost_main.htm" tppabs=" /product/uhost_main">计算</a></li>
+            <li>
+                <a href="../../product/udisk_main.htm" tppabs=" /product/udisk_main">网络</a>
+            </li>
+            <li>    
+                <a href="../../product/udb_main.htm" tppabs=" /product/udb_main">存储和CDN</a>
+            </li>
+            <li>    
+                <a href="../../product/umem_main.htm" tppabs=" /product/umem_main">云内存存储</a>
+            </li>
+            <li>    
+                <a href="../../product/ulb_main.htm" tppabs=" /product/ulb_main">负载均衡</a>
+            </li>
+            <li>
+                <a href="../../product/ucdn_main.htm" tppabs=" /product/ucdn_main">CDN</a>
+            </li>
+        </ul>
+        <ul class="last">
+            <li><a href="../../solution/push_system.htm" tppabs=" /solution/game" class="f14">解决方案</a></li>
+            <li class="mt30"><a href="../../solution/push_system.htm" tppabs=" /solution/game">游戏</a></li>
+            <li><a href="../../solution/cloud_data_center.htm" tppabs=" /solution/education">在线教育</a></li>
+            <li><a href="../../solution/broadband_data_analysis.htm" tppabs=" /solution/dsp">数字营销&大数据</a></li>
+            <li><a href="../../solution/broadband_lifecycle_management.htm" tppabs=" /solution/ebs">电子商务</a></li>
+            <li><a href="../../solution/interactive_system.htm" tppabs=" /solution/saas">PaaS/SaaS</a></li>
+            <li><a href="../../solution/online_system.htm" tppabs=" /solution/app">移动App</a></li>
+        </ul>
+        <ul class="last">
+            <li><a href="../../support.htm" tppabs=" /support" class="f14">技术支持</a></li>
+            <li class="mt30"><a href="javascript:if(confirm('http://docs.ucloud.cn/product.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/product.html'" tppabs="http://docs.ucloud.cn/product.html" target="_blank" class="t">产品使用说明</a></li>
+            <li><a href="javascript:if(confirm('http://docs.ucloud.cn/beian.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/beian.html'" tppabs="http://docs.ucloud.cn/beian.html" target="_blank">备案系统</a></li>
+            <li><a href="javascript:if(confirm('http://docs.ucloud.cn/testing.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/testing.html'" tppabs="http://docs.ucloud.cn/testing.html" target="_blank">测试数据</a></li>
+            <li><a href="javascript:if(confirm('http://docs.ucloud.cn/api/index.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/api/index.html'" tppabs="http://docs.ucloud.cn/api/index.html" target="_blank">API 文档</a></li>
+        </ul>
+        <ul class="last">
+            <li><a href="../../about.htm" tppabs=" /about" target="_blank" class="f14">关于我们</a></li>
+
+            <li class="mt30">    
+                <a href="../../about/contact_main.htm" tppabs=" /about/contact_main" target="_blank">联系我们</a>
+            </li>
+            <li>    
+                <a href="../../about/news.htm" tppabs=" /about/news" target="_blank">新闻动态</a>
+            </li>
+            <li>
+                <a href="../../about/media_main.htm" tppabs=" /about/media_main" target="_blank">媒体报道</a>
+            </li>
+            <li>
+            <a href="../../about/safety.htm" tppabs=" /about/safety">安全资讯</a>
+            </li>
+            <li>
+                <a href="../../about/career_main.htm" tppabs=" /about/career_main" target="_blank">加入我们</a>
+            </li>
+            <li>
+                <a href="../../about/partners_main.htm" tppabs=" /about/partners_main" target="_blank">合作伙伴</a>
+            </li>
+            <li>
+                <a href="../../about/link_main.htm" tppabs=" /about/link_main" target="_blank">友情链接</a>
+            </li>
+            <li>
+            <a href="javascript:if(confirm('http://incubator.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://incubator.ucloud.cn/'" tppabs="http://incubator.ucloud.cn/" target="_blank">创业孵化器</a>
+            </li>
+        </ul>
+        <ul class="last">
+            <li><a href="../../about/contact_main.htm" tppabs=" /about/contact_main" class="f14">联系我们</a></li>
+            <li class="mt30"><a target="_blank" href="javascript:if(confirm('http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help'" tppabs="http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help">QQ- 4000188113</a></li>
+            <li>Tel- 4000188113</li>
+            <li> <a href="javascript:if(confirm('http://t.cn/z8emy2d  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://t.cn/z8emy2d'" tppabs="http://t.cn/z8emy2d" target="_blank" class="f12">关注UCloud微博</a></li>
+            <li> <a href="../../act/index/sponsor.htm" tppabs=" /act/index/sponsor" target="_blank" class="f12">云服务赞助计划</a></li>
+        </ul>
+        <div class="foot-right">
+            <div class="tit">
+                权威认证
+            </div>
+            <ul class="ac">
+                <li>
+                <a href="javascript:if(confirm('http://www.dca.org.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.dca.org.cn/'" tppabs="http://www.dca.org.cn/" alt="可信云认证" target="_blank">
+                    <img src="../../www/img/www/kxinyun-img.png" tppabs=" /www/img/www/kxinyun-img.png">
+                </a>
+                </li>
+                <li class="wuyun-img">
+                <a href="../../news/index/208.htm" tppabs=" /news/index/208" alt="乌云众测认证" target="_blank">
+                    <img src="../../www/img/www/wuyun-img.png" tppabs=" /www/img/www/wuyun-img.png">
+                </a>
+                </li>
+                <li>
+                <a href="../../news/index/164.htm" tppabs=" /news/index/164" target="_blank">
+                    <img src="../../www/img/www/anquan-img.png" tppabs=" /www/img/www/anquan-img.png">
+                </a>
+                </li>
+                <li class="seal">
+                <img src="../../../seal.qualys.com/sealserv/seal.gif-i=c009655d-c0ca-40e4-a9cf-5eac30d2908c.gif" tppabs="http://seal.qualys.com/sealserv/seal.gif?i=c009655d-c0ca-40e4-a9cf-5eac30d2908c" onclick="window.open('https://seal.qualys.com/sealserv/info/?i=c009655d-c0ca-40e4-a9cf-5eac30d2908c','qualysSealInfo', 'height=600,width=851,resizable=1')" />
+                </li>
+            </ul>
+            <div class="tit">
+                关注我们
+            </div>
+            <div class="weixin-img"></div>
+            <a class="foot-weibo" href="javascript:if(confirm('http://t.cn/z8emy2d  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://t.cn/z8emy2d'" tppabs="http://t.cn/z8emy2d" target="_blank">
+                <i class="xlwb"></i>
+            </a>
+        </div>
+            
+
+    </div>
+</div>
+
+        <div class="footer">
+            <div class="files">
+                <div class="icp-b">
+                    <i><span class="vm">Copyright © 2012-2015 UCloud 上海优刻得信息科技有限公司 ｜<a href="javascript:if(confirm('http://www.miitbeian.gov.cn/publish/query/indexFirst.action  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.miitbeian.gov.cn/publish/query/indexFirst.action'" tppabs="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">沪ICP备 12020087</a></span><a href="javascript:if(confirm('http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121023144129704  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121023144129704'" tppabs="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121023144129704" target="_blank" class="pl5"><img src="../../www/img/www/gongshang-icon.png" tppabs=" /www/img/www/gongshang-icon.png"/></a></i>
+                    <script type="text/javascript">
+                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F413fdc5943040809ed0703eabd01f173' type='text/javascript'%3E%3C/script%3E"));
+                    </script>
+                    <a href="javascript:if(confirm('http://www.zx110.org/picp/?sn=310104031200  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.zx110.org/picp/?sn=310104031200'" tppabs="http://www.zx110.org/picp/?sn=310104031200" target="_blank"><img src="../../www/img/www/picp_bg.png" tppabs=" /www/img/www/picp_bg.png"/></a>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div id="AQBFeedback" class="aqb-feedback">
+            <div class="fb-item fb-suggestion" style="display: none;">
+                <span class="fb-text" style="left: 0px; width: 36px;">返回顶部</span><span class="fb-ico"></span>
+            </div>
+        </div>
+        -->
+        <div class="helpline">
+            <div id="AQBFeedback" class="aqb-feedback">
+                <div class="fb-item fb-suggestion" style="display: block;">
+                </div>
+            </div>
+        </div>
+        <a class="helpline" href="javascript:if(confirm('http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help'" tppabs="http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help" target="_blabk">
+            <div class="icon-qq-wh"></div>
+             在 线 客 服
+        </a>
+
+        <script type="text/javascript">
+            seajs.use('../../www/js/src/main.js'/*tpa= /www/js/src/main.js*/);
+
+        </script>
+             <script type="text/javascript"> 
+                 /* <![CDATA[ */ 
+                 var google_conversion_id = 980484464; 
+                 var google_custom_params = window.google_tag_params; 
+                 var google_remarketing_only = true; 
+                 /* ]]> */ 
+             </script> 
+             <div style="display:none;">
+             <script type="text/javascript" src="../../../www.googleadservices.com/pagead/conversion.js" tppabs="http://www.googleadservices.com/pagead/conversion.js"> 
+             </script> 
+         </div>
+
+            <script type='text/javascript'>
+                var _agt=_agt||[];
+                _agt.push(['_atscu','AG_164770_GWNM']);
+                _agt.push(['_atsdomain','ucloud.cn.htm'/*tpa= /safety/index/ucloud.cn*/]);/*请将$网站主域$替换为您嵌入代码的真实主域，例如：agrantsem.com*/
+                (function(){
+                var ag=document.createElement('script');
+                ag.type='text/javascript';
+                ag.async = true;
+                ag.src=(document.location.protocol=='https:'?'https':'http')+'://'+'t.agrantsem.com/js/ag.js';
+                var s=document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ag,s);})();
+            </script>
+             <noscript> 
+                 <div style="display:inline;"> 
+                     <img height="1" width="1" style="border-style:none;" alt="" src="../../../googleads.g.doubleclick.net/pagead/viewthroughconversion/980484464/-value=0&guid=ON&script=0.gif" tppabs="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/980484464/?value=0&guid=ON&script=0"/> 
+                 </div> 
+             </noscript> 
+    </body>
+</html>
+

@@ -1,0 +1,181 @@
+{
+  "resultMsg": "接口调用成功！",
+  "resultData": {
+    "page": 2,
+    "pageSize": 10,
+    "recordCount": 12,
+    "orderList": [
+      {
+        "Id": "9a83610c-fb6f-4c12-a123-a01a2f6eb72d",
+        "orderNumber": "201601190019",
+        "totalPrice": 15,
+        "orderStatus": "ALREADYPAYMENT",
+        "orderStatusName": "已支付",
+        "orderCreateTime": "2016-01-19 10:19:02",
+        "isDispatch": 0,
+        "orderDetailList": [
+          {
+            "dishesId": "e886e7ea-d923-4520-b8bc-b1c543621b33",
+            "dishesName": "红烧狮子头",
+            "copiesCount": 1,
+            "realPrice": 15
+          }
+        ]
+      },
+      {
+        "Id": "db425bd7-7a3c-4ad0-8116-f32117d5c5a9",
+        "orderNumber": "201512090071",
+        "totalPrice": 15,
+        "orderStatus": "ALREADYPAYMENT",
+        "orderStatusName": "已支付",
+        "orderCreateTime": "2015-12-09 15:55:37",
+        "isDispatch": 1,
+        "orderDetailList": [
+          {
+            "dishesId": "4c868950-5e3f-43ba-ae14-dae2811c00ac",
+            "dishesName": "花生猪手",
+            "copiesCount": 1,
+            "realPrice": 15
+          }
+        ]
+      },
+      {
+        "Id": "8f608c31-2bfb-47d5-8353-cccdaa07eada",
+        "orderNumber": "201512080061",
+        "totalPrice": 15,
+        "orderStatus": "ALREADYCANCEL",
+        "orderStatusName": "已取消",
+        "orderCreateTime": "2015-12-08 17:37:20",
+        "isDispatch": 1,
+        "orderDetailList": [
+          {
+            "dishesId": "4c868950-5e3f-43ba-ae14-dae2811c00ac",
+            "dishesName": "花生猪手",
+            "copiesCount": 1,
+            "realPrice": 15
+          }
+        ]
+      },
+      {
+        "Id": "6a7ee6e8-5a57-4cfd-8202-4b0926873b20",
+        "orderNumber": "201512040070",
+        "totalPrice": 15,
+        "orderStatus": "ALREADYCHARGEBACK",
+        "orderStatusName": "已退单",
+        "orderCreateTime": "2015-12-04 16:46:37",
+        "isDispatch": 0,
+        "orderDetailList": [
+          {
+            "dishesId": "382ed2cf-724b-4cd7-9839-a6a54ad2b002",
+            "dishesName": "香乐大排饭",
+            "copiesCount": 1,
+            "realPrice": 15
+          }
+        ]
+      },
+      {
+        "Id": "f09e53c6-03ad-443a-8867-38c3f1fe6c4a",
+        "orderNumber": "201512030144",
+        "totalPrice": 15,
+        "orderStatus": "ALREADYCHARGEBACK",
+        "orderStatusName": "已退单",
+        "orderCreateTime": "2015-12-03 18:01:04",
+        "isDispatch": 0,
+        "orderDetailList": [
+          {
+            "dishesId": "382ed2cf-724b-4cd7-9839-a6a54ad2b002",
+            "dishesName": "香乐大排饭",
+            "copiesCount": 1,
+            "realPrice": 15
+          }
+        ]
+      },
+      {
+        "Id": "920e048a-2233-4f76-be84-46ce1974ecc1",
+        "orderNumber": "201512030142",
+        "totalPrice": 15,
+        "orderStatus": "ALREADYCANCEL",
+        "orderStatusName": "已取消",
+        "orderCreateTime": "2015-12-03 17:59:24",
+        "isDispatch": 0,
+        "orderDetailList": [
+          {
+            "dishesId": "5980625e-3555-445b-ae54-b6e9c50f7f4c",
+            "dishesName": "红薯粉蒸肉",
+            "copiesCount": 1,
+            "realPrice": 15
+          }
+        ]
+      },
+      {
+        "Id": "421dc7e5-37a4-44f2-b4fa-828cdbf0aa34",
+        "orderNumber": "201511110017",
+        "totalPrice": 15,
+        "orderStatus": "ALREADYFINISH",
+        "orderStatusName": "已完成",
+        "orderCreateTime": "2015-11-11 09:43:56",
+        "isDispatch": 0,
+        "orderDetailList": [
+          {
+            "dishesId": "d67cecbd-8d6b-4c15-96ce-b53f207dfdcf",
+            "dishesName": "萝卜牛腩(辣)",
+            "copiesCount": 1,
+            "realPrice": 15
+          }
+        ]
+      },
+      {
+        "Id": "49e53c90-2a37-4f80-9468-623a61d1ba17",
+        "orderNumber": "201510280030",
+        "totalPrice": 15,
+        "orderStatus": "ALREADYFINISH",
+        "orderStatusName": "已完成",
+        "orderCreateTime": "2015-10-28 10:06:54",
+        "isDispatch": 0,
+        "orderDetailList": [
+          {
+            "dishesId": "fe357fd3-70b1-4336-8e4b-1753a8936f3f",
+            "dishesName": "冬菇蒸土鸡",
+            "copiesCount": 1,
+            "realPrice": 15
+          }
+        ]
+      },
+      {
+        "Id": "895f3890-8bf4-4af7-90ed-5eced078d448",
+        "orderNumber": "201509220065",
+        "totalPrice": 1,
+        "orderStatus": "ALREADYCANCEL",
+        "orderStatusName": "已取消",
+        "orderCreateTime": "2015-09-22 21:02:35",
+        "isDispatch": 0,
+        "orderDetailList": [
+          {
+            "dishesId": "22d9699b-761c-4156-9fb1-bdbd51c08193",
+            "dishesName": "白切鸡",
+            "copiesCount": 1,
+            "realPrice": 15
+          }
+        ]
+      },
+      {
+        "Id": "09c073f9-ab4b-4bfa-980e-98de71ab78a8",
+        "orderNumber": "201509220064",
+        "totalPrice": 1,
+        "orderStatus": "ALREADYCANCEL",
+        "orderStatusName": "已取消",
+        "orderCreateTime": "2015-09-22 20:58:26",
+        "isDispatch": 0,
+        "orderDetailList": [
+          {
+            "dishesId": "458562bb-ebe8-4136-8be7-6a68cd7b077d",
+            "dishesName": "红烧牛腩",
+            "copiesCount": 1,
+            "realPrice": 15
+          }
+        ]
+      }
+    ]
+  },
+  "resultType": 1
+}

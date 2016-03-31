@@ -1,0 +1,470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;border: none;padding: 0px;margin: 0px;">
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7;  IE=EDGE">
+        <meta content="" name="keywords" />
+
+        <meta content="" name="description" />
+        <meta name="generator" content="ucloud "/>
+        <title>《刀塔传奇》背后的云服务——UCloud华琨在GMGDC9秒专场的分享</title>
+
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <link href="../../www/css/responsive.css" tppabs=" /www/css/responsive.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="../../www/css/bootstrap.min.css-v=2015063020.css" tppabs=" /www/css/bootstrap.min.css?v=2015063020"  type="text/css"/>
+        <link rel="stylesheet" href="../../www/css/ucom.min.css-v=2015063020.css" tppabs=" /www/css/ucom.min.css?v=2015063020"  type="text/css"/>
+        <link rel="stylesheet" href="../../www/css/themes/start/jquery-ui-1.8.20.custom.css-v=2015063020.css" tppabs=" /www/css/themes/start/jquery-ui-1.8.20.custom.css?v=2015063020"  type="text/css"/>
+        <link rel="shortcut icon" href="/www/img/favicon.ico">
+        <!-- WPA Button Begin -->
+        <!--script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzkzODA2NDk0NF80NjUzNF80MDAwMTg4MTEzXw"></script-->
+        <!-- WPA Button END -->
+
+        <script>
+            var version = '2015063020';
+        </script>
+
+        <script type="text/javascript" src="../../www/js/sea-modules/seajs/seajs/2.0.0/sea.js-v=2015063020" tppabs=" /www/js/sea-modules/seajs/seajs/2.0.0/sea.js?v=2015063020"></script>
+        <script type="text/javascript" src="../../www/js/config.js-v=2015063020" tppabs=" /www/js/config.js?v=2015063020"></script>
+        <script type="text/javascript" src="../../../api.map.baidu.com/api-key=7cdc0fa246f1408b387883851a2e87b7=1.1&services=true" tppabs="http://api.map.baidu.com/api?key=7cdc0fa246f1408b387883851a2e87b7=1.1&services=true"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','../../../www.google-analytics.com/analytics.js'/*tpa=http://www.google-analytics.com/analytics.js*/,'ga');
+
+          ga('create', 'UA-48580821-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    </head>
+
+    <body>
+        <div class="topbar">
+            <div class="wh topbar-main">
+                <div class="top-tel">服务热线：4000 -188 -113</div>
+                <iframe width="500px" height="30px" src="../../../account.ucloud.cn/cas/status" tppabs="https://account.ucloud.cn/cas/status" frameborder="0" name="inside-app-iframe" id="inside-app-iframe" class="vt"></iframe>
+                <!-- <iframe width="500px" height="30px" src="http://account.wentianle.web.ucloud.cn/cas/status" frameborder="0" name="inside-app-iframe" id="inside-app-iframe" class="vt"></iframe> -->
+            </div>
+        </div>
+        <div class="top">
+            <a href="../../index.htm" tppabs=" /" class="left"><span class="logo"></span></a><ul class="menu right">
+                        <li class="nav">
+                        <a href="../../index.htm" tppabs=" /" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">首页</a>
+                    </li>
+                        <li class="nav nav-solu">
+                    <a href="../../solution/push_system.htm" tppabs=" /solution/game" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">解决方案</a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro">
+                            <a href="../../solution/push_system.htm" tppabs=" /solution/game">游戏</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../../solution/cloud_data_center.htm" tppabs=" /solution/education">在线教育</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../../solution/broadband_data_analysis.htm" tppabs=" /solution/dsp">数字营销&大数据</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../../solution/broadband_lifecycle_management.htm" tppabs=" /solution/ebs">O2O&电商</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../../solution/interactive_system.htm" tppabs=" /solution/saas">PaaS/SaaS</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../../solution/online_system.htm" tppabs=" /solution/app">移动App</a>
+                        </li>
+                    </ul>
+                    </li>
+                        <li class="nav nav-product">
+                        <a href="../../product/uhost_main.htm" tppabs=" /product/uhost_main" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">产品&服务</a>
+                        <ul class="dropdown-menu hover-menu">
+                            <li class="nav-pro">
+                                <span class="xt ">计算和网络</span>
+                                <a class="h" href="../../product/uhost_main.htm" tppabs=" /product/uhost_main">云主机 UHost</a>
+                                <a class="h" href="javascript:if(confirm(' /product/phost_main  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location=' /product/phost_main'" tppabs=" /product/phost_main">物理主机 UPHost</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../../product/hybrid_main.htm" tppabs=" /product/hybrid_main">混合云 UHybrid</a>
+                                <a class="h" href="../../product/ulb_main.htm" tppabs=" /product/ulb_main">负载均衡 ULB</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../../product/unet_main.htm" tppabs=" /product/unet_main">网络 UNet</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">存储和CDN</span>
+                                <a class="h" href="../../product/udisk_main.htm" tppabs=" /product/udisk_main">云硬盘 UDisk</a>
+                                <a class="h" href="../../product/udb_main.htm" tppabs=" /product/udb_main">云数据库 UDB</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../../product/umem_main.htm" tppabs=" /product/umem_main">云内存存储 UMem</a>
+                                <a class="h" href="../../product/ufile_main.htm" tppabs=" /product/ufile_main">对象存储 UFile</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../../product/ucdn_main.htm" tppabs=" /product/ucdn_main">云分发 UCDN</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">数据分析</span>
+                                <a class="h" href="../../product/uddp_main.htm" tppabs=" /product/uddp_main">分布式数据处理 UDDP</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">管理</span>
+                                <a class="h" href="../../product/api_main.htm" tppabs=" /product/api_main">开放API</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">数据中心</span>
+                                <a class="h" href="../../support/region.htm" tppabs=" /support/region">数据中心介绍</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">服务</span>
+                                <a href="javascript:if(confirm(' /product/uicp_main  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location=' /product/uicp_main'" tppabs=" /product/uicp_main" class="h">备案</a>
+                            </li>
+                            <li class="nav-price">
+                            <a class="h" href="../../price/index.htm" tppabs=" /price/index"><i class="icon-pic mr10"></i>价格计算器</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--
+                        <li class="nav nav-case">
+                    <a href="/whyucloud/case_game" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">客户案例</a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_game">移动游戏</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_webgame">网页游戏</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_app">移动App</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_b2c">电子商务</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_saas">SAAS应用</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_web">专业网站</a>
+                        </li>
+                    </ul>
+                    </li>
+                    -->
+                        <li class="nav nav-support">
+                    <a href="../../support.htm" tppabs=" /support" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">技术支持</a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/index.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/index.html'" tppabs="http://docs.ucloud.cn/index.html" target="_blank">产品使用说明</a></li>
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/beian.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/beian.html'" tppabs="http://docs.ucloud.cn/beian.html" target="_blank">备案服务</a></li>
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/testing.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/testing.html'" tppabs="http://docs.ucloud.cn/testing.html" target="_blank">测试数据</a></li>
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/api/index.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/api/index.html'" tppabs="http://docs.ucloud.cn/api/index.html" target="_blank">API 文档</a></li>
+                    </ul>
+                    </li>
+                        <li class="nav nav-about">
+                    <a href="../../about.htm" tppabs=" /about" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        关于我们
+                    </a>
+                    <a href="../../about/career_main.htm" tppabs=" /about/career_main" class="join-us-icon"><img src="../../www/img/www/hring.png" tppabs=" /www/img/www/hring.png"/></a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro">
+                        <span class="xt ">关于我们</span>
+                        <a class="h" href="../../about.htm" tppabs=" /about">公司简介</a>
+                        <a class="h" href="../../about/contact_main.htm" tppabs=" /about/contact_main">联系我们</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">动态</span>
+                        <a class="h" href="../../about/news.htm" tppabs=" /about/news">新闻动态</a>
+                        <a class="h" href="../../about/media_main.htm" tppabs=" /about/media_main">媒体报道</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt "></span>
+                        <a class="h" href="../../about/safety.htm" tppabs=" /about/safety">安全资讯</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">人才招聘</span>
+                        <a class="h" href="../../about/career_main.htm" tppabs=" /about/career_main">加入我们</a>
+                        <a class="h" href="javascript:if(confirm('http://campus.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://campus.ucloud.cn/'" tppabs="http://campus.ucloud.cn/" target="_blank">校园招聘</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">市场合作</span>
+                        <a class="h" href="../../about/partners_main.htm" tppabs=" /about/partners_main">合作伙伴</a>
+                        <a class="h" href="../../about/link_main.htm" tppabs=" /about/link_main">友情链接</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">创业扶持</span>
+                        <a class="h" href="javascript:if(confirm('http://incubator.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://incubator.ucloud.cn/'" tppabs="http://incubator.ucloud.cn/" target="_blank">创业孵化器</a>
+                        </li>
+                    </ul>
+                    </li>
+                    <!-- <li class="nav-line"></li> -->
+                    <!--  -->
+                    <!--     <li class="nav nav-beian"> -->
+                    <!--  -->
+                    <!-- </li> -->
+                </ul>
+            </div>
+
+    <div class="bg-ef clear pt50 pb50">
+    <div class="main ">
+        <div class="inner height">
+            <div class="article-content height-main">
+                <h4 class="h"><a href="javascript:if(confirm(' /ucloud  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location=' /ucloud'" tppabs=" /ucloud"><i class="icon-home mr5"></i>首页>></a><a href="../../about.htm" tppabs=" /about">关于我们>></a><a href="../../about/news.htm" tppabs=" /about/news">新闻动态>></a></h4>
+                <div class="bord-dashed"></div>
+                <h5>《刀塔传奇》背后的云服务——UCloud华琨在GMGDC9秒专场的分享</h5>
+                <h6>2014-09-25</h6>
+                <p>无论从流水、DAU、注册用户等各方面来评估，《刀塔传奇》毫无疑问是今年最火爆的游戏。对这样一款火爆的游戏来说，后台的运维也面临着非常大的挑战。今天我和大家分享的是《刀塔传奇》背后是如何运用云服务，来支撑起这样海量用户的游戏。</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(84, 141, 212); color:rgb(255, 255, 255)">云服务支持迅速开服</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>了解这款游戏的朋友都知道，《刀塔传奇》是由上海的莉莉丝团队开发，由龙图发行。研发团队始终非常专注，致力于开发一款好玩的高品质游戏，团队的成员也都非常精悍，同时将大量繁琐的基础架构搭建及运维工作交给了UCloud。《刀塔传奇》目前的玩家数量是非常巨大的，在游戏推广阶段，用户量是爆炸式的增长。《刀塔传奇》的玩法很有创意，游戏逻辑也相对复杂，所以对于后台计算服务以及网络的要求非常高，对于服务器的需求量也很惊人。去年在UCloud平台上流水过千万的游戏，使用服务器的台数通常是在几百台，而《刀塔传奇》目前已经在这个基础上增加了超过十倍，达到了数千台的规模。在游戏进行运营活动期间，一周需要新开的服务器数量就在上百台，滚服的数量非常快。《刀塔传奇》使用了UCloud云服务，可以做到计算资源的弹性扩展，快速开服。</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(84, 141, 212); color:rgb(255, 255, 255)">0.5个人力投入，管理上千台服务器</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>在传统的模式下，以QQ农场为例，管理同样规模的服务器，腾讯公司也需要几十人的团队来运营维护。而《刀塔传奇》这款游戏，由于使用了UCloud云服务，游戏团队只需要半个人力的投入，就可以完成海量资源的分配和配置。</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(84, 141, 212); color:rgb(255, 255, 255)">助力游戏进军海外市场</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>一款好的游戏，应该更加积极的开拓海外市场。《刀塔传奇》也打入了港澳台及东南亚市场，并且取得了不错的成绩。在台湾只花了29天就冲到了IOS收入排行榜的榜首。海外的市场相对于国内更加复杂，各个地区的网络覆盖情况都不一样，由于互联互通的问题，满足海外用户基本的访问需求都不是一件容易的事。为了满足客户的需求，UCloud在去年通过4、5个月前期的调研，和国际运营商的紧密沟通，新上线的香港节点解决了港澳台及东南亚地区的网络覆盖问题。</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(84, 141, 212); color:rgb(255, 255, 255)">如何快速处理大型的运营事故</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>根据经验，大型游戏在运营过程中，可能会出现一些意想不到的运营事故，例如像以前业内的一些大型知名端游，就曾出现过道具的复制漏洞等问题，可能会导致游戏的平衡性失调，严重影响玩家的体验。为了保证的游戏平衡性和体验，这时候就可能需要&ldquo;回档&rdquo;，将游戏恢复到之前的某一个时间节点。UCloud的产品目前支持自动备份以及周期性的数据保存，可以支持游戏回档到之前的任意一个时间节点，而且完成回档的时间非常快，保证对玩家的影响降低到最小。在产品设计上，我们就已经考虑到这方面的需求，从并行数据恢复以及数据的本地存储等方面做了优化。同时专业的服务团队7*24小时在线，确保能够服务好我们客户的研发团队和运营团队，并与之紧密配合。</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(84, 141, 212); color:rgb(255, 255, 255)">对游戏关键数据的保护</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>对于关键数据，游戏团队一般都会做数据备份，但是对于更高级别的数据保护则没有太多概念。而从其他行业来看，比如金融企业，数据保护有着严格的规范和等级要求，像《刀塔传奇》这样流水过亿的游戏，对于它的数据保护级别要求是比较特殊的，UCloud在数据冗余和灾备方面提供了更高等级的方案。我们在相隔几十公里的两个数据中心，分别设置可用区，而且两个数据中心通过光纤相连，来保证两个可用区的数据高度实时，这样即便遇到了概率非常小的自然灾害等因素，仍然能保证数据的安全，这就是跨数据中心级别的保护。</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(84, 141, 212); color:rgb(255, 255, 255)">游戏全生命周期的服务</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>通过对很多款游戏的分析，我们发现每一款游戏都会有一个生命周期，我们根据游戏的生命周期，提供非常紧密的支持，全程配合游戏开发团队。我们甚至会主动去看游戏论坛中玩家的反馈，不断的来调整我们的服务。我们公司内部，很多人都是《刀塔传奇》的粉丝，我们就像《刀塔传奇》的技术支持部门来形影不离的同我们的客户配合。</p>
+
+<p>&nbsp;</p>
+
+<p><strong><span style="background-color:rgb(84, 141, 212); color:rgb(255, 255, 255)">关于UCloud</span></strong></p>
+
+<p>&nbsp;</p>
+
+<p>UCloud目前是国内最专业的游戏云服务商，专注于游戏云服务超过2.5 年，成功服务中国最大规模移动游戏《刀塔传奇》，目前服务的移动游戏团队超过1000 家，Top20移动游戏发行商中 70%是UCloud的客户。另外，我们还荣获可信云年度游戏云服务奖，在国内的游戏云领域处于领先地位。</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+                <div class="bord-dashed"></div>
+                <span class="pull-right">
+                    <i class="foot-page"></i>
+                </span>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="try-infor reg">
+    <span class="reg01">注册即享云主机免费试用套餐</span>
+    <span class="loged01">UCloud专业云计算服务商</span>
+    <a class="bottn btn-try-blue reg01" href="javascript:if(confirm('http://account.ucloud.cn/cas/register  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://account.ucloud.cn/cas/register'" tppabs="http://account.ucloud.cn/cas/register">立即注册</a>
+    <a class="bottn btn-try-blue loged01" href="javascript:if(confirm('http://console.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://console.ucloud.cn/'" tppabs="http://console.ucloud.cn/">进入控制台</a>
+</div>
+<div class="footer">
+    <div class="foot-main">
+        <ul class="last">
+            <li><a href="../../product/uhost_main.htm" tppabs=" /product/uhost_main" class="f14">产品</a></li>
+            <li class="mt30"><a href="../../product/uhost_main.htm" tppabs=" /product/uhost_main">计算</a></li>
+            <li>
+                <a href="../../product/udisk_main.htm" tppabs=" /product/udisk_main">网络</a>
+            </li>
+            <li>    
+                <a href="../../product/udb_main.htm" tppabs=" /product/udb_main">存储和CDN</a>
+            </li>
+            <li>    
+                <a href="../../product/umem_main.htm" tppabs=" /product/umem_main">云内存存储</a>
+            </li>
+            <li>    
+                <a href="../../product/ulb_main.htm" tppabs=" /product/ulb_main">负载均衡</a>
+            </li>
+            <li>
+                <a href="../../product/ucdn_main.htm" tppabs=" /product/ucdn_main">CDN</a>
+            </li>
+        </ul>
+        <ul class="last">
+            <li><a href="../../solution/push_system.htm" tppabs=" /solution/game" class="f14">解决方案</a></li>
+            <li class="mt30"><a href="../../solution/push_system.htm" tppabs=" /solution/game">游戏</a></li>
+            <li><a href="../../solution/cloud_data_center.htm" tppabs=" /solution/education">在线教育</a></li>
+            <li><a href="../../solution/broadband_data_analysis.htm" tppabs=" /solution/dsp">数字营销&大数据</a></li>
+            <li><a href="../../solution/broadband_lifecycle_management.htm" tppabs=" /solution/ebs">电子商务</a></li>
+            <li><a href="../../solution/interactive_system.htm" tppabs=" /solution/saas">PaaS/SaaS</a></li>
+            <li><a href="../../solution/online_system.htm" tppabs=" /solution/app">移动App</a></li>
+        </ul>
+        <ul class="last">
+            <li><a href="../../support.htm" tppabs=" /support" class="f14">技术支持</a></li>
+            <li class="mt30"><a href="javascript:if(confirm('http://docs.ucloud.cn/product.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/product.html'" tppabs="http://docs.ucloud.cn/product.html" target="_blank" class="t">产品使用说明</a></li>
+            <li><a href="javascript:if(confirm('http://docs.ucloud.cn/beian.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/beian.html'" tppabs="http://docs.ucloud.cn/beian.html" target="_blank">备案系统</a></li>
+            <li><a href="javascript:if(confirm('http://docs.ucloud.cn/testing.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/testing.html'" tppabs="http://docs.ucloud.cn/testing.html" target="_blank">测试数据</a></li>
+            <li><a href="javascript:if(confirm('http://docs.ucloud.cn/api/index.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/api/index.html'" tppabs="http://docs.ucloud.cn/api/index.html" target="_blank">API 文档</a></li>
+        </ul>
+        <ul class="last">
+            <li><a href="../../about.htm" tppabs=" /about" target="_blank" class="f14">关于我们</a></li>
+
+            <li class="mt30">    
+                <a href="../../about/contact_main.htm" tppabs=" /about/contact_main" target="_blank">联系我们</a>
+            </li>
+            <li>    
+                <a href="../../about/news.htm" tppabs=" /about/news" target="_blank">新闻动态</a>
+            </li>
+            <li>
+                <a href="../../about/media_main.htm" tppabs=" /about/media_main" target="_blank">媒体报道</a>
+            </li>
+            <li>
+            <a href="../../about/safety.htm" tppabs=" /about/safety">安全资讯</a>
+            </li>
+            <li>
+                <a href="../../about/career_main.htm" tppabs=" /about/career_main" target="_blank">加入我们</a>
+            </li>
+            <li>
+                <a href="../../about/partners_main.htm" tppabs=" /about/partners_main" target="_blank">合作伙伴</a>
+            </li>
+            <li>
+                <a href="../../about/link_main.htm" tppabs=" /about/link_main" target="_blank">友情链接</a>
+            </li>
+            <li>
+            <a href="javascript:if(confirm('http://incubator.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://incubator.ucloud.cn/'" tppabs="http://incubator.ucloud.cn/" target="_blank">创业孵化器</a>
+            </li>
+        </ul>
+        <ul class="last">
+            <li><a href="../../about/contact_main.htm" tppabs=" /about/contact_main" class="f14">联系我们</a></li>
+            <li class="mt30"><a target="_blank" href="javascript:if(confirm('http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help'" tppabs="http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help">QQ- 4000188113</a></li>
+            <li>Tel- 4000188113</li>
+            <li> <a href="javascript:if(confirm('http://t.cn/z8emy2d  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://t.cn/z8emy2d'" tppabs="http://t.cn/z8emy2d" target="_blank" class="f12">关注UCloud微博</a></li>
+            <li> <a href="../../act/index/sponsor.htm" tppabs=" /act/index/sponsor" target="_blank" class="f12">云服务赞助计划</a></li>
+        </ul>
+        <div class="foot-right">
+            <div class="tit">
+                权威认证
+            </div>
+            <ul class="ac">
+                <li>
+                <a href="javascript:if(confirm('http://www.dca.org.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.dca.org.cn/'" tppabs="http://www.dca.org.cn/" alt="可信云认证" target="_blank">
+                    <img src="../../www/img/www/kxinyun-img.png" tppabs=" /www/img/www/kxinyun-img.png">
+                </a>
+                </li>
+                <li class="wuyun-img">
+                <a href="208.htm" tppabs=" /news/index/208" alt="乌云众测认证" target="_blank">
+                    <img src="../../www/img/www/wuyun-img.png" tppabs=" /www/img/www/wuyun-img.png">
+                </a>
+                </li>
+                <li>
+                <a href="164.htm" tppabs=" /news/index/164" target="_blank">
+                    <img src="../../www/img/www/anquan-img.png" tppabs=" /www/img/www/anquan-img.png">
+                </a>
+                </li>
+                <li class="seal">
+                <img src="../../../seal.qualys.com/sealserv/seal.gif-i=c009655d-c0ca-40e4-a9cf-5eac30d2908c.gif" tppabs="http://seal.qualys.com/sealserv/seal.gif?i=c009655d-c0ca-40e4-a9cf-5eac30d2908c" onclick="window.open('https://seal.qualys.com/sealserv/info/?i=c009655d-c0ca-40e4-a9cf-5eac30d2908c','qualysSealInfo', 'height=600,width=851,resizable=1')" />
+                </li>
+            </ul>
+            <div class="tit">
+                关注我们
+            </div>
+            <div class="weixin-img"></div>
+            <a class="foot-weibo" href="javascript:if(confirm('http://t.cn/z8emy2d  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://t.cn/z8emy2d'" tppabs="http://t.cn/z8emy2d" target="_blank">
+                <i class="xlwb"></i>
+            </a>
+        </div>
+            
+
+    </div>
+</div>
+
+        <div class="footer">
+            <div class="files">
+                <div class="icp-b">
+                    <i><span class="vm">Copyright © 2012-2015 UCloud 上海优刻得信息科技有限公司 ｜<a href="javascript:if(confirm('http://www.miitbeian.gov.cn/publish/query/indexFirst.action  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.miitbeian.gov.cn/publish/query/indexFirst.action'" tppabs="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">沪ICP备 12020087</a></span><a href="javascript:if(confirm('http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121023144129704  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121023144129704'" tppabs="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121023144129704" target="_blank" class="pl5"><img src="../../www/img/www/gongshang-icon.png" tppabs=" /www/img/www/gongshang-icon.png"/></a></i>
+                    <script type="text/javascript">
+                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F413fdc5943040809ed0703eabd01f173' type='text/javascript'%3E%3C/script%3E"));
+                    </script>
+                    <a href="javascript:if(confirm('http://www.zx110.org/picp/?sn=310104031200  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.zx110.org/picp/?sn=310104031200'" tppabs="http://www.zx110.org/picp/?sn=310104031200" target="_blank"><img src="../../www/img/www/picp_bg.png" tppabs=" /www/img/www/picp_bg.png"/></a>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div id="AQBFeedback" class="aqb-feedback">
+            <div class="fb-item fb-suggestion" style="display: none;">
+                <span class="fb-text" style="left: 0px; width: 36px;">返回顶部</span><span class="fb-ico"></span>
+            </div>
+        </div>
+        -->
+        <div class="helpline">
+            <div id="AQBFeedback" class="aqb-feedback">
+                <div class="fb-item fb-suggestion" style="display: block;">
+                </div>
+            </div>
+        </div>
+        <a class="helpline" href="javascript:if(confirm('http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help'" tppabs="http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help" target="_blabk">
+            <div class="icon-qq-wh"></div>
+             在 线 客 服
+        </a>
+
+        <script type="text/javascript">
+            seajs.use('../../www/js/src/main.js'/*tpa= /www/js/src/main.js*/);
+
+        </script>
+             <script type="text/javascript"> 
+                 /* <![CDATA[ */ 
+                 var google_conversion_id = 980484464; 
+                 var google_custom_params = window.google_tag_params; 
+                 var google_remarketing_only = true; 
+                 /* ]]> */ 
+             </script> 
+             <div style="display:none;">
+             <script type="text/javascript" src="../../../www.googleadservices.com/pagead/conversion.js" tppabs="http://www.googleadservices.com/pagead/conversion.js"> 
+             </script> 
+         </div>
+
+            <script type='text/javascript'>
+                var _agt=_agt||[];
+                _agt.push(['_atscu','AG_164770_GWNM']);
+                _agt.push(['_atsdomain',' /news/index/ucloud.cn']);/*请将$网站主域$替换为您嵌入代码的真实主域，例如：agrantsem.com*/
+                (function(){
+                var ag=document.createElement('script');
+                ag.type='text/javascript';
+                ag.async = true;
+                ag.src=(document.location.protocol=='https:'?'https':'http')+'://'+'t.agrantsem.com/js/ag.js';
+                var s=document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ag,s);})();
+            </script>
+             <noscript> 
+                 <div style="display:inline;"> 
+                     <img height="1" width="1" style="border-style:none;" alt="" src="../../../googleads.g.doubleclick.net/pagead/viewthroughconversion/980484464/-value=0&guid=ON&script=0.gif" tppabs="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/980484464/?value=0&guid=ON&script=0"/> 
+                 </div> 
+             </noscript> 
+    </body>
+</html>
+

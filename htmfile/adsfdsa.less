@@ -1,0 +1,75 @@
+@color: #4d926f;
+@base: #f04615;
+@width: 0.5;
+
+h2 {
+  color: @color;
+}
+.class {
+  width: percentage(@width); // returns `50%`
+  color: saturate(@base, 5%);
+  background-color: spin(lighten(@base, 25%), 8);
+}
+
+#bundle {
+  .button {
+    display: block;
+    border: 1px solid black;
+    background-color: grey;
+    &:hover {
+      background-color: white
+    }
+  }
+}
+#header a {
+  color: orange;
+  #bundle > .button;
+}
+
+// Variables
+@mySelector: banner;
+
+// Usage
+.@{mySelector} {
+  font-weight: bold;
+  line-height: 40px;
+  margin: 0 auto;
+}
+
+
+@property: color;
+.widget{
+  @{property}:#0ee;
+  background-@{property}:#999;
+}
+
+@liuyu:"I am liuyu";
+@var:"liuyu";
+.lazy-eval {
+  width: @var;
+}
+@var :@liuyu;
+@liuyu:"I am liuyu2";
+
+
+.lazy-eval2(@colortest) {
+  color:@colortest;
+  background-color: @colortest;
+}
+
+.mixin(1)         {x:11}
+.mixin(2)         {y:22}
+.mixin(@x)   when(default()){z:@x}
+div{
+  .mixin(a);
+}
+
+div.special{
+  .mixin(1);
+}
+
+#untitest{
+  width: unit(10em,px);
+}
+
+

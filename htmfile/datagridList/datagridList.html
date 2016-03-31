@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0076)http://localhost:8008/takecare/order/showList?orderType=3&menuId=01_01_01_02 -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta content="webkit" name="renderer">
+
+
+    <!-- 禁止缓存 headers -->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <!-- end 禁止缓存 headers -->
+
+    <link rel="SHORTCUT ICON" href="http://localhost:8008/takecare/images/ico/yxc.png">
+
+    <!--[if IE 8]>
+    <html lang="en" class="ie8 no-js">
+    <![endif]-->
+    <!--[if IE 9]>
+    <html lang="en" class="ie9 no-js">
+    <![endif]-->
+    <!--[if !IE]><!-->
+
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <meta charset="utf-8">
+    <title>养老服务信息平台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <!-- BEGIN 全局CSS -->
+    <link rel="stylesheet" type="text/css" href="./datagridList_files/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./datagridList_files/easyui.css">
+    <link rel="stylesheet" type="text/css" href="./datagridList_files/icon.css">
+    <!-- END 全局CSS -->
+    <!-- BEGIN 页面CSS -->
+    <link rel="stylesheet" type="text/css" href="./datagridList_files/front-engine.css">
+
+    <style type="text/css">
+        .datagrid-search-info {
+            height: auto;
+            width: 800px;
+            display: none;
+            border: 1px solid #eee;
+            margin-left:190px ;
+            padding: 5px 2px;
+            float: left;
+        }
+        .datagrid-search-info div{
+            width: 100%;
+        }
+
+        .datagrid-search:hover .datagrid-search-info {
+            display: block;
+        }
+
+        .searchName{
+            border: 1px solid #eee;
+        }
+        .datagrid-search-addinfo div:hover {
+            border-color: #F00B0B;
+        }
+
+        .datagrid-search-addinfo div:hover input{
+            border: none;
+            background-color: #F00B0B;
+        }
+    .datagrid-search-addinfo>div{
+        display: none
+    }
+
+        #datagrid-toolbar-customize,#datagrid-search-btn{
+            float: left
+        }
+        .datagrid-search-addinfo{
+            width:84%;
+            height: 35px;
+            margin-right: 4%;
+            border: 1px solid #eee;
+            float: right;
+        }
+
+        .hideTimeEmpty{
+            display: none;
+            position: relative;
+            background-color: #eee;
+            padding: 10px;
+        }
+
+
+    </style>
+    <!-- END 页面CSS -->
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="elder-list-pages-body" style="width: 1800px;height: 800px;" >
+<!-- BEGIN 页面主体 -->
+
+
+<!-- BEGIN 列表菜单 -->
+<!-- <div id="datagrid_menu" class="datagrid_menu">
+</div> -->
+<!-- END 列表菜单 -->
+
+<!-- BEGIN 搜索框 -->
+<div id="datagrid-search" class="datagrid-search">
+    <div id="datagrid-toolbar-customize" class="datagrid-toolbar-customize">
+        <input type="button" id="01_01_01_02_02" class="btn btn-success datagrid-customize-btn" value="新增">
+    </div>
+
+
+
+
+    <div id="datagrid-search-addinfo" class="datagrid-search-addinfo"   >
+       <!-- <input type="button" id="datagrid-search-btn" class="btn btn-default" value="查询">-->
+
+    </div>
+    <div id="datagrid-search-info" class="datagrid-search-info" >
+
+    </div>
+
+
+    <div id="hideTimeEmpty" class="hideTimeEmpty" actionid='showTimeEmpty' >
+        <label>日期:</label>
+        <input id="year" actionid='showTimeEmpty'  type='text' style="width: 50px;">年
+        <input id="month" actionid='showTimeEmpty'  type='text'style="width: 50px;">月
+        <input id="day"  actionid='showTimeEmpty' type='text' style="width: 50px;">日
+        <input type='button' actionid='showTimeEmpty' class='btn btn-default action-ok-time' value='确认' >
+    </div>
+
+
+</div>
+<!-- END 搜索框 -->
+
+
+<!-- END 页面主体 -->
+<!-- BEGIN JAVASCRIPTS -->
+<!-- BEGIN 核心JS库 -->
+<script type="text/javascript" src="./datagridList_files/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="./datagridList_files/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="./datagridList_files/front-engine.js"></script>
+<script type="text/javascript" src="./datagridList_files/bootstrap.min.js"></script>
+<!-- END 核心JS库 -->
+<!-- BEGIN 页面JS -->
+<script type="text/javascript" src="./datagridList_files/complaintOrder_list.js"></script>
+
+
+
+<!-- END 页面JS -->
+<script type="text/javascript">
+    $(function () {
+
+        $('body').click(function(e){
+            e=e||window.event;
+            var src=e.target||e.srcElement;
+            if($(src).attr('actionid') != "showTimeEmpty"){
+                $("#hideTimeEmpty").attr("style","display:none;position:absolute;background-color: #eee; ");
+            }
+
+          //  $("#hideTimeEmpty").attr("style","display:none;position:absolute;background-color: #eee; ");
+        });
+
+       // .datagrid-search
+
+        $('.datagrid-search').mouseleave(function(e){
+            e=e||window.event;
+            var src=e.target||e.toElement;
+           // console.log(src);
+            if($(src).attr('actionid') == "showTimeEmpty"){ return;}
+
+            $("#hideTimeEmpty").attr("style","display:none;position:absolute;background-color: #eee; ");
+        });
+
+    })
+
+
+
+
+</script>
+
+
+<script>
+
+    jQuery(document).ready(function() {
+        // 初始化页面
+        List.init({
+            basePath: '',
+            listType: ''
+        });
+    });
+</script>
+
+</body>
+
+
+
+
+</html>

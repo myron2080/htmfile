@@ -1,0 +1,195 @@
+/*  自定义公共属性 strat  */
+.changebgc {
+  background: #BFBFBF;
+  /*font-weight:bold;*/
+}
+.defaultbgc {
+  background: #778899;
+}
+/*.lichangebgc{background:#cecece}*/
+.lichangebgc {
+  background: #d84a38;
+}
+/*  自定义公共属性 end  */
+/*  自定义导航菜单属性 strat  */
+/*@menu-modeaa-nav-font-color:#51a8ef;*/
+/*  自定义导航菜单属性 end  */
+/* css注释：设置了浏览器高度 */
+/*@media screen and (max-height: 1080px) {
+  .menu-div,.page-content-right {height: 850px;}
+}
+/!* css注释：设置了浏览器宽度不小于1201px时 abc 显示1200px宽度 *!/
+
+@media screen and (max-height: 900px) {
+  .menu-div,.page-content-right {height: 700px;}
+}*/
+/* 设置了浏览器宽度不大于1200px时 abc 显示900px宽度 */
+/*@media screen and (max-height: 901px) {
+  .abc {height: 200px;}
+}
+/!* 设置了浏览器宽度不大于901px时 abc 显示200px宽度 *!/
+
+@media screen and (max-height: 500px) {
+  .abc {height: 100px;}
+}
+/!* 设置了浏览器宽度不大于500px时 abc 显示100px宽度 *!/*/
+/* superfish.less strat */
+/*** ESSENTIAL STYLES ***/
+.menu-submenu,
+.menu-submenu * {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+.menu-submenu li {
+  position: relative;
+}
+.menu-submenu ul {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  z-index: 99;
+}
+.menu-submenu > li {
+  float: left;
+}
+.menu-submenu li:hover > ul,
+.menu-submenu li.sfHover > ul {
+  display: block;
+}
+.menu-submenu a {
+  display: block;
+  position: relative;
+}
+.menu-submenu ul ul {
+  top: 0;
+  left: 100%;
+}
+/*** DEMO SKIN ***/
+.menu-submenu {
+  float: left;
+  /* margin-bottom: 1em;*/
+  /* border-bottom:solid 1px;
+  border-bottom-color: rgb(155, 155, 155);*/
+}
+.menu-submenu ul {
+  background: #E9EDEF;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  min-width: 12em;
+  /* allow long menu items to determine submenu width */
+  *width: 12em;
+  /* no auto sub width for IE7, see white-space comment below */
+}
+.menu-submenu a {
+  /*  border-left: 1px solid #fff;*!/
+  border-bottom: 1px solid #dFeEFF; /!* fallback colour must use full shorthand *!/
+  border-bottom: 1px solid rgb(155, 155, 155);*/
+  padding: .75em 0em .75em .75em;
+  text-decoration: none;
+  zoom: 1;
+  /* IE7 */
+}
+.menu-submenu a {
+  color: #ffffff;
+}
+.menu-submenu li {
+  /* background: #E9EDEF;*/
+  white-space: nowrap;
+  /* no need for Supersubs plugin */
+  *white-space: normal;
+  /* ...unless you support IE7 (let it wrap) */
+  -webkit-transition: background .2s;
+  transition: background .2s;
+}
+/*.menu-submenu ul li {
+  background:@menu-mode-nav-li-change-color;
+}*/
+/*.menu-submenu ul ul li {
+  background:#E9EDEF;
+}*/
+.menu-submenu li:hover,
+.menu-submenu li.sfHover {
+  /* background: @menu-mode-nav-li-default-color;*/
+  /* only transition out, not in */
+  -webkit-transition: none;
+  transition: none;
+}
+/*** arrows (for all except IE7) **/
+.sf-arrows .sf-with-ul {
+  padding-right: 2.5em;
+  *padding-right: 1em;
+  /* no CSS arrows for IE7 (lack pseudo-elements) */
+}
+/* styling for both css and generated arrows */
+.sf-arrows .sf-with-ul:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  margin-top: -3px;
+  height: 0;
+  width: 0;
+  /* order of following 3 rules important for fallbacks to work */
+  border: 5px solid transparent;
+  border-top-color: #dFeEFF;
+  /* edit this to suit design (no rgba in IE8) */
+  border-top-color: rgba(255, 255, 255, 0.5);
+}
+.sf-arrows > li > .sf-with-ul:focus:after,
+.sf-arrows > li:hover > .sf-with-ul:after,
+.sf-arrows > .sfHover > .sf-with-ul:after {
+  border-top-color: white;
+  /* IE8 fallback colour */
+}
+/* styling for right-facing arrows */
+.sf-arrows ul .sf-with-ul:after {
+  margin-top: -5px;
+  margin-right: -3px;
+  border-color: transparent;
+  border-left-color: #dFeEFF;
+  /* edit this to suit design (no rgba in IE8) */
+  border-left-color: rgba(255, 255, 255, 0.5);
+}
+.sf-arrows ul li > .sf-with-ul:focus:after,
+.sf-arrows ul li:hover > .sf-with-ul:after,
+.sf-arrows ul .sfHover > .sf-with-ul:after {
+  border-left-color: white;
+}
+/* adding menu-submenu-vertical class in addition to menu-submenu creates a vertical menu */
+/* eg. <ul class="menu-submenu menu-submenu-vertical"> ... */
+.menu-submenu-vertical {
+  width: 100%;
+  /* If you want the width of the closed menu to expand to its
+  widest top-level menu item (like its "Supersubs" submenus do),
+  replace the width rule above with the following two rules. */
+  /*
+  min-width: 12em;
+  *width: 12em;
+  */
+}
+.menu-submenu-vertical ul {
+  left: 100%;
+  top: 0;
+}
+.menu-submenu-vertical > li {
+  float: none;
+}
+.menu-submenu-vertical li {
+  width: 100%;
+}
+/*** alter arrow directions ***/
+.menu-submenu-vertical.sf-arrows > li > .sf-with-ul:after {
+  margin-top: -5px;
+  margin-right: -3px;
+  border-color: transparent;
+  border-left-color: #dFeEFF;
+  /* edit this to suit design (no rgba in IE8) */
+  border-left-color: rgba(255, 255, 255, 0.5);
+}
+.menu-submenu-vertical.sf-arrows li > .sf-with-ul:focus:after,
+.menu-submenu-vertical.sf-arrows li:hover > .sf-with-ul:after,
+.menu-submenu-vertical.sf-arrows .sfHover > .sf-with-ul:after {
+  border-left-color: white;
+}
+/*# sourceMappingURL=superfish.css.map */

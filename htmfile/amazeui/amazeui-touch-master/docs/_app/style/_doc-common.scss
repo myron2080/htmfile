@@ -1,0 +1,107 @@
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  height: 100%;
+}
+
+.container-fill {
+  height: 100%;
+}
+
+.container-fill > .container-fill {
+  -webkit-flex: 1 1 0;
+  -ms-flex: 1 1 0;
+  flex: 1 1 0;
+  position: relative;
+}
+
+.container-scrollable {
+  position: relative;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container-column,
+.container-row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 100%;
+  width: 100%;
+}
+
+.container-column > .container-fill,
+.container-row > .container-fill {
+  -webkit-flex: 1 1 0;
+  -ms-flex: 1 1 0;
+  flex: 1 1 0;
+  position: relative;
+}
+
+.container-column {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.container-row {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: auto;
+}
+
+// Header bar
+.amt-header {
+  z-index: 100;
+  margin-bottom: 0;
+
+  .am-topbar-brand {
+    position: relative;
+    margin-right: 20px;
+    z-index: 10;
+    .am-badge {
+      position: absolute;
+      top: 5px;
+      right: 0;
+      z-index: 20
+    }
+  }
+
+  .am-text-ir {
+    display: block;
+    margin-right: 10px;
+    height: 50px;
+    width: 160px;
+    background: url(http://s.amazeui.org/assets/2.x/i/ui/logo.png) no-repeat left center;
+    background-size: 125px 24px;
+  }
+
+  .am-topbar-toggle {
+    font-size: 20px;
+    line-height: 50px;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .am-topbar-collapse {
+    @media (max-width: 640px) {
+      position: absolute;
+      top: 100%;
+      padding: 0;
+      background: #0e90d2;
+    }
+  }
+}
