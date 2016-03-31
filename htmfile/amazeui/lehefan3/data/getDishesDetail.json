@@ -1,0 +1,22 @@
+{
+  "resultMsg": "接口调用成功！",
+  "resultData": {
+    "data": {
+      "id": "84fcad90-4c4d-4dab-868c-30aa58f364ea",
+      "dishesLabelEnum": "COMMON",
+      "dishesLabelEnumName": "普通",
+      "name": "啤酒鸭",
+      "soldCount": 0,
+      "realPrice": 15,
+      "suggestPrice": 20,
+      "description": "<p>啤酒鸭是一道风味独特的汉族佳肴<\/p><p><br/><\/p><p>是深受广大食客喜爱的菜肴。据传起源于清代<\/p><p>啤酒鸭的做法有很多种。其主料为鸭子、啤酒。<\/p><p>将鸭肉与啤酒一同炖煮成菜<\/p><p>使滋补的鸭肉味道更加浓厚<\/p><p>鸭肉不仅入口鲜香，还带有一股啤酒清香<\/p><p><br/><\/p>",
+      "limitSaleNum": 20
+    },
+    "imageList": [
+      {"path": "http://dev:8098/lunch/images/dataSource_lunch/lunch/lunch_images/9860916d-7bc0-4f10-8444-98facfba3e82_size.jpg"},
+      {"path": "http://dev:8098/lunch/images/dataSource_lunch/lunch/lunch_images/0e75e488-ec0a-479a-b15c-3eacbeec7dab_size.jpg"},
+      {"path": "http://dev:8098/lunch/images/dataSource_lunch/lunch/lunch_images/d1c19035-a02f-4a63-a18c-d83880ea30d3_size.jpg"}
+    ]
+  },
+  "resultType": 1
+}

@@ -1,0 +1,32 @@
+{
+  "resultMsg": "接口调用成功！",
+  "resultData": {
+    "order": {
+      "Id": "bebc892d-163d-4a45-88e1-06ada844f06d",
+      "orderNmber": "201601180022",
+      "createTime": "2016/01/18 10:04",
+      "totalPrice": 15,
+      "orderStatus": "ALREADYPAYMENT",
+      "orderStatusName": "已支付"
+
+    },
+    "user": {
+      "Id": "002c4cd11b694ff7a4a630b731233467",
+      "nickName": "刘雨",
+      "phoneNumber": "13410708312"
+    },
+    "orderDetailList": [
+      {
+        "dishesId": "84fcad90-4c4d-4dab-868c-30aa58f364ea",
+        "dishesName": "啤酒鸭",
+        "copiesCount": 1,
+        "realPrice": 15
+      }
+    ],
+    "counterpoint": {
+      "counterpointId": "87065d5c-9f13-4681-9676-d039a80ee679",
+      "counterpointName": "芒果网大厦一楼大厅"
+    }
+  },
+  "resultType": 1
+}

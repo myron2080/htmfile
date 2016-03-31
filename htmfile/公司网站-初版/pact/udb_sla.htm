@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;border: none;padding: 0px;margin: 0px;">
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7;  IE=EDGE">
+        <meta content="云计算公司" name="keywords" />
+
+        <meta content="" name="description" />
+        <meta name="generator" content="ucloud "/>
+        <title>云数据库SLA</title>
+
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <link href="../www/css/responsive.css" tppabs=" /www/css/responsive.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="../www/css/bootstrap.min.css-v=2015063020.css" tppabs=" /www/css/bootstrap.min.css?v=2015063020"  type="text/css"/>
+        <link rel="stylesheet" href="../www/css/ucom.min.css-v=2015063020.css" tppabs=" /www/css/ucom.min.css?v=2015063020"  type="text/css"/>
+        <link rel="stylesheet" href="../www/css/themes/start/jquery-ui-1.8.20.custom.css-v=2015063020.css" tppabs=" /www/css/themes/start/jquery-ui-1.8.20.custom.css?v=2015063020"  type="text/css"/>
+        <link rel="shortcut icon" href="/www/img/favicon.ico">
+        <!-- WPA Button Begin -->
+        <!--script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzkzODA2NDk0NF80NjUzNF80MDAwMTg4MTEzXw"></script-->
+        <!-- WPA Button END -->
+
+        <script>
+            var version = '2015063020';
+        </script>
+
+        <script type="text/javascript" src="../www/js/sea-modules/seajs/seajs/2.0.0/sea.js-v=2015063020" tppabs=" /www/js/sea-modules/seajs/seajs/2.0.0/sea.js?v=2015063020"></script>
+        <script type="text/javascript" src="../www/js/config.js-v=2015063020" tppabs=" /www/js/config.js?v=2015063020"></script>
+        <script type="text/javascript" src="../../api.map.baidu.com/api-key=7cdc0fa246f1408b387883851a2e87b7=1.1&services=true" tppabs="http://api.map.baidu.com/api?key=7cdc0fa246f1408b387883851a2e87b7=1.1&services=true"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','../../www.google-analytics.com/analytics.js'/*tpa=http://www.google-analytics.com/analytics.js*/,'ga');
+
+          ga('create', 'UA-48580821-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    </head>
+
+    <body>
+        <div class="topbar">
+            <div class="wh topbar-main">
+                <div class="top-tel">服务热线：4000 -188 -113</div>
+                <iframe width="500px" height="30px" src="../../account.ucloud.cn/cas/status" tppabs="https://account.ucloud.cn/cas/status" frameborder="0" name="inside-app-iframe" id="inside-app-iframe" class="vt"></iframe>
+                <!-- <iframe width="500px" height="30px" src="http://account.wentianle.web.ucloud.cn/cas/status" frameborder="0" name="inside-app-iframe" id="inside-app-iframe" class="vt"></iframe> -->
+            </div>
+        </div>
+        <div class="top">
+            <a href="../index.htm" tppabs=" /" class="left"><span class="logo"></span></a><ul class="menu right">
+                        <li class="nav">
+                        <a href="../index.htm" tppabs=" /" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">首页</a>
+                    </li>
+                        <li class="nav nav-solu">
+                    <a href="../solution/push_system.htm" tppabs=" /solution/game" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">解决方案</a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro">
+                            <a href="../solution/push_system.htm" tppabs=" /solution/game">游戏</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../solution/cloud_data_center.htm" tppabs=" /solution/education">在线教育</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../solution/broadband_data_analysis.htm" tppabs=" /solution/dsp">数字营销&大数据</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../solution/broadband_lifecycle_management.htm" tppabs=" /solution/ebs">O2O&电商</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../solution/interactive_system.htm" tppabs=" /solution/saas">PaaS/SaaS</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="../solution/online_system.htm" tppabs=" /solution/app">移动App</a>
+                        </li>
+                    </ul>
+                    </li>
+                        <li class="nav nav-product">
+                        <a href="../product/uhost_main.htm" tppabs=" /product/uhost_main" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">产品&服务</a>
+                        <ul class="dropdown-menu hover-menu">
+                            <li class="nav-pro">
+                                <span class="xt ">计算和网络</span>
+                                <a class="h" href="../product/uhost_main.htm" tppabs=" /product/uhost_main">云主机 UHost</a>
+                                <a class="h" href="javascript:if(confirm(' /product/phost_main  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location=' /product/phost_main'" tppabs=" /product/phost_main">物理主机 UPHost</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../product/hybrid_main.htm" tppabs=" /product/hybrid_main">混合云 UHybrid</a>
+                                <a class="h" href="../product/ulb_main.htm" tppabs=" /product/ulb_main">负载均衡 ULB</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../product/unet_main.htm" tppabs=" /product/unet_main">网络 UNet</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">存储和CDN</span>
+                                <a class="h" href="../product/udisk_main.htm" tppabs=" /product/udisk_main">云硬盘 UDisk</a>
+                                <a class="h" href="../product/udb_main.htm" tppabs=" /product/udb_main">云数据库 UDB</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../product/umem_main.htm" tppabs=" /product/umem_main">云内存存储 UMem</a>
+                                <a class="h" href="../product/ufile_main.htm" tppabs=" /product/ufile_main">对象存储 UFile</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt "></span>
+                                <a class="h" href="../product/ucdn_main.htm" tppabs=" /product/ucdn_main">云分发 UCDN</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">数据分析</span>
+                                <a class="h" href="../product/uddp_main.htm" tppabs=" /product/uddp_main">分布式数据处理 UDDP</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">管理</span>
+                                <a class="h" href="../product/api_main.htm" tppabs=" /product/api_main">开放API</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">数据中心</span>
+                                <a class="h" href="../support/region.htm" tppabs=" /support/region">数据中心介绍</a>
+                            </li>
+                            <li class="nav-pro">
+                                <span class="xt ">服务</span>
+                                <a href="javascript:if(confirm(' /product/uicp_main  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location=' /product/uicp_main'" tppabs=" /product/uicp_main" class="h">备案</a>
+                            </li>
+                            <li class="nav-price">
+                            <a class="h" href="../price/index.htm" tppabs=" /price/index"><i class="icon-pic mr10"></i>价格计算器</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--
+                        <li class="nav nav-case">
+                    <a href="/whyucloud/case_game" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">客户案例</a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_game">移动游戏</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_webgame">网页游戏</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_app">移动App</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_b2c">电子商务</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_saas">SAAS应用</a>
+                        </li>
+                        <li class="nav-pro">
+                            <a href="/whyucloud/case_web">专业网站</a>
+                        </li>
+                    </ul>
+                    </li>
+                    -->
+                        <li class="nav nav-support">
+                    <a href="../support.htm" tppabs=" /support" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">技术支持</a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/index.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/index.html'" tppabs="http://docs.ucloud.cn/index.html" target="_blank">产品使用说明</a></li>
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/beian.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/beian.html'" tppabs="http://docs.ucloud.cn/beian.html" target="_blank">备案服务</a></li>
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/testing.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/testing.html'" tppabs="http://docs.ucloud.cn/testing.html" target="_blank">测试数据</a></li>
+                        <li class="nav-pro"><a href="javascript:if(confirm('http://docs.ucloud.cn/api/index.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/api/index.html'" tppabs="http://docs.ucloud.cn/api/index.html" target="_blank">API 文档</a></li>
+                    </ul>
+                    </li>
+                        <li class="nav nav-about">
+                    <a href="../about.htm" tppabs=" /about" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        关于我们
+                    </a>
+                    <a href="../about/career_main.htm" tppabs=" /about/career_main" class="join-us-icon"><img src="../www/img/www/hring.png" tppabs=" /www/img/www/hring.png"/></a>
+                    <ul class="dropdown-menu hover-menu">
+                        <li class="nav-pro">
+                        <span class="xt ">关于我们</span>
+                        <a class="h" href="../about.htm" tppabs=" /about">公司简介</a>
+                        <a class="h" href="../about/contact_main.htm" tppabs=" /about/contact_main">联系我们</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">动态</span>
+                        <a class="h" href="../about/news.htm" tppabs=" /about/news">新闻动态</a>
+                        <a class="h" href="../about/media_main.htm" tppabs=" /about/media_main">媒体报道</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt "></span>
+                        <a class="h" href="../about/safety.htm" tppabs=" /about/safety">安全资讯</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">人才招聘</span>
+                        <a class="h" href="../about/career_main.htm" tppabs=" /about/career_main">加入我们</a>
+                        <a class="h" href="javascript:if(confirm('http://campus.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://campus.ucloud.cn/'" tppabs="http://campus.ucloud.cn/" target="_blank">校园招聘</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">市场合作</span>
+                        <a class="h" href="../about/partners_main.htm" tppabs=" /about/partners_main">合作伙伴</a>
+                        <a class="h" href="../about/link_main.htm" tppabs=" /about/link_main">友情链接</a>
+                        </li>
+                        <li class="nav-pro">
+                        <span class="xt ">创业扶持</span>
+                        <a class="h" href="javascript:if(confirm('http://incubator.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://incubator.ucloud.cn/'" tppabs="http://incubator.ucloud.cn/" target="_blank">创业孵化器</a>
+                        </li>
+                    </ul>
+                    </li>
+                    <!-- <li class="nav-line"></li> -->
+                    <!--  -->
+                    <!--     <li class="nav nav-beian"> -->
+                    <!--  -->
+                    <!-- </li> -->
+                </ul>
+            </div>
+
+    <div class="bg-ef clear pt50 pb50">
+    <div class="main ">
+
+        <div class="mdsh-page pt20 pb50 pl50 pr50 bcw">
+            <h1 class="tc">UCloud UDB 服务协议</h1>
+            <div class="mb20">
+                UCloud UDB服务协议（以下简称“本协议”）是上海优刻得信息科技有限公司（以下简称“本公司”）和用户（以下简称“您”）之间就UCloud UDB云数据库服务等相关事项所订立的合约。您通过盖章、网络页面点击确认或以其他方式选择接受本协议，即表示您与本公司已达成协议并同意接受本协议的全部约定内容。如若双方盖章文本与网络页面点击确认或以其他方式选择接受之服务条款文本，存有不一致之处，以双方盖章文本为准。
+            </div>
+            <div class="mb20">
+                在接受本协议之前，请您仔细阅读本协议的全部内容。您阅读后，如果继续使用UDB服务，即表示您接受本协议并同意受其约束；如果您不同意本协议，您可以选择不使用UDB服务。
+            </div>
+            <div class="mb20">
+                1.  数据存储的持久性
+                <ul>
+                    <li class="mb10">
+                    1.1 UDB云数据库数据存储的持久性为99.9999％。如果服务持久性没有达到承诺，将按照服务赔偿条款进行赔付。
+                    </li>
+                    <li class="mb10">
+                    1.2 数据存储的持久性定义：合同期内数据保持存储状态不丢失的概率。持久性为99.9999％意指合同期内用户每月1000000字节的数据，合同期内每月数据不丢失的概率为99.9999%，即每月只有1字节的数据丢失的可能性。以自然月为统计周期，不满一个月按一个月计。
+                    </li>
+                    <li class="mb10">
+                    1.3 此类数据主要是指用户存储在数据库中的数据，不包括缓存和临时存储。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                2.  数据可销毁性
+                <ul>
+                    <li class="mb10">
+                    2.1 在您要求删除数据或设备在弃置、转售前，UCloud将通过高级清零操作彻底删除用户所有数据且无法复原，并对报废硬盘做消磁处理。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                3.  数据可迁移性
+                <ul>
+                    <li class="mb10">
+                    3.1 本公司承诺用户能够控制云数据库中数据的迁移，保证启用或弃用该云服务时，数据能迁入和迁出。
+                    </li>
+                    <li class="mb10">
+                    3.2 本公司在用户迁入迁出时提供相应的工具和技术手段，与用户现有的数据格式保持最大的兼容性。具体导入导出操作步骤请参见帮助说明。
+                    </li>
+                    <li class="mb10">
+                    3.3 支持的格式：使用MySQL备份工具mysqldump导出的标准sql文件。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                4.  数据私密性
+                <ul>
+                    <li class="mb10">
+                    4.1 UCloud采用了有效的隔离方法，保证同一资源池用户数据互不可见。
+                    </li>
+                    <li class="mb10">
+                    4.2 每个UDB实例都是使用独立的MySQL实例，对应的存储资源按照相应的实例进行隔离，其他的实例不可访问。同时为更好的确保安全性，UDB实例仅能通过内网访问，且网络访问按账户进行隔离。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                5.  数据知情权
+                <ul>
+                    <li class="mb10">
+                    5.1 您可在产品管理中心看到云数据库所在的数据中心名称，您可选择您所需要的数据中心。北京BGP数据中心位于北京市，华东双线数据中心位于浙江省金华市。
+                    </li>
+                    <li class="mb10">
+                    5.2 云数据库的数据会在云数据库实例所在的数据中心有两份拷贝，无冷备份，在其他数据中心无备份。
+                    </li>
+                    <li class="mb10">
+                    5.3 所有数据中心应遵守中华人民共和国法律。
+                    </li>
+                    <li class="mb10">
+                    5.4 除政府监管部门监管审计需要外，未经客户同意，不能将用户数据提供给任何第三方，不能将用户数据存储在国外数据中心或用于国外业务或数据分析。为了保障您使用本服务的安全性以及不断改进服务质量的需要，本公司将记录并保存您登录和使用本服务的相关行为日志，仅用于销售和奖励的需要使用，不会对外呈现用户个人信息数据。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                6.  业务可审查性
+                <ul>
+                    <li class="mb10">
+                    6.1 根据国家的法律法规要求，为配合政府监管部门的监管审查，合规或取证调查等，本公司可提供您运行在云服务上业务的相关的信息，如关键组件的运行日志、运维人员的操作记录。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                7.  业务功能
+                <ul>
+                    <li class="mb10">
+                    7.1 UCloud UDB提供给用户的服务功能为www.ucloud.cn网站所展示的云数据库服务，完整的功能介绍和操作说明详见产品使用手册和帮助说明。
+                    </li>
+                    <li class="mb10">
+                    7.2 UCloud若更换服务的版本或功能会及时通过短信、邮件或网站等方式通知您，以便您能及时做出相应的调整。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                8.  业务可用性
+                <ul>
+                    <li class="mb10">
+                    8.1 本公司向您承诺UDB云数据库的服务可用性为99.95％。如果服务可用性没有达到承诺，将按照服务赔偿条款进行赔付。
+                    </li>
+                    <li class="mb10">
+                    8.2 服务可用性定义：合同期内用户每月云服务业务可用时间的概率，即每月实际可用时间／每月（实际可用时间＋不可用时间）。其中不可用时间的定义为从用户无法使用云服务起至云服务恢复正常水平结束，以自然月为统计周期，不满一个月按一个月计，以分钟为单位。可用性为99.95％指单个用户每月云服务业务可用时间应至少为30天*24小时*60分钟*99.95%= 43178.4分钟，即每月最多存在30天*24小时*60分钟*100%- 43178.4=21.6分钟的不可用时间。云服务业务不可用的统计单元为单台云数据库实例，云服务业务不可用时间达到1分钟以上算作一次不可用，计入不可用时间，不可用时间若低于1分钟则不计入不可用时间。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                9.  业务资源调配能力
+                <ul>
+                    <li class="mb10">
+                    9.1 单台数据库的内存、磁盘可升级扩展，内存单位为MB，范围从600MB至1500MB，磁盘单位为GB，范围从20GB至500GB，操作方式请咨询客服；
+                    </li>
+                    <li class="mb10">
+                    9.2 数据库实例数量可扩展和缩减，单位为实例个数，可在24小时内完成总资源20％的扩展，2天内完成总资源100%的扩展；每次最大可扩展100％容量，最小无限制。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                10. 故障恢复能力
+                <ul>
+                    <li class="mb10">
+                    10.1    通过故障监控、快速定位、自动化恢复、告知等一系列故障管控体系，保证云服务的故障恢复能力。故障恢复的手段包括：主从实例、实例自动恢复、在线迁移、停机迁移以及降级恢复。
+                    </li>
+                    <li class="mb10">
+                    10.2    数据库支持主从实例功能，用户通过申请从库，可实现单台实例故障时的快速恢复。
+                    </li>
+                    <li class="mb10">
+                    10.3    数据库支持自动备份机制，每天完成一个全备份，不可抗力及意外情况发生后，可进行备份点的数据恢复。
+                    </li>
+                    <li class="mb10">
+                    10.4    当数据库实例所在运行环境出现部分故障或资源预警时，应告知用户进行在线迁移，避免影响用户业务。
+                    </li>
+                    <li class="mb10">
+                    10.5    当数据库实例所在运行环境出现故障，导致云主机无法使用时，通过数据备份进行迁移，恢复用户业务。
+                    </li>
+                    <li class="mb10">
+                    10.6    服务商承诺由于统计或计费逻辑造成云服务不可用时，可临时将统计计费下线，优先保障客户的业务，系统架构设计上可以支持降级，保证业务运行。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                11. 服务计量方式
+                <ul>
+                    <li class="mb10">
+                    11.1    UCloud有准确的计量计费系统。云数据库采用后付费模式，付费方式分为包月或包年计费。云数据库的资源以内存和磁盘为计费，服务费以订购页面公布的当时有效的计费模式和标准为准。
+                    </li>
+                </ul>
+            </div>
+            <div class="mb20">
+                12. 权益保障类
+                <ul>
+                    <li class="mb10">
+                    12.1    服务变更、终止条款
+                        <ul class="pl20">
+                            <li>
+                            1. 如需停止使用云服务，您须至少提前30天告知本公司，本公司会将您已支付但未消耗的款项尽数返还。对于未提前告知停止使用云服务且未及时续费的用户，本公司将保留其数据7天。
+                            </li>
+                            <li>
+                            2. 本公司承诺，若不再提供某种服务时，提前30天在 www.ucloud.cn 上通告或以发网站内通知或书面通知的方式通知您转移业务。届时本公司将退还您已支付但未消耗的款项。
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb10">
+                    12.2    服务赔偿条款
+                        <ul class="pl20">
+                            <li>
+                            1. 本公司承诺，如果可用性没有达到服务等级承诺，则会赔付等同于损失时间的相同时长。对于您自身操作不当导致的可用性不达标，本公司不承担赔偿责任。
+                            </li>
+                            <li>
+                            2. 本公司承诺，如果持久性没有达到服务等级承诺，则会赔付等同于使用时间的相同时长。对于您自身操作不当导致的持久性不达标，本公司不承担赔偿责任。
+                            </li>
+                            <li>
+                            3. 系统因下列状况无法正常运作，使您无法使用各项服务时，本公司不承担损害赔偿责任，该状况包括但不限于：
+                            </br>（1）本公司在本网站公告的系统停机维护期间；
+                            </br>（2）电信设备出现故障不能进行数据传输的；
+                            </br>（3）因台风、地震、海啸、洪水、停电、战争、恐怖袭击等不可抗力之因素，造成本公司系统障碍不能执行业务的；
+                            </br>（4）黑客攻击、电信部门技术调整或故障、网站升级、银行方面的问题等原因而造成的服务中断或者延迟。
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb10">
+                    12.3    用户约束条款
+                        <ul class="pl20">
+                            <li>
+                            1. 您有权享受 UCloud 提供的互联网技术和信息服务，并有权在接受 UCloud 提供服务的期间获得 UCloud 的技术支持、咨询等服务，服务内容详见 UCloud 相关产品介绍。
+                            </li>
+                            <li>
+                            2. 您保证不会利用技术或其他手段破坏及扰乱 UCloud 网站以及 UCloud 其他客户的网站。
+                            </li>
+                            <li>
+                            3. 您保证尊重 UCloud 及其他第三方的知识产权和其他合法权利，并保证在发生侵犯该等权益的违法事件时尽力保护 UCloud 及其雇员、合伙伙伴等免于因该等事件受到影响或损失；侵权行为一旦发生，UCloud 保留终止向您提供服务并不退还任何款项的权利。
+                            </li>
+                            <li>
+                            4. 对由于您向 UCloud 提供的联络方式有误而导致的一切损失，由您自行承担，该损失包括但不限于因您未能及时收到 UCloud 的相关通知而导致的后果和损失。
+                            </li>
+                            <li>
+                            5. 您保证在使用 UCloud 服务时将遵守国家、地方法律法规、行业惯例和社会公共道德，不会利用 UCloud 提供的服务进行存储、发布、传播如下信息和内容：违反国家法律法规政策的任何内容（信息）；违反国家规定的政治宣传和/ 或新闻信息；涉及国家秘密和/或安全的信息；封建迷信和/或淫秽、色情、下流的信息或教唆犯罪的信息；博彩有奖、赌博游戏；违反国家民族和宗教政策的信息；防碍互联网运行安全的信息；侵害他人合法权益的信息和/或其他有损于社会秩序、社会治安、公共道德的信息或内容。您同时承诺不得为他人发布上述不符合国家规定和/或本服务条款约定的信息内容提供任何便利，包括但不限于设置URL、BANNER链接等。您同意UCloud有权在您违反上述约定时有权终止向您提供服务并不予退还任何款项，因您上述行为给UCloud造成损失的，您应予以赔偿。
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb10">
+                    12.4    UCloud 免责条款
+                        <ul class="pl20">
+                            <li>
+                            1. 若您由于操作不当造成的意外损失，UCloud 不承担任何责任。
+                            </li>
+                            <li>
+                            2. 不论在何种情况下，UCloud 均不对不可抗力以及意外事件造成的不能提供服务或延迟提供服务承担任何形式的责任。为本条款之目的，不可抗力以及意外事件是指由于信息网络正常的设备维护，信息网络连接故障，电脑、通讯或其他系统的故障，电力故障，战争，天灾，政府行为等一切不能预见、不可避免、不能克服的自然、社会现象客观情况。
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="try-infor reg">
+    <span class="reg01">注册即享云主机免费试用套餐</span>
+    <span class="loged01">UCloud专业云计算服务商</span>
+    <a class="bottn btn-try-blue reg01" href="javascript:if(confirm('http://account.ucloud.cn/cas/register  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://account.ucloud.cn/cas/register'" tppabs="http://account.ucloud.cn/cas/register">立即注册</a>
+    <a class="bottn btn-try-blue loged01" href="javascript:if(confirm('http://console.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://console.ucloud.cn/'" tppabs="http://console.ucloud.cn/">进入控制台</a>
+</div>
+<div class="footer">
+    <div class="foot-main">
+        <ul class="last">
+            <li><a href="../product/uhost_main.htm" tppabs=" /product/uhost_main" class="f14">产品</a></li>
+            <li class="mt30"><a href="../product/uhost_main.htm" tppabs=" /product/uhost_main">计算</a></li>
+            <li>
+                <a href="../product/udisk_main.htm" tppabs=" /product/udisk_main">网络</a>
+            </li>
+            <li>    
+                <a href="../product/udb_main.htm" tppabs=" /product/udb_main">存储和CDN</a>
+            </li>
+            <li>    
+                <a href="../product/umem_main.htm" tppabs=" /product/umem_main">云内存存储</a>
+            </li>
+            <li>    
+                <a href="../product/ulb_main.htm" tppabs=" /product/ulb_main">负载均衡</a>
+            </li>
+            <li>
+                <a href="../product/ucdn_main.htm" tppabs=" /product/ucdn_main">CDN</a>
+            </li>
+        </ul>
+        <ul class="last">
+            <li><a href="../solution/push_system.htm" tppabs=" /solution/game" class="f14">解决方案</a></li>
+            <li class="mt30"><a href="../solution/push_system.htm" tppabs=" /solution/game">游戏</a></li>
+            <li><a href="../solution/cloud_data_center.htm" tppabs=" /solution/education">在线教育</a></li>
+            <li><a href="../solution/broadband_data_analysis.htm" tppabs=" /solution/dsp">数字营销&大数据</a></li>
+            <li><a href="../solution/broadband_lifecycle_management.htm" tppabs=" /solution/ebs">电子商务</a></li>
+            <li><a href="../solution/interactive_system.htm" tppabs=" /solution/saas">PaaS/SaaS</a></li>
+            <li><a href="../solution/online_system.htm" tppabs=" /solution/app">移动App</a></li>
+        </ul>
+        <ul class="last">
+            <li><a href="../support.htm" tppabs=" /support" class="f14">技术支持</a></li>
+            <li class="mt30"><a href="javascript:if(confirm('http://docs.ucloud.cn/product.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/product.html'" tppabs="http://docs.ucloud.cn/product.html" target="_blank" class="t">产品使用说明</a></li>
+            <li><a href="javascript:if(confirm('http://docs.ucloud.cn/beian.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/beian.html'" tppabs="http://docs.ucloud.cn/beian.html" target="_blank">备案系统</a></li>
+            <li><a href="javascript:if(confirm('http://docs.ucloud.cn/testing.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/testing.html'" tppabs="http://docs.ucloud.cn/testing.html" target="_blank">测试数据</a></li>
+            <li><a href="javascript:if(confirm('http://docs.ucloud.cn/api/index.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://docs.ucloud.cn/api/index.html'" tppabs="http://docs.ucloud.cn/api/index.html" target="_blank">API 文档</a></li>
+        </ul>
+        <ul class="last">
+            <li><a href="../about.htm" tppabs=" /about" target="_blank" class="f14">关于我们</a></li>
+
+            <li class="mt30">    
+                <a href="../about/contact_main.htm" tppabs=" /about/contact_main" target="_blank">联系我们</a>
+            </li>
+            <li>    
+                <a href="../about/news.htm" tppabs=" /about/news" target="_blank">新闻动态</a>
+            </li>
+            <li>
+                <a href="../about/media_main.htm" tppabs=" /about/media_main" target="_blank">媒体报道</a>
+            </li>
+            <li>
+            <a href="../about/safety.htm" tppabs=" /about/safety">安全资讯</a>
+            </li>
+            <li>
+                <a href="../about/career_main.htm" tppabs=" /about/career_main" target="_blank">加入我们</a>
+            </li>
+            <li>
+                <a href="../about/partners_main.htm" tppabs=" /about/partners_main" target="_blank">合作伙伴</a>
+            </li>
+            <li>
+                <a href="../about/link_main.htm" tppabs=" /about/link_main" target="_blank">友情链接</a>
+            </li>
+            <li>
+            <a href="javascript:if(confirm('http://incubator.ucloud.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://incubator.ucloud.cn/'" tppabs="http://incubator.ucloud.cn/" target="_blank">创业孵化器</a>
+            </li>
+        </ul>
+        <ul class="last">
+            <li><a href="../about/contact_main.htm" tppabs=" /about/contact_main" class="f14">联系我们</a></li>
+            <li class="mt30"><a target="_blank" href="javascript:if(confirm('http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help'" tppabs="http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help">QQ- 4000188113</a></li>
+            <li>Tel- 4000188113</li>
+            <li> <a href="javascript:if(confirm('http://t.cn/z8emy2d  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://t.cn/z8emy2d'" tppabs="http://t.cn/z8emy2d" target="_blank" class="f12">关注UCloud微博</a></li>
+            <li> <a href="../act/index/sponsor.htm" tppabs=" /act/index/sponsor" target="_blank" class="f12">云服务赞助计划</a></li>
+        </ul>
+        <div class="foot-right">
+            <div class="tit">
+                权威认证
+            </div>
+            <ul class="ac">
+                <li>
+                <a href="javascript:if(confirm('http://www.dca.org.cn/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.dca.org.cn/'" tppabs="http://www.dca.org.cn/" alt="可信云认证" target="_blank">
+                    <img src="../www/img/www/kxinyun-img.png" tppabs=" /www/img/www/kxinyun-img.png">
+                </a>
+                </li>
+                <li class="wuyun-img">
+                <a href="../news/index/208.htm" tppabs=" /news/index/208" alt="乌云众测认证" target="_blank">
+                    <img src="../www/img/www/wuyun-img.png" tppabs=" /www/img/www/wuyun-img.png">
+                </a>
+                </li>
+                <li>
+                <a href="../news/index/164.htm" tppabs=" /news/index/164" target="_blank">
+                    <img src="../www/img/www/anquan-img.png" tppabs=" /www/img/www/anquan-img.png">
+                </a>
+                </li>
+                <li class="seal">
+                <img src="../../seal.qualys.com/sealserv/seal.gif-i=c009655d-c0ca-40e4-a9cf-5eac30d2908c.gif" tppabs="http://seal.qualys.com/sealserv/seal.gif?i=c009655d-c0ca-40e4-a9cf-5eac30d2908c" onclick="window.open('https://seal.qualys.com/sealserv/info/?i=c009655d-c0ca-40e4-a9cf-5eac30d2908c','qualysSealInfo', 'height=600,width=851,resizable=1')" />
+                </li>
+            </ul>
+            <div class="tit">
+                关注我们
+            </div>
+            <div class="weixin-img"></div>
+            <a class="foot-weibo" href="javascript:if(confirm('http://t.cn/z8emy2d  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://t.cn/z8emy2d'" tppabs="http://t.cn/z8emy2d" target="_blank">
+                <i class="xlwb"></i>
+            </a>
+        </div>
+            
+
+    </div>
+</div>
+
+        <div class="footer">
+            <div class="files">
+                <div class="icp-b">
+                    <i><span class="vm">Copyright © 2012-2015 UCloud 上海优刻得信息科技有限公司 ｜<a href="javascript:if(confirm('http://www.miitbeian.gov.cn/publish/query/indexFirst.action  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.miitbeian.gov.cn/publish/query/indexFirst.action'" tppabs="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">沪ICP备 12020087</a></span><a href="javascript:if(confirm('http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121023144129704  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121023144129704'" tppabs="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20121023144129704" target="_blank" class="pl5"><img src="../www/img/www/gongshang-icon.png" tppabs=" /www/img/www/gongshang-icon.png"/></a></i>
+                    <script type="text/javascript">
+                        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F413fdc5943040809ed0703eabd01f173' type='text/javascript'%3E%3C/script%3E"));
+                    </script>
+                    <a href="javascript:if(confirm('http://www.zx110.org/picp/?sn=310104031200  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.zx110.org/picp/?sn=310104031200'" tppabs="http://www.zx110.org/picp/?sn=310104031200" target="_blank"><img src="../www/img/www/picp_bg.png" tppabs=" /www/img/www/picp_bg.png"/></a>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div id="AQBFeedback" class="aqb-feedback">
+            <div class="fb-item fb-suggestion" style="display: none;">
+                <span class="fb-text" style="left: 0px; width: 36px;">返回顶部</span><span class="fb-ico"></span>
+            </div>
+        </div>
+        -->
+        <div class="helpline">
+            <div id="AQBFeedback" class="aqb-feedback">
+                <div class="fb-item fb-suggestion" style="display: block;">
+                </div>
+            </div>
+        </div>
+        <a class="helpline" href="javascript:if(confirm('http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help'" tppabs="http://b.qq.com/webc.htm?new=0&sid=4000188113&eid=218808P8z8p8x8Q808Q8Q&o= &q=7&ref= /help" target="_blabk">
+            <div class="icon-qq-wh"></div>
+             在 线 客 服
+        </a>
+
+        <script type="text/javascript">
+            seajs.use('../www/js/src/main.js'/*tpa= /www/js/src/main.js*/);
+
+        </script>
+             <script type="text/javascript"> 
+                 /* <![CDATA[ */ 
+                 var google_conversion_id = 980484464; 
+                 var google_custom_params = window.google_tag_params; 
+                 var google_remarketing_only = true; 
+                 /* ]]> */ 
+             </script> 
+             <div style="display:none;">
+             <script type="text/javascript" src="../../www.googleadservices.com/pagead/conversion.js" tppabs="http://www.googleadservices.com/pagead/conversion.js"> 
+             </script> 
+         </div>
+
+            <script type='text/javascript'>
+                var _agt=_agt||[];
+                _agt.push(['_atscu','AG_164770_GWNM']);
+                _agt.push(['_atsdomain',' /pact/ucloud.cn']);/*请将$网站主域$替换为您嵌入代码的真实主域，例如：agrantsem.com*/
+                (function(){
+                var ag=document.createElement('script');
+                ag.type='text/javascript';
+                ag.async = true;
+                ag.src=(document.location.protocol=='https:'?'https':'http')+'://'+'t.agrantsem.com/js/ag.js';
+                var s=document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ag,s);})();
+            </script>
+             <noscript> 
+                 <div style="display:inline;"> 
+                     <img height="1" width="1" style="border-style:none;" alt="" src="../../googleads.g.doubleclick.net/pagead/viewthroughconversion/980484464/-value=0&guid=ON&script=0.gif" tppabs="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/980484464/?value=0&guid=ON&script=0"/> 
+                 </div> 
+             </noscript> 
+    </body>
+</html>
+

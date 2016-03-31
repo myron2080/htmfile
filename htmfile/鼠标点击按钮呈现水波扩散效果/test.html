@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS实现很酷的水波文字效果</title>
+</head>
+<body bgcolor="#000000" onLoad="if (document.all)wave()">
+<center>
+    <div id='water' style='position:relative;width:400px;height:150px;font-family:Verdana;font-size:50px;color:#8080ff'>
+    </div>
+</center>
+<script language="javascript">
+    <!--
+    if (document.layers){ //如果是NS
+        alert("你的浏览器不支持这个特效"); //做出提示
+    }
+    else //否则(不是NS)
+    if (document.all){ //并且是IE的话
+        var step=3; //设定改变效果的步长
+        var xstep=0;
+        var msg='欢迎光临<br>脚本之家<br>jb51.cn';
+        water.innerHTML=msg //设定效果图层的内容
+        function wave(){
+//这句用来设定图层的style,其中滤镜的phase属性根据xstep的值动态设定。
+            document.all.water.style.filter='wave(freq=3, strength=5, phase='+xstep+', lightstrength=45, add=0, enabled=1)';
+            xstep+=step;
+//根据step值来改变xstep的值，使下一次刷新图层style时波纹角度略有改变
+            TIMER=setTimeout('wave()',10);//设定下一次更改的延时
+        }
+    }
+    //-->
+</script>
+</html>

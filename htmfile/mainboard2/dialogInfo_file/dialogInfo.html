@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0117)file:///C:/Users/Administrator/Desktop/%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF/%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+
+
+
+
+
+
+
+<!-- 禁止缓存 headers -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- end 禁止缓存 headers -->
+
+<link rel="SHORTCUT ICON" href="http://127.0.0.1:8008/allwin/images/ico/allwin.ico">
+
+	
+		<title>奥维通信·居家养老服务平台</title>
+		<!-- BEGIN 页面CSS -->
+		<link rel="stylesheet" type="text/css" href="./dialogInfo_files/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./dialogInfo_files/select2.css">
+		<link rel="stylesheet" type="text/css" href="./dialogInfo_files/plugins.css">
+		<link rel="stylesheet" type="text/css" href="./dialogInfo_files/components.css">
+		
+		<link rel="stylesheet" type="text/css" href="./dialogInfo_files/easyui.css">
+		<link rel="stylesheet" type="text/css" href="./dialogInfo_files/icon.css">
+		<link rel="stylesheet" type="text/css" href="./dialogInfo_files/reset_EasyUi.css">
+		
+		<!-- END 页面CSS -->
+	</head>
+	<body style="padding-bottom: 8px; min-width: 900px;">
+		<!-- BEGIN 老人档案 FORM -->
+		<div id="elder_form_wrapper" style="margin:0px 25px 0px 25px;">
+			<form id="elder_form" class="horizontal-form" novalidate="novalidate">
+				<input type="hidden" id="ctx" name="ctx" value="/allwin">
+				<input type="hidden" id="mode" name="mode" value="">
+				<input type="hidden" id="elderId" name="elderId" value="">
+				<input type="hidden" id="status" name="status" value="">
+				<div class="form">
+					<div class="form-body">
+						<!-- BEGIN 基本信息 -->
+						<h3 class="form-section">
+							基本信息
+						</h3>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group has-error">
+									<label class="control-label">姓名</label>
+									<input name="name" class="form-control cursor-default" value="" data-instant-valid="true" aria-required="true" aria-describedby="name-error" aria-invalid="true"><span id="name-error" class="help-block help-block-error">必须输入姓名</span>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label class="control-label">性别</label>
+									<select id="sex" name="sex" class="form-control cursor-default"><option value="">--</option><option value="1">男</option><option value="2">女</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label class="control-label">民族</label>
+									<select id="ethnic" name="ethnic" class="form-control cursor-default"><option value="">--</option><option value="1">汉族</option><option value="2">蒙古族</option><option value="3">满族</option><option value="4">朝鲜族</option><option value="5">赫哲族</option><option value="6">达斡尔族</option><option value="7">鄂温克族</option><option value="8">鄂伦春族</option><option value="9">回族</option><option value="10">东乡族</option><option value="11">土族</option><option value="12">撒拉族</option><option value="13">保安族</option><option value="14">裕固族</option><option value="15">维吾尔族</option><option value="16">哈萨克族</option><option value="17">柯尔克孜族</option><option value="18">锡伯族</option><option value="19">塔吉克族</option><option value="20">乌孜别克族</option><option value="21">俄罗斯族</option><option value="22">塔塔尔族</option><option value="23">藏族</option><option value="24">门巴族</option><option value="25">珞巴族</option><option value="26">羌族</option><option value="27">彝族</option><option value="28">白族</option><option value="29">哈尼族</option><option value="30">傣族</option><option value="31">傈僳族</option><option value="32">佤族</option><option value="33">拉祜族</option><option value="34">纳西族</option><option value="35">景颇族</option><option value="36">布朗族</option><option value="37">阿昌族</option><option value="38">普米族</option><option value="39">怒族</option><option value="40">德昂族</option><option value="41">独龙族</option><option value="42">基诺族</option><option value="43">苗族</option><option value="44">布依族</option><option value="45">侗族</option><option value="46">水族</option><option value="47">仡佬族</option><option value="48">壮族</option><option value="49">瑶族</option><option value="50">仫佬族</option><option value="51">毛南族</option><option value="52">京族</option><option value="53">土家族</option><option value="54">黎族</option><option value="55">畲族</option><option value="56">高山族</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div id="idCard_div" class="form-group has-error">
+									<label class="control-label">身份证号</label>
+									<input id="idCard" name="idCard" class="form-control cursor-default" placeholder="15位或18位数字/字母" value="" aria-invalid="true" aria-describedby="idCard-error"><span id="idCard-error" class="help-block help-block-error">必须输入身份证号或者老年优待证号</span>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group has-error">
+									<label class="control-label">老年优待证号</label>
+									<input id="cardNum" name="cardNum" class="form-control cursor-default" value="" data-instant-valid="true" aria-invalid="true" aria-describedby="cardNum-error"><span id="cardNum-error" class="help-block help-block-error">必须输入身份证号或者老年优待证号</span>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group has-error" id="birth">
+									<label class="control-label">出生日期</label>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="input-group">
+												<input class="form-control cursor-default text-center">
+												<span class="input-group-addon">年</span>
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<input class="form-control cursor-default text-center">
+												<span class="input-group-addon">月</span>
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<input class="form-control cursor-default text-center">
+												<span class="input-group-addon">日</span>
+											</div>
+										</div>
+									</div>
+									<input type="hidden" name="birth" value="" aria-required="true" aria-describedby="birth-error"><span id="birth-error" class="help-block help-block-error">必须输入身份证号或者出生日期</span>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label class="control-label">年龄</label>
+									<input id="age" name="age" class="form-control cursor-default" value="">
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label class="control-label">农历/阳历</label>
+									<select id="birthType" name="birthType" class="form-control cursor-default"><option value="">--</option><option value="1">阳历生日</option><option value="2">农历生日</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">手机</label>
+									<input name="mobile" class="form-control cursor-default" value="" data-instant-valid="true">
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">宅电</label>
+									<input name="tel" class="form-control cursor-default" value="">
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label class="control-label">老人类别</label>
+									<div id="elderType_tag_field_wrapper"><input type="hidden" id="elderType" name="elderType" value=""><div class="select2-container select2-container-multi form-control select2"><div id="elderType_selected" class="select2-choices util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs green-jungle cursor-default">已选择</span><span class="btn btn-xs dark disabled" data-info="tip">单击选择下方选项，可多选</span></div></div><div id="elderType_unselect" class="util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs grey" value="1">低保户</span><span class="btn btn-xs grey" value="2">城市三无人员</span><span class="btn btn-xs grey" value="3">低保边缘</span><span class="btn btn-xs grey" value="4">劳保三无</span><span class="btn btn-xs grey" value="5">农村五保</span><span class="btn btn-xs grey" value="6">经济困难</span><span class="btn btn-xs grey" value="7">空巢老人</span><span class="btn btn-xs grey" value="8">独居老人</span><span class="btn btn-xs grey" value="9">百岁老人</span><span class="btn btn-xs grey" value="10">管理人员</span><span class="btn btn-xs grey" value="11">护理人员</span></div></div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label class="control-label">特殊类别</label>
+									<div id="elderSpecialType_tag_field_wrapper"><input type="hidden" id="elderSpecialType" name="elderSpecialType" value=""><div class="select2-container select2-container-multi form-control select2"><div id="elderSpecialType_selected" class="select2-choices util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs green-jungle cursor-default">已选择</span><span class="btn btn-xs dark disabled" data-info="tip">单击选择下方选项，可多选</span></div></div><div id="elderSpecialType_unselect" class="util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs grey" value="1">三线老军工</span><span class="btn btn-xs grey" value="2">侨眷侨属</span><span class="btn btn-xs grey" value="3">南京大屠杀幸存者</span><span class="btn btn-xs grey" value="4">院士</span><span class="btn btn-xs grey" value="5">五一奖章</span><span class="btn btn-xs grey" value="6">市级以上劳模</span><span class="btn btn-xs grey" value="7">重点优抚对象</span><span class="btn btn-xs grey" value="8">归国华侨</span><span class="btn btn-xs grey" value="9">抗美援朝</span><span class="btn btn-xs grey" value="10">老地下党</span><span class="btn btn-xs grey" value="11">投城起义人员</span><span class="btn btn-xs grey" value="12">计生特扶</span><span class="btn btn-xs grey" value="13">百岁老人</span></div></div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<!-- END 基本信息 -->
+						<!-- BEGIN 地址 -->
+						<h3 class="form-section">
+							地址
+						</h3>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group has-error">
+									<label class="control-label">现居住地址</label>
+									<input name="address" class="form-control cursor-default" value="" data-instant-valid="true" aria-required="true" aria-describedby="address-error"><span id="address-error" class="help-block help-block-error">必须输入现居住地址</span>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label>户籍地址</label>
+									<input name="householdAddress" class="form-control cursor-default" value="">
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<!-- BEGIN 地区选择 -->
+						<div id="regionSelect">
+							<div class="row">
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label class="control-label">省份</label>
+										<select class="form-control cursor-default">
+											<option value="10">江苏省</option>
+										</select>
+									</div>
+								</div>
+								<!--/span-->
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label class="control-label">城市</label>
+										<select id="cityId" name="cityId" class="form-control cursor-default">
+											<option value="1001">南京市</option>
+										</select>
+									</div>
+								</div>
+								<!--/span-->
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label class="control-label">城区</label>
+										<select id="areaId" name="areaId" class="form-control cursor-default">
+											<option value="100101">玄武区</option>
+										</select>
+									</div>
+								</div>
+								<!--/span-->
+							</div>
+							<!-- /row -->
+							<div class="row">
+								<div class="col-sm-4">
+									<div class="form-group has-error">
+										<label class="control-label">街道</label>
+										<select id="streetId" name="streetId" class="form-control cursor-default" data-instant-valid="true" data-relative="region.3" aria-describedby="streetId-error"><option value="">--</option><option value="10010101">新街口街道</option><option value="10010102">玄武门街道</option><option value="10010103">梅园新村街道</option><option value="10010104">锁金村街道</option><option value="10010105">孝陵卫街道</option><option value="10010106">玄武湖街道</option><option value="10010107">红山街道</option></select><span id="streetId-error" class="help-block help-block-error">必须选择所在街道</span>
+									</div>
+								</div>
+								<!--/span-->
+								<div class="col-sm-4">
+									<div class="form-group has-error">
+										<label class="control-label">社区</label>
+										<select id="communityId" name="communityId" class="form-control cursor-default" data-instant-valid="true" data-relative="region.4" aria-describedby="communityId-error"><option value="">--</option></select><span id="communityId-error" class="help-block help-block-error">必须选择所在社区</span>
+									 </div>
+								</div>
+								<!--/span-->
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label class="control-label">小区</label>
+										<select id="villageId" name="villageId" class="form-control cursor-default" data-instant-valid="true" data-relative="region.5"><option value="">--</option></select>
+									</div>
+								</div>
+								<!--/span-->
+							</div>
+							<!-- /row -->
+						</div>
+						<!-- END 地区选择 -->
+						<!-- END 地址 -->
+						<!-- BEGIN 联系人 -->
+						<h3 class="form-section">
+							联系人
+						</h3>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group has-error" id="keyLinkman">
+									<label class="control-label">关键联系人</label>
+									<div class="row">
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">姓名</span>
+												<input class="form-control cursor-default text-center">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">与老人关系</span>
+												<input class="form-control cursor-default text-center">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">联系方式</span>
+												<input class="form-control cursor-default text-center">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">是否有老人钥匙</span>
+												<select class="form-control cursor-default">
+													<option value="0">--</option>
+													<option value="Y">有</option>
+													<option value="N">无</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<input type="hidden" name="keyLinkman" value="" aria-required="true" aria-describedby="keyLinkman-error"><span id="keyLinkman-error" class="help-block help-block-error">信息不完整，请输入完整的直系亲属或监护人信息</span>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group" id="linkman1">
+									<input type="hidden" name="linkman1" value="">
+									<label class="control-label">其他联系人1</label>
+									<div class="row">
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">姓名</span>
+												<input class="form-control cursor-default text-center">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">与老人关系</span>
+												<input class="form-control cursor-default text-center">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">联系方式</span>
+												<input class="form-control cursor-default text-center">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">是否有老人钥匙</span>
+												<select class="form-control cursor-default">
+													<option value="0">--</option>
+													<option value="Y">有</option>
+													<option value="N">无</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group" id="linkman2">
+									<input type="hidden" name="linkman2" value="">
+									<label class="control-label">其他联系人2</label>
+									<div class="row">
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">姓名</span>
+												<input class="form-control cursor-default text-center">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">与老人关系</span>
+												<input class="form-control cursor-default text-center">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">联系方式</span>
+												<input class="form-control cursor-default text-center">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<div class="input-group">
+												<span class="input-group-addon">是否有老人钥匙</span>
+												<select class="form-control cursor-default">
+													<option value="0">--</option>
+													<option value="Y">有</option>
+													<option value="N">无</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<!-- BEGIN 其他重要信息 -->
+						<h3 class="form-section">
+							其他重要信息
+						</h3>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label class="control-label">照料情况</label>
+									<div id="takecareType_tag_field_wrapper"><input type="hidden" id="takecareType" name="takecareType" value=""><div class="select2-container select2-container-multi form-control select2"><div id="takecareType_selected" class="select2-choices util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs green-jungle cursor-default">已选择</span><span class="btn btn-xs dark disabled" data-info="tip">单击选择下方选项，可多选</span></div></div><div id="takecareType_unselect" class="util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs grey" value="1">配偶照顾</span><span class="btn btn-xs grey" value="2">子女照顾</span><span class="btn btn-xs grey" value="3">自费服务</span><span class="btn btn-xs grey" value="4">送餐服务</span><span class="btn btn-xs grey" value="5">自我照顾</span><span class="btn btn-xs grey" value="6">居家保险</span><span class="btn btn-xs grey" value="7">互助服务</span><span class="btn btn-xs grey" value="8">其他</span><span class="btn btn-xs grey" value="9">志愿者照料</span></div></div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label class="control-label">服务需求</label>
+									<div id="needService_tag_field_wrapper"><input type="hidden" id="needService" name="needService" value=""><div class="select2-container select2-container-multi form-control select2"><div id="needService_selected" class="select2-choices util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs green-jungle cursor-default">已选择</span><span class="btn btn-xs dark disabled" data-info="tip">单击选择下方选项，可多选</span></div></div><div id="needService_unselect" class="util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs grey" value="1">政府购买居家照护服务</span><span class="btn btn-xs grey" value="2">助医</span><span class="btn btn-xs grey" value="3">政府购买紧急呼叫服务</span><span class="btn btn-xs grey" value="4">家务料理</span><span class="btn btn-xs grey" value="5">代购物品</span><span class="btn btn-xs grey" value="6">康复保健</span><span class="btn btn-xs grey" value="7">心理关爱</span><span class="btn btn-xs grey" value="8">法律援助</span><span class="btn btn-xs grey" value="9">文化娱乐</span><span class="btn btn-xs grey" value="10">助餐</span><span class="btn btn-xs grey" value="11">送餐</span><span class="btn btn-xs grey" value="12">陪聊</span><span class="btn btn-xs grey" value="13">陪住</span><span class="btn btn-xs grey" value="14">陪外出</span><span class="btn btn-xs grey" value="15">陪旅游</span><span class="btn btn-xs grey" value="16">日托</span><span class="btn btn-xs grey" value="17">入住老年人福利机构</span><span class="btn btn-xs grey" value="18">助浴</span><span class="btn btn-xs grey" value="19">助洁</span><span class="btn btn-xs grey" value="20">助急</span></div></div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label class="control-label">收入来源</label>
+									<div id="incomeType_tag_field_wrapper"><input type="hidden" id="incomeType" name="incomeType" value=""><div class="select2-container select2-container-multi form-control select2"><div id="incomeType_selected" class="select2-choices util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs green-jungle cursor-default">已选择</span><span class="btn btn-xs dark disabled" data-info="tip">单击选择下方选项，可多选</span></div></div><div id="incomeType_unselect" class="util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs grey" value="1">薪金</span><span class="btn btn-xs grey" value="2">退休金</span><span class="btn btn-xs grey" value="3">子女赡养</span><span class="btn btn-xs grey" value="4">救助金</span><span class="btn btn-xs grey" value="5">其它</span><span class="btn btn-xs grey" value="6">机关事业单位离休金</span><span class="btn btn-xs grey" value="7">三无下放人员补贴</span><span class="btn btn-xs grey" value="8">三线老军工补贴</span><span class="btn btn-xs grey" value="9">城乡居民养老保险</span><span class="btn btn-xs grey" value="10">供养人员补贴</span><span class="btn btn-xs grey" value="11">低保金</span><span class="btn btn-xs grey" value="12">拆迁补助</span></div></div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">工作/原工作</label>
+									<select id="exjob" name="exjob" class="form-control cursor-default"><option value="">--</option><option value="1">教师</option><option value="2">军人</option><option value="3">公务员</option><option value="4">事业单位</option><option value="5">企业单位</option><option value="6">农民</option><option value="7">商人</option><option value="8">无业</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">退休状况</label>
+									<select id="retirement" name="retirement" class="form-control cursor-default"><option value="">--</option><option value="1">离休</option><option value="2">退休</option><option value="3">未退休</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">文化程度</label>
+									<select id="diploma" name="diploma" class="form-control cursor-default"><option value="">--</option><option value="1">本科及以上</option><option value="2">大专</option><option value="3">高中或中专</option><option value="4">初中</option><option value="5">小学</option><option value="6">文盲</option><option value="7">未知</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">子女情况</label>
+									<select id="offspring" name="offspring" class="form-control cursor-default"><option value="">--</option><option value="1">有子女</option><option value="2">未生育</option><option value="3">失独</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">社会活动频率</label>
+									<select id="socialActFreq" name="socialActFreq" class="form-control cursor-default"><option value="">--</option><option value="1">经常</option><option value="2">偶尔</option><option value="3">从不</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">社会活动类型</label>
+									<div id="socialActType_tag_field_wrapper"><input type="hidden" id="socialActType" name="socialActType" value=""><div class="select2-container select2-container-multi form-control select2"><div id="socialActType_selected" class="select2-choices util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs green-jungle cursor-default">已选择</span><span class="btn btn-xs dark disabled" data-info="tip">单击选择下方选项，可多选</span></div></div><div id="socialActType_unselect" class="util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs grey" value="1">文艺类</span><span class="btn btn-xs grey" value="2">教育类</span><span class="btn btn-xs grey" value="3">健身类</span><span class="btn btn-xs grey" value="4">慈善类</span><span class="btn btn-xs grey" value="5">经济类</span><span class="btn btn-xs grey" value="6">宗教类</span><span class="btn btn-xs grey" value="7">其他</span></div></div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<!-- END 其他重要信息 -->
+						<!-- BEGIN 居住信息 -->
+						<h3 class="form-section">
+							居住信息
+						</h3>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">居住状态</label>
+									<select id="liveStatus" name="liveStatus" class="form-control cursor-default"><option value="">--</option><option value="1">独居</option><option value="2">子女同住</option><option value="3">老伴同住</option><option value="4">他人同住</option><option value="5">入住公办养老机构</option><option value="6">空巢</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">居室类型</label>
+									<select id="houseRooms" name="houseRooms" class="form-control cursor-default"><option value="">--</option><option value="1">一居</option><option value="2">二居</option><option value="3">三居</option><option value="4">其他</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">住房性质</label>
+									<select id="houseFeathere" name="houseFeathere" class="form-control cursor-default"><option value="">--</option><option value="1">有产权</option><option value="2">无产权</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">常住时间</label>
+									<select id="liveTime" name="liveTime" class="form-control cursor-default"><option value="">--</option><option value="1">3年及以上</option><option value="2">1-3年</option><option value="3">1年及以下</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">居住楼层</label>
+									<select id="houseFloor" name="houseFloor" class="form-control cursor-default"><option value="">--</option><option value="1">一层</option><option value="2">二层</option><option value="3">三层及以上</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">楼层电梯</label>
+									<select id="houseLift" name="houseLift" class="form-control cursor-default"><option value="">--</option><option value="1">有</option><option value="2">无</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">室内厕所</label>
+									<select id="houseToilet" name="houseToilet" class="form-control cursor-default"><option value="">--</option><option value="1">有</option><option value="2">无</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">室内洗浴设备</label>
+									<select id="houseBath" name="houseBath" class="form-control cursor-default"><option value="">--</option><option value="1">有</option><option value="2">无</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<!-- END 居住信息 -->
+						<!-- BEGIN 健康状况 -->
+						<h3 class="form-section">
+							健康状况
+						</h3>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">医保类型</label>
+									<select id="medicalInsurance" name="medicalInsurance" class="form-control cursor-default"><option value="">--</option><option value="1">公费</option><option value="2">职工医保</option><option value="3">居民医保</option><option value="4">新农合</option><option value="5">自费</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">心理状况</label>
+									<select id="mentalStatus" name="mentalStatus" class="form-control cursor-default"><option value="">--</option><option value="1">正常</option><option value="2">偶尔感到孤独</option><option value="3">经常感到孤独</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">监护等级</label>
+									<select id="wardLevel" name="wardLevel" class="form-control cursor-default"><option value="">--</option><option value="1">一般监护</option><option value="2">重点监护</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">药物过敏</label>
+									<div id="allergy_tag_field_wrapper"><input type="hidden" id="allergy" name="allergy" value=""><div class="select2-container select2-container-multi form-control select2"><div id="allergy_selected" class="select2-choices util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs green-jungle cursor-default">已选择</span><span class="btn btn-xs dark disabled" data-info="tip">单击选择下方选项，可多选</span></div></div><div id="allergy_unselect" class="util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs grey" value="1">青霉素</span><span class="btn btn-xs grey" value="2">磺胺</span><span class="btn btn-xs grey" value="3">链霉素</span><span class="btn btn-xs grey" value="4">其它</span></div></div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<!-- END 健康状况 -->
+						<!-- BEGIN 残疾信息 -->
+						<h3 class="form-section">
+							残疾信息
+						</h3>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">肢体残疾</label>
+									<select id="bodyDis" name="bodyDis" class="form-control cursor-default"><option value="">--</option><option value="1">一级</option><option value="2">二级</option><option value="3">三级</option><option value="4">四级</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">视力残疾</label>
+									<select id="visionDis" name="visionDis" class="form-control cursor-default"><option value="">--</option><option value="1">一级</option><option value="2">二级</option><option value="3">三级</option><option value="4">四级</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">精神残疾</label>
+									<select id="spiritDis" name="spiritDis" class="form-control cursor-default"><option value="">--</option><option value="1">一级</option><option value="2">二级</option><option value="3">三级</option><option value="4">四级</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">智力残疾</label>
+									<select id="intDis" name="intDis" class="form-control cursor-default"><option value="">--</option><option value="1">一级</option><option value="2">二级</option><option value="3">三级</option><option value="4">四级</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">语言残疾</label>
+									<select id="speakDis" name="speakDis" class="form-control cursor-default"><option value="">--</option><option value="1">一级</option><option value="2">二级</option><option value="3">三级</option><option value="4">四级</option></select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label">听力残疾</label>
+									<select id="listenDis" name="listenDis" class="form-control cursor-default"><option value="">--</option><option value="1">一级</option><option value="2">二级</option><option value="3">三级</option><option value="4">四级</option></select>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<!-- END 残疾信息 -->
+						<!-- BEGIN 患病情况 -->
+						<h3 class="form-section">
+							患病情况
+						</h3>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label class="control-label">重病</label>
+									<div id="seriousIllness_tag_field_wrapper"><input type="hidden" id="seriousIllness" name="seriousIllness" value=""><div class="select2-container select2-container-multi form-control select2"><div id="seriousIllness_selected" class="select2-choices util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs green-jungle cursor-default">已选择</span><span class="btn btn-xs dark disabled" data-info="tip">单击选择下方选项，可多选</span></div></div><div id="seriousIllness_unselect" class="util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs grey" value="1">急性心肌梗塞</span><span class="btn btn-xs grey" value="2">脑中风</span><span class="btn btn-xs grey" value="3">急性坏死性胰腺炎</span><span class="btn btn-xs grey" value="4">脑外伤口</span><span class="btn btn-xs grey" value="5">主动脉手术</span><span class="btn btn-xs grey" value="6">冠状动脉旁路手术</span><span class="btn btn-xs grey" value="7">慢性肾功能性衰竭</span><span class="btn btn-xs grey" value="8">急慢性重症肝炎</span><span class="btn btn-xs grey" value="9">危及生命的良性脑瘤</span><span class="btn btn-xs grey" value="10">重症糖尿病</span><span class="btn btn-xs grey" value="11">消化道出血</span><span class="btn btn-xs grey" value="12">系统性红斑狼疮</span><span class="btn btn-xs grey" value="13">慢性再生障碍性贫血</span><span class="btn btn-xs grey" value="14">血友病</span><span class="btn btn-xs grey" value="15">重症精神病</span><span class="btn btn-xs grey" value="16">恶性肿瘤</span><span class="btn btn-xs grey" value="17">尿毒症透析</span><span class="btn btn-xs grey" value="18">器官移植(含手术后的抗排异治疗)</span><span class="btn btn-xs grey" value="19">白血病</span></div></div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label class="control-label">常见疾病</label>
+									<div id="comdis_tag_field_wrapper"><input type="hidden" id="comdis" name="comdis" value=""><div class="select2-container select2-container-multi form-control select2"><div id="comdis_selected" class="select2-choices util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs green-jungle cursor-default">已选择</span><span class="btn btn-xs dark disabled" data-info="tip">单击选择下方选项，可多选</span></div></div><div id="comdis_unselect" class="util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs grey" value="1">颈椎病</span><span class="btn btn-xs grey" value="2">腰椎病</span><span class="btn btn-xs grey" value="3">双膝关节退变</span><span class="btn btn-xs grey" value="4">关节置换术后</span><span class="btn btn-xs grey" value="5">关节炎</span><span class="btn btn-xs grey" value="6">骨折后</span></div></div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label class="control-label">慢性病</label>
+									<div id="chronic_tag_field_wrapper"><input type="hidden" id="chronic" name="chronic" value=""><div class="select2-container select2-container-multi form-control select2"><div id="chronic_selected" class="select2-choices util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs green-jungle cursor-default">已选择</span><span class="btn btn-xs dark disabled" data-info="tip">单击选择下方选项，可多选</span></div></div><div id="chronic_unselect" class="util-btn-margin-top-7 util-btn-margin-right-3"><span class="btn btn-xs grey" value="1">高血压</span><span class="btn btn-xs grey" value="2">糖尿病</span></div></div>
+								</div>
+							</div>
+							<!--/span-->
+						</div>
+						<!--/row-->
+						<!-- END 患病情况 -->
+					</div>
+				</div>
+				
+				<div id="save_btn" class="btn btn-lg red btn-block">保存档案</div>
+				
+			</form>
+		</div>
+		<!-- END 老人档案 FORM -->
+		<!-- BEGIN JAVASCRIPTS -->
+		<!-- BEGIN 核心JS库 -->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="/allwin/scripts/plugins/respond.min.js"></script>
+		<script type="text/javascript" src="/allwin/scripts/plugins/excanvas.min.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="./dialogInfo_files/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="./dialogInfo_files/jquery-ui-1.10.3.custom.min.js"></script>
+		<script type="text/javascript" src="./dialogInfo_files/bootstrap.min.js"></script>
+		<!-- END 核心JS库 -->
+		<!-- BEGIN 页面JS库 -->
+		<script type="text/javascript" src="./dialogInfo_files/jquery.validate.js"></script>
+		<script type="text/javascript" src="./dialogInfo_files/additional-methods.min.js"></script>
+		<script type="text/javascript" src="./dialogInfo_files/additional-methods-mine.js"></script>
+		<!-- END 页面JS库 -->
+		<!-- BEGIN 页面JS -->
+		<script type="text/javascript" src="./dialogInfo_files/validator.js"></script>
+		<script type="text/javascript" src="./dialogInfo_files/sysutils.js"></script>
+		<script type="text/javascript" src="./dialogInfo_files/elder_detail.js"></script>
+		
+		<script type="text/javascript" src="./dialogInfo_files/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="./dialogInfo_files/easyui-lang-zh_CN.js"></script>
+		
+		<script>
+			jQuery(document).ready(function() {
+				// 初始化页面
+				Detail.init();
+			});
+		</script>
+		<!-- END 页面JS -->
+		<!-- END JAVASCRIPTS -->
+	
+</body></html>

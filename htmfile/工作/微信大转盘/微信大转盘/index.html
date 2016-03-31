@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="robots" content="index">
+<meta name="googlebot" content="index">
+<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>微信大转盘</title>
+<link href="css/css.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.js"></script>
+<script type="text/javascript" src="js/awardRotate.js"></script>
+<script type="text/javascript">
+
+</script>
+
+<script type="text/javascript" src="js/luckDraw.js"></script>
+<script>
+  jQuery(document).ready(function () {
+    // 初始化页面
+    MainBoard.init();
+  });
+</script>
+</head>
+
+<body>
+<div class="topbanner"><img src="images/banner.png" alt=""/></div>
+<div class="frequency">
+  <dl>
+    <dt>大麦场账号：<a class="btn-dialog">请输入手机号</a><span class="yellowtxt">13530678591</span></dt>
+    <dd>剩余抽奖次数：<span class="yellowtxt">0</span></dd>
+  </dl>
+</div>
+<!--<img src="images/1.png" id="shan-img" style="display:none;"> <img src="images/2.png" id="sorry-img" style="display:none;">-->
+<!--<img  src="images/turnplate-pointer.png" style="display:none;"  />-->
+<div class="banner"><img class="leftico" src="images/leftico.png" alt=""/><img class="rightico" src="images/leftico.png" alt=""/>
+  <div class="turnplate" style="background-image:url(images/turnplate-bg.png); background-size:100% 100%;">
+    <canvas style="transform: rotate(288deg);" class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+    <!--<img class="pointer" src="images/turnplate-pointer.png"> </div>-->
+    <canvas class="pointer" id="wheelcanvas2" ></canvas>
+</div>
+<div class="centerbutton">
+  <dl>
+    <dt>132******114获得一等奖</dt>
+    <dd><a href="#"><img src="images/centerbutton.png" alt=""/></a></dd>
+  </dl>
+</div>
+<div class="centertitle">抽奖规则</div>
+<div class="centerbody">
+  <dl>
+    <dt><img src="images/title1.png" alt=""/></dt>
+    <dd>值此新春佳节到来之际，非凡大麦场感恩回馈，从即日起（1月27日20:00）凡在非凡大麦场手机端购买柚子即可免费获得一次抽奖机会，<span class="yellowtxt">抽奖次数=购买柚子千克数/5kg</span></dd>
+  </dl>
+  <dl>
+    <dt><img src="images/title2.png" alt=""/></dt>
+    <dd class="prize">
+      <table width="0" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>一等奖：柚子</td>
+          <td align="center" class="yellowtxt">10000</td>
+          <td>kg</td>
+        </tr>
+        <tr>
+          <td>二等奖：柚子</td>
+          <td align="center" class="yellowtxt">1000</td>
+          <td>kg</td>
+        </tr>
+        <tr>
+          <td>三等奖：柚子</td>
+          <td align="center" class="yellowtxt">100</td>
+          <td>kg</td>
+        </tr>
+        <tr>
+          <td>四等奖：柚子</td>
+          <td align="center" class="yellowtxt">10</td>
+          <td>kg</td>
+        </tr>
+        <tr>
+          <td>五等奖：柚子</td>
+          <td align="center" class="yellowtxt">1</td>
+          <td>kg</td>
+        </tr>
+      </table>
+    </dd>
+  </dl>
+  <dl>
+    <dt><img src="images/title3.png" alt=""/></dt>
+    <dd>
+      <div class="txt"><img src="images/txt.png" alt=""/></div>
+      <ul>
+        <li>1、奖品发放时间：活动期（2016.1.27-2.5）</li>
+        <li>2、奖品寄送地点：中奖后，大麦场官方客服将联系中奖用户，通知用户到最近的形象店或体验店领取奖品。</li>
+        <li>3、温馨提示：中奖用户在接到客服电话通知后，如未在指定时间到达指定的大麦场形象店或体验店领取奖品，视为自动放弃领奖资格。 </li>
+      </ul>
+    </dd>
+  </dl>
+  <dl>
+    <dt><img src="images/title4.png" alt=""/></dt>
+    <dd>
+      <ul class="tel">
+        <li>如对本次活动有任何疑问建议，欢迎咨询。</li>
+        <li><span><img src="images/tel.png" alt=""/><a href="#">一键拨号</a></span></li>
+        <li>* 本次活动最终解释权归主办方非凡大麦场所有！</li>
+      </ul>
+    </dd>
+  </dl>
+</div>
+<div class="js"  style="display:none;"> 
+  <!--电话--> 
+  <div class="popupbody phoneDialog" style="display:none;">
+    <div class="close"><a href="#" class="closeDialog"><img src="images/close.png" alt=""/></a></div>
+    <div class="padding">
+      <div class="title-left">请输入您的大麦场注册手机号</div>
+      <div class="form">
+        <dl>
+          <dt>请输入正确的大麦场注册手机号</dt>
+          <dd>
+            <input type="text" name="textfield" id="textfield">
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="button">
+      <ul>
+        <li><a href="#">取　消</a></li>
+        <li><a href="#" class="now">确　定</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <!--亲，恭喜中奖！--> 
+ <div class="popupbody" style="display:none;">
+    <div class="close"><a href="#" class="closeDialog"><img src="images/close.png" alt=""/></a></div>
+    <div class="title-center">亲，恭喜中奖！</div>
+    <div class="prompt">奖品XXX个</div>
+    <div class="button2"><a href="#">朕知道了</a>
+    </div>
+  </div>
+  <!--很遗憾，你未中奖-->
+
+  <div class="popupbody" style="display:none;">
+    <div class="close"><a href="#" class="closeDialog"><img src="images/close.png" alt=""/></a></div>
+     <div class="title-center" style="padding-top:40px">很遗憾，你未中奖</div>
+    <div class="button2"><a href="#">我知道啦</a>
+    </div>
+  </div>
+  <!--很遗憾，你未中奖--> 
+ <div class="popupbody" style="display:none;">
+    <div class="close"><a href="#" class="closeDialog"><img src="images/close.png" alt=""/></a></div>
+     <div class="title-center">你暂时没有抽奖次数，<br/>去大麦场买柚子，<br/>免费获得抽大奖机会。</div>
+    <div class="button2"><a href="#">我知道啦</a>
+    </div>
+  </div>
+
+  <!--您是否已经领奖--> 
+   <div class="popupbody" style="display:none;">
+    <div class="close"><a href="#" class="closeDialog"><img src="images/close.png" alt=""/></a></div>
+    <div class="padding">
+       <div class="title-center">您是否已经领奖？</div>
+    <div class="tablebody">
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>验证码：</td>
+          <td><img src="images/img1.png" alt=""/></td>
+        </tr>
+      </table>
+    </div>
+    <div class="form">
+      <dl>
+        <dt>请在下方输入验证码</dt>
+        <dd>
+          <input type="text" name="textfield" id="textfield">
+        </dd>
+      </dl>
+    </div></div>
+    <div class="button">
+      <ul>
+        <li><a href="#">取　消</a></li>
+        <li><a href="#" class="now">确　定</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--拨打客服电话--> 
+   <div class="popupbody" style="display:none;">
+    <div class="close"><a href="#" class="closeDialog"><img src="images/close.png" alt=""/></a></div>
+    <div class="padding"> <div class="title-center">拨打客服电话</div>
+    <div class="tel">400-717-6800</div>
+    <div class="button">
+      <ul>
+        <li><a href="#">取　消</a></li>
+        <li><a href="#" class="now">确　定</a></li>
+      </ul>
+    </div>
+  </div>
+   </div>
+  <!--我的抽奖结果-->
+  <div class="popupbody popuppage" style="display:none;">
+    <div class="close"><a href="#" class="closeDialog"><img src="images/close.png" alt=""/></a></div>
+    <div class="popuppageico"></div>
+    <div class="popuppagebody">
+      <div class="titlepage"><span>我的抽奖结果</span></div>
+      <div class="popuppagelist">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>2月15号</td>
+            <td width="10%" align="center">---</td>
+            <td>奖品XXX个</td>
+            <td align="right"><a href="#">是否已领奖</a></td>
+          </tr>
+          <tr>
+            <td>2月15号</td>
+            <td align="center">---</td>
+            <td>奖品XXX个</td>
+            <td align="right"><a href="#">是否已领奖</a></td>
+          </tr>
+          <tr>
+            <td>2月15号</td>
+            <td align="center">---</td>
+            <td>奖品XXX个</td>
+            <td align="right"><a href="#">是否已领奖</a></td>
+          </tr>
+          <tr>
+            <td>2月15号</td>
+            <td align="center">---</td>
+            <td>奖品XXX个</td>
+            <td align="right"><a href="#">是否已领奖</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--我的抽奖结果-->
+  <div class="popupbody popuppage" style="display:none;">
+    <div class="close"><a href="#" class="closeDialog"><img src="images/close.png" alt=""/></a></div>
+    <div class="popuppageico"></div>
+    <div class="popuppagebody">
+      <div class="titlepage"><span>我的抽奖结果</span></div>
+      <div class="prompt">很遗憾，你未中奖</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

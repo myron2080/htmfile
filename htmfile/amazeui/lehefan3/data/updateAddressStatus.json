@@ -1,0 +1,8 @@
+{
+  "resultMsg": "接口调用成功！",
+  "resultData": {
+    "STATE": "SUCCESS",
+    "MSG": "操作成功"
+  },
+  "resultType": 1
+}

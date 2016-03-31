@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="angular/angular.min.js"></script>
+    <script src="angular/angular-route.js"></script>
+ <!--   <script src="http://code.angularjs.org/1.2.5/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.5/angular-route.min.js"></script>-->
+
+<!--<script src="http://libs.useso.com/js/angular.js/1.2.5/angular.min.js"></script>
+<script src="http://libs.useso.com/js/angular.js/1.2.5/angular-route.min.js"></script>-->
+
+    <script src="./demoThree.js"></script>
+</head>
+<body>
+<!--
+<div ng-app="ngRouteExample" ng-controller="MainController">
+     <a href="#/test1">test1</a> |
+    <a href="#/test2">test2</a>
+
+    <div ng-view></div>
+    <hr/>
+    <pre>$location = {{$location}}</pre>
+    <pre>$route = {{$route}}</pre>
+    <pre>$routeParams = {{$routeParams}}</pre>
+</div>
+-->
+
+
+
+
+
+
+<div ng-app="NewsPub" ng-init="greeting='liuyu'">
+  <!--  <script type="text/ng-template" id="list.html">
+        <table width="100%" border="1" style="border-collapse:collapse;">
+            <thead>
+            <td>id</td>
+            <td>标题</td>
+            <td>内容</td>
+            <td>发布时间</td>
+            </thead>
+            <tr ng-repeat="news in newsList">
+                <td>{{news.id}}</td>
+                <td><a href='#/detail/{{news.id}}'>{{news.title}}</a></td>
+                <td>{{news.content}}</td>
+                <td>{{news.date}}</td>
+            </tr>
+        </table>
+    </script>-->
+    <div sidebox title="Links">
+        <ul>
+            <li>First link</li>
+            <li>Second link</li>
+        </ul>
+    </div>
+    <div sidebox title="TagCloud">
+        <div class="tagcloud">
+            <a href="">Graphics</a>
+            <a href="">AngularJS</a>
+            <a href="">D3</a>
+            <a href="">Front-end</a>
+            <a href="">Startup</a>
+        </div>
+    </div>
+
+
+<div ng-controller="CityController">
+<select ng-model="city"
+ng-options="city.name for city in cities">
+<option value="">Choose City</option>
+</select>
+Best City: {{ city.name }}
+</div>
+
+   <p ng-cloak>{{ greeting }}</p>
+
+<input type="text" ng-model="person.name"/>
+<div ng-switch on="person.name">
+<p ng-switch-default>And the winner is</p>
+<h3 ng-switch-when="Ari">{{ person.name }}</h3>
+</div>
+
+   <!-- <div ng-include="'demoOne.html'"></div>-->
+    <label>Select Two Fish:</label>
+    <input type="checkbox"
+           ng-model="isTwoFish"><br/>
+    <select>
+        <option>One Fish</option>
+        <option ng-selected="isTwoFish">Two Fish</option>
+    </select>
+
+    <input type="text" ng-model="someProperty" placeholder="TypetoEnable">
+    <button ng-model="button" ng-disabled="!someProperty">AButton</button>
+<textarea ng-disabled="isDisabled">Wait5seconds</textarea>
+  <!--  <div my-directive
+         my-url="http://google.com"
+         my-link-text="Click me to go to Google"></div>
+-->
+    <label>Their URL field:</label>
+    <input type="text" ng-model="theirUrl">
+    <div my-directive some-attr="theirUrl" my-link-text="Click me to go to Google"></div>
+
+<div ng-controller="timetest">
+   时间：<h1>{{clock.now}}</h1>
+</div>
+    <script type="text/ng-template" id="add.html">
+        <h1>添加新闻</h1>
+        标题：<input type="text" ng-model="title"><br>
+        内容：<textarea ng-model="content" cols="30" rows="10" style="vertical-align:top;"></textarea><br>
+        <button ng-click="add()">提交</button>
+    </script>
+
+    <script type="text/ng-template" id="edit.html">
+        <h1>编辑新闻{{news.id}}</h1>
+        标题：<input type="text" ng-model="news.title"><br>
+        内容：<textarea ng-model="news.content" cols="30" rows="10" style="vertical-align:top;"></textarea><br>
+        <button ng-click="update()">提交</button>
+    </script>
+
+    <script type="text/ng-template" id="detail.html">
+        <a href="#/list">返回列表</a>
+        <div id="container">
+            <a href="#/edit/{{news.id}}">编辑</a>
+            <h1>{{news.title}}</h1>
+            <span class="date">发布日期：{{news.date}}</span>
+            <div class="content">正文：   {{news.content}}</div>
+        </div>
+    </script>
+
+    <h1>新闻发布系统</h1>
+    <div id="content">
+        <div id="leftpanel">
+            <ul>
+                <li><a href="#/list">新闻列表</a></li>
+                <li><a href="#/add">发布新闻</a></li>
+            </ul>
+        </div>
+        <div id="right">
+            <div id="rightpanel" ng-view>abcd</div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+			

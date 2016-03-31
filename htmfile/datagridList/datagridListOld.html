@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0076)http://localhost:8008/takecare/order/showList?orderType=3&menuId=01_01_01_02 -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta content="webkit" name="renderer">
+
+
+    <!-- 禁止缓存 headers -->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <!-- end 禁止缓存 headers -->
+
+    <link rel="SHORTCUT ICON" href="http://localhost:8008/takecare/images/ico/yxc.png">
+
+    <!--[if IE 8]>
+    <html lang="en" class="ie8 no-js">
+    <![endif]-->
+    <!--[if IE 9]>
+    <html lang="en" class="ie9 no-js">
+    <![endif]-->
+    <!--[if !IE]><!-->
+
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <meta charset="utf-8">
+    <title>养老服务信息平台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <!-- BEGIN 全局CSS -->
+    <link rel="stylesheet" type="text/css" href="./datagridList_files/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./datagridList_files/easyui.css">
+    <link rel="stylesheet" type="text/css" href="./datagridList_files/icon.css">
+    <!-- END 全局CSS -->
+    <!-- BEGIN 页面CSS -->
+    <link rel="stylesheet" type="text/css" href="./datagridList_files/front-engine.css">
+
+    <style type="text/css">
+        .datagrid-search-info {
+            height: auto;
+            width: 800px;
+            display: none;
+            border: 1px solid #eee;
+            margin-left:250px ;
+            padding: 5px 2px;
+        }
+
+        .datagrid-search:hover .datagrid-search-info {
+            display: block;
+        }
+    .datagrid-search-addinfo>div{
+        display: none
+    }
+
+        #datagrid-toolbar-customize,#datagrid-search-btn,#datagrid-clear-search-btn{
+            float: left
+        }
+        .datagrid-search-addinfo{
+            width:100%;
+            height: 40px;
+        }
+    </style>
+    <!-- END 页面CSS -->
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="elder-list-pages-body">
+<!-- BEGIN 页面主体 -->
+
+
+<!-- BEGIN 列表菜单 -->
+<!-- <div id="datagrid_menu" class="datagrid_menu">
+</div> -->
+<!-- END 列表菜单 -->
+
+<!-- BEGIN 搜索框 -->
+<div id="datagrid-search" class="datagrid-search">
+    <div id="datagrid-toolbar-customize" class="datagrid-toolbar-customize">
+        <input type="button" id="01_01_01_02_02" class="btn btn-success datagrid-customize-btn" value="新增">
+    </div>
+    <input type="button" id="datagrid-search-btn" class="btn btn-default" value="查询">
+    <input type="button" id="datagrid-clear-search-btn" class="btn btn-default" value="重置">
+
+    <div class="datagrid-search-addinfo" >
+
+        <div class="input-group search-customerName" style="float:left;padding-left:15px; margin-bottom:3px ;">
+            <span class="input-group-addon"  style="width:auto;line-height: 20px;float:left;">客户姓名</span>
+            <input type="text" name="customerName" class="form-control" placeholder="" readonly="readonly" style="width:80px;float:left;" value="">
+            <input type="button" class="btn btn-default action-no" value="X">
+        </div>
+
+        <div class="input-group search-mobilePhone" style="padding-left:15px; margin-bottom:3px ;float:left">
+            <span class="input-group-addon" style="width:80px;float:left;line-height: 20px">客户手机</span>
+            <input type="text" name="mobilePhone" class="form-control" placeholder="" readonly="readonly" style="width:80px;float:left;" value="">
+            <input type="button" class="btn btn-default action-no" value="X">
+        </div>
+
+        <div class="input-group search-userId" style="padding-left:15px; margin-bottom:3px;float:left;">
+            <span class="input-group-addon" style="width:80px;float:left;line-height: 20px">受理坐席</span>
+            <input type="text" name="userId" class="form-control" placeholder="" readonly="readonly" style="width:80px;" value="">
+            <input type="button" class="btn btn-default action-no" value="X">
+        </div>
+
+
+        <!-- 单选多项-->
+        <div class="btn-group test2-choose"  data-toggle="buttons" style="padding-left:15px; margin-bottom:3px ;">
+            <span class="input-group-addon" style="width:80px;float: left;line-height: 20px;">咨询类型:</span>
+            <label class="btn btn-primary ">
+                <input type="radio" name="options">
+            </label>
+            <input type="hidden" value=""/>
+            <input type="button" class="btn btn-default action-no-chick"  value="X">
+        </div>
+
+        <!--  单选按钮-->
+        <div class="btn-group test-choose"  data-toggle="buttons" style="padding-left:15px; margin-bottom:3px ;">
+            <span class="input-group-addon" style="width:80px;float: left;line-height: 20px;">是否回访:</span>
+            <label class="btn btn-primary ">
+                <input type="radio" name="options">
+            </label>
+            <input type="hidden" value=""/>
+            <input type="button" class="btn btn-default action-no-chick"  value="X">
+        </div>
+
+
+        <!-- 复选框隐藏域 -->
+        <div class="input-group test-checkbox" style="padding-left:15px; margin-bottom:3px;float:left;">
+            <span class="input-group-addon" style="width:80px;float:left;line-height: 20px">复选框值:</span>
+            <input type="text" name="userId" class="form-control" placeholder="" readonly="readonly" style="width:100px;" value="">
+            <input type="button" class="btn btn-default action-no" value="X">
+        </div>
+
+
+
+    </div>
+    <div class="datagrid-search-info" >
+
+        <!-- 普通输入类型 -->
+        <div class="input-group" style="padding-left:15px; margin-bottom:3px ;"><span class="input-group-addon"
+                                                                                      style="width:80px;">客户姓名</span><input
+                type="text" id="search-customerName" name="customerName" class="form-control" placeholder=""
+                style="width:200px;"><input type="button" class="btn btn-default action-ok" value="确认"></div>
+        <div class="input-group" style="padding-left:15px; margin-bottom:3px ;"><span class="input-group-addon"
+                                                                                      style="width:80px;">客户手机</span><input
+                type="text" id="search-mobilePhone" name="mobilePhone" class="form-control" placeholder=""
+                style="width:200px;"><input type="button" class="btn btn-default action-ok" value="确认"></div>
+        <div class="input-group" style="padding-left:15px; margin-bottom:3px ;"><span class="input-group-addon"
+                                                                                      style="width:80px;">受理坐席</span><input
+                type="text" id="search-userId" name="userId" class="form-control" placeholder="" style="width:200px;">
+            <input type="button" class="btn btn-default action-ok" value="确认">
+        </div>
+
+        <!-- 单选多项 -->
+
+
+        <div id="test2-choose" class="btn-group" data-toggle="buttons" style="padding-left:15px; margin-bottom:3px ;width: 100%">
+            <span class="input-group-addon" style="width:80px;float: left;line-height: 20px;">咨询类型:</span>
+            <label class="btn btn-primary ">
+                <input type="radio" name="options" > 家政服务
+            </label>
+            <label class="btn btn-primary ">
+                <input type="radio" name="options" > 健康中心
+            </label>
+            <label class="btn btn-primary ">
+                <input type="radio" name="options" > 视频连接
+            </label>
+            <label class="btn btn-primary test-choose-chick">
+                <input type="radio" name="options" > 饮食
+            </label>
+            <label class="btn btn-primary ">
+                <input type="radio" name="options" > 医疗
+            </label>
+            <label class="btn btn-primary ">
+                <input type="radio" name="options" > 信息查询
+            </label>
+        </div>
+
+        <!--  单选按钮-->
+        <div id="test-choose" class="btn-group" data-toggle="buttons" style="padding-left:15px; margin-bottom:3px ;width: 100%">
+            <span class="input-group-addon" style="width:80px;float: left;line-height: 20px;">是否回访:</span>
+
+            <label class="btn btn-primary">
+                <input type="radio" name="options"  > 是
+            </label>
+            <label class="btn btn-primary">
+                <input type="radio" name="options"  > 否
+            </label>
+        </div>
+
+        <!--  复选按钮-->
+        <div id="test-checkbox" class="btn-group " data-toggle="buttons" style="padding-left:15px; margin-bottom:3px ;width: 100%">
+            <span class="input-group-addon" style="width:80px;float: left;line-height: 20px;">复选按钮:</span>
+            <label class="btn btn-primary">
+                <input type="checkbox"> 选项 1
+            </label>
+            <label class="btn btn-primary">
+                <input type="checkbox"> 选项 2
+            </label>
+            <label class="btn btn-primary">
+                <input type="checkbox"> 选项 3
+            </label>
+            <input type="button" class="btn btn-default action-ok-checkbox" value="确认">
+        </div>
+
+
+    </div>
+
+
+</div>
+<!-- END 搜索框 -->
+
+
+<!-- END 页面主体 -->
+<!-- BEGIN JAVASCRIPTS -->
+<!-- BEGIN 核心JS库 -->
+<script type="text/javascript" src="./datagridList_files/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="./datagridList_files/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="./datagridList_files/front-engine.js"></script>
+<script type="text/javascript" src="./datagridList_files/bootstrap.min.js"></script>
+<!-- END 核心JS库 -->
+<!-- BEGIN 页面JS -->
+<script type="text/javascript" src="./datagridList_files/complaintOrder_list.js"></script>
+
+<!-- END 页面JS -->
+<script type="text/javascript">
+    $(function () {
+
+        //确认按钮
+        $(".action-ok").on('click', {}, function (e) {
+            var getid=$(this).prev().attr("id");
+            var getvalue=$(this).prev().val();
+           // console.log(getid+" , "+getvalue)
+            if(getvalue=="") return;
+            $("."+getid+" input[type=text]").attr("value",getvalue);
+            $("."+getid).attr("style","display:inline-block;float:left;padding-left:15px; margin-bottom:3px ;");
+        });
+
+
+        //移除按钮:输入框,复选框
+        $(".action-no").on('click', {}, function (e) {
+            $(this).parent().attr("style","display:none;float:left;padding-left:15px; margin-bottom:3px ;");
+        });
+
+        //单选和多选按钮移除
+        $(".action-no-chick").on('click', {}, function (e) {
+            $(this).parent().attr("style","display:none;float:left;padding-left:15px; margin-bottom:3px ;");
+            var getvalue=$(this).prev().val();
+            $("#"+getvalue).attr("style","display:inline-block;padding-left:15px; margin-bottom:3px ;width: 100%");
+        });
+
+        //单选按钮事件
+        $("#test-choose label,#test2-choose label").on('click', {}, function (e) {
+            var getid=$(this).parent().attr("id");
+            $("."+getid).attr("style","display:inline-block;float:left;padding-left:15px; margin-bottom:3px ;");
+            $("."+getid+" label").text($(this).text());
+            $("."+getid+" input[type=hidden]").val($(this).parent().attr("id"));
+            $(this).parent().attr("style","display:none;padding-left:15px; margin-bottom:3px ;width: 100%");
+
+        });
+
+        //复选框按钮
+        $(".action-ok-checkbox").on('click', {}, function (e) {
+            var getid=$(this).parent().attr("id");
+            var getObject= $("#"+getid+" .active input[type=checkbox]");
+            var getvalue="";
+            for(var i=0;i < getObject.length ;i++){
+               // s +=String.fromCharCode(a[i]);
+                var ob=getObject[i];
+                var valu=$(ob).parent().text();
+                valu=  valu.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+                if(i<getObject.length-1){
+                    getvalue+=valu+",";
+                }else{
+                    getvalue+=valu;
+                }
+            }
+            //console.log(getid+" , "+getvalue);
+            $("."+getid+" input[type=text]").attr("value",getvalue);
+            $("."+getid).attr("style","display:inline-block;float:left;padding-left:15px; margin-bottom:3px ;");
+        });
+    })
+
+</script>
+
+</body>
+</html>

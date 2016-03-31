@@ -1,0 +1,6 @@
+[
+{"id":"01","name": "Copy","action":"执行复制"},
+{"id":"02","name": "Update","action":"执行更新"},
+{"id":"03","name": "Delete","action":"执行删除"},
+{"id":"04","name": "Remove","action":"执行移动"}
+]

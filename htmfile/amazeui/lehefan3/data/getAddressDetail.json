@@ -1,0 +1,18 @@
+{
+  "resultMsg": "接口调用成功！",
+  "resultData": {
+    "Id": "06af59af1be240528d040227af06d798",
+    "counterpointfloorId": "3be2355c-6a90-4d64-b209-3990491ececf",
+    "isDefaul": "YES",
+    "isEnable": 1,
+    "counterPointId": "87065d5c-9f13-4681-9676-d039a80ee679",
+    "counterPointName": "芒果网大厦一楼大厅",
+    "floorId": "bc7e701e-2df0-4d8a-9ab6-6c8550f565d5",
+    "floorName": "芒果网大厦",
+    "address": "7楼701号非凡之星",
+    "layer": "7",
+    "number": "701",
+    "companyName": "非凡之星"
+  },
+  "resultType": 1
+}

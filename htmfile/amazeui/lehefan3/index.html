@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>乐盒饭</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="css/amazeui.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<div class="indexDiv">
+    <div class="am-slider am-slider-a1 banner" data-am-widget="slide" data-am-silder='{"directionNav":"false","controlNav":"thumbnails"}'>
+        <ul class="am-slides" id="containerBanner">
+
+        </ul>
+        <div class="tips-a"></div>
+    </div>
+    <div class="locationDiv">
+        <span class="am-icon-map-marker am-icon-md"></span>
+        <div class="locationAddress">
+            <!--南山区芒果网大厦一楼大厅--><span></span>
+            <a href="selectSite.html"><i class="am-icon-chevron-right"></i></a>
+        </div>
+    </div>
+    <div class="proList">
+        <ul data-am-widget="gallery" id="proList-ul" class="am-gallery am-gallery-bordered am-avg-sm-2 am-avg-md-2 am-avg-lg-2">
+
+        </ul>
+    </div>
+    <div class="selectOkBlank"></div>
+    <!--购物车部分-->
+    <div class="selectOk">
+        <div class="selectOkDiv">
+            <div class="car">
+                <span class="icon-shopping-cart"></span>
+                <span id="end" class="carNum">0</span><!--如果数字为0的时候该span的display属性为none-->
+            </div>
+            <div class="money" id="sumMoney">共<span>￥0</span></div>
+            <div class="btnSelectOK"><a href="confirmOrder.html">选好了</a></div>
+        </div>
+    </div>
+    <!--已选菜单列表-->
+    <div class="orderSelectOkDiv" style="display: none;">
+        <div class="carAndClear ">
+            <p>购物车</p>
+            <a class="clearAll" href="javascript:;" onclick="clearAllCar();">清空全部</a>
+        </div>
+        <div class="orderOkList">
+            <ul id="orderOkList-ul">
+
+            </ul>
+        </div>
+    </div>
+    <!--已选菜单列表--结束-->
+</div>
+
+
+<script language="JavaScript" type="text/javascript" src="js/jquery.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/amazeui.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/ajaxUtils.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/index/index.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/front-engine.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //var userID=sessionStorage.userID;
+   /*     if(typeof(Storage)!=="undefined")
+        {
+            sessionStorage.userID="00066871e24640788596fc2bd66ee699";
+            sessionStorage.userTel="13410708312";
+            sessionStorage.userType=0;
+        }
+        else
+        {
+            console.log("没有用户ID！");
+        }
+*/
+        initUserInfo();
+
+        foucsBanner();
+        proListShow();
+        tipsFun();
+
+        setTimeout(function(){
+            initializationFun();
+        },1000);
+
+
+        //购物车内容列表隐藏和展示效果
+        $(".car").click(function(){
+            $(".orderSelectOkDiv").toggle(500);
+        });
+    });
+</script>
+</body>
+</html>

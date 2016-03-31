@@ -1,0 +1,185 @@
+.amt-banner {
+  background-repeat: repeat-x;
+  background-image: linear-gradient(-135deg, lighten($banner-bg, 10), darken($banner-bg, 15));
+  background-color: $banner-bg;
+
+  .am-container {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  @media #{$bp-md-up} and (max-height: 805px) {
+    min-height: calc(100vh - 50px);
+  }
+}
+
+.amt-sk {
+  display: none;
+  width: 340px;
+  padding: 50px 10px;
+  margin: 50px 50px 50px 0;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, .2);
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 548px;
+  }
+
+  @media #{$bp-md-up} {
+    display: block;
+  }
+
+  @media #{$bp-lg-up} {
+    margin-right: 80px;
+  }
+}
+
+.amt-intro {
+  flex: 1;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  h1,
+  h2 {
+    color: #fff;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 2em;
+  }
+
+  .am-btn {
+    margin-bottom: 5px;
+  }
+
+  @media #{$bp-md-up} {
+    display: block;
+    margin-bottom: 80px;
+
+    h1 {
+      font-size: 48px;
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+    .sk-link {
+      display: none;
+    }
+  }
+}
+
+.amt-ghbtns {
+  margin: 1em 0;
+}
+
+.amt-features {
+  padding: 50px 0;
+  text-align: center;
+
+  .am-g + .am-g {
+    margin-top: 30px;
+  }
+
+  h2 {
+    margin-top: 1em;
+  }
+
+  [class*="am-icon"] {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    font-size: 40px;
+    line-height: 80px;
+    color: #777;
+  }
+
+  p {
+    text-align: left;
+  }
+
+  @media (max-width: 640px) {
+    .am-u-md-6 + .am-u-md-6 {
+      margin-top: 30px;
+    }
+  }
+}
+
+// footer
+.amt-footer {
+  padding: 30px 0 15px;
+  font-size: 1.4rem;
+  background-color: #555;
+  color: #999;
+
+  a {
+    color: #aaa;
+  }
+}
+
+.amt-footer-fd {
+  display: inline-block;
+  opacity: .85;
+  margin-right: 15px;
+  margin-bottom: 10px;
+
+  a {
+    display: block;
+    width: 92px;
+    height: 30px;
+    text-indent: -9999px;
+    background: url("#{$assets}assets/2.x/i/ui/am-logo.png") no-repeat left center;
+    background-size: 92px 30px;
+  }
+}
+
+.amt-footer-socials {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+
+  li {
+    display: inline-block;
+    opacity: .7;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  a {
+    color: #555;
+  }
+
+  @media (min-width: 641px) {
+    text-align: right;
+  }
+}
+
+.ks-qrcode {
+  padding: 2px;
+  margin-top: 10px;
+
+  img {
+    padding: 3px;
+    background: #fff;
+  }
+}

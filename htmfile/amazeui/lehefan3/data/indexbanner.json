@@ -1,0 +1,8 @@
+{"resultMsg":"接口调用成功！","resultData":{"bannerList":
+[
+  {"title":"price1","picPath":"banner1.jpg","sortNum":1,"url":""},
+  {"title":"price2","picPath":"banner2.jpg","sortNum":2,"url":""},
+  {"title":"price3","picPath":"banner1.jpg","sortNum":3,"url":""},
+  {"title":"price4","picPath":"banner2.jpg","sortNum":4,"url":""}
+]
+},"resultType":1}

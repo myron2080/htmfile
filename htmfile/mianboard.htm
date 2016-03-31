@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0071)http://localhost:8008/yxc_takecare_system/pages/mainboard/mainboard.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+
+
+
+
+
+
+
+
+<!-- 禁止缓存 headers -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- end 禁止缓存 headers -->
+
+<link rel="SHORTCUT ICON" href="http://localhost:8008/yxc_takecare_system/images/ico/yxc.png">
+<script type="text/javascript" src="./mianboard_files/prototype_mini.js"></script>
+<script type="text/javascript" src="./mianboard_files/ecside.js"></script>
+<script type="text/javascript" src="./mianboard_files/ecside_msg_utf8_cn.js"></script>
+<link rel="stylesheet" type="text/css" href="./mianboard_files/ecside_style.css">
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js">
+<![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js">
+<![endif]-->
+<!--[if !IE]><!-->
+
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<meta charset="utf-8">
+<title>养老服务信息平台</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="webkit" name="renderer">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="description">
+<meta content="" name="author">
+<!-- BEGIN 全局CSS -->
+<link rel="stylesheet" type="text/css" href="./mianboard_files/bootstrap.min.css">
+<!-- END 全局CSS -->
+<!-- BEGIN 页面CSS -->
+<link rel="stylesheet" type="text/css" href="./css/mainboard.css">
+<!-- END 页面CSS -->
+
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-left-content">
+
+<!-- BEGIN 页面主体 -->
+<div class="page-left-content-left">
+	<div class="left-top"><img src="./mianboard_files/logo.png" height="80px"> </div>
+	<div class="left-nvg">
+		<ul class="left-nvg-ui">
+			<li id="userManager" class="left-nvg-li" style="background:#9AC0CD"><img src="./mianboard_files/user_ffffff_68.png" alt="Big">用户管理</li>
+			<li id="callManager" class="left-nvg-li" style="background:#C4C4C4"><img src="./mianboard_files/phone-square_ffffff_68.png" alt="Big">呼叫中心</li>
+			<li id="governmentManager" class="left-nvg-li" style="background:#C4C4C4"><img src="./mianboard_files/calendar_ffffff_68.png" alt="Big">政务系统</li>
+			<li id="housekeepManager" class="left-nvg-li" style="background:#C4C4C4"><img src="./mianboard_files/comments_ffffff_68.png" alt="Big">家政服务</li>
+			<li id="positionManager" class="left-nvg-li" style="background:#C4C4C4"><img src="./mianboard_files/leaf_ffffff_68.png" alt="Big">定位平台</li>
+			<li id="healthManager" class="left-nvg-li" style="background:#C4C4C4"><img src="./mianboard_files/plus-square_ffffff_68.png" alt="Big">健康管理</li>
+			<li id="dataManager" class="left-nvg-li" style="background:#C4C4C4"><img src="./mianboard_files/building_ffffff_68.png" alt="Big">数据统计</li>
+			<li id="logisticsManager" class="left-nvg-li" style="background:#C4C4C4"><img src="./mianboard_files/shopping-cart_ffffff_68.png" alt="Big">物流调度</li>
+			<li id="systemManager" class="left-nvg-li" style="background:#C4C4C4"><img src="./mianboard_files/cogs_ffffff_68.png" alt="Big">系统设置</li>
+		</ul>
+	
+	</div>
+	<div class="left-nvgInfo">
+	
+	
+	<ul><li><img src="./mianboard_files/user_ffffff_68.png"></li><li>Jack</li><li onmouseenter="leftonmouseenter(this)" onmouseleave="leftonmouseleave(this)" id="adad2">用户信息设置<div></div></li><li onmouseenter="leftonmouseenter(this)" onmouseleave="leftonmouseleave(this)" id="adad">修改密码<div></div></li><li onmouseenter="leftonmouseenter(this)" onmouseleave="leftonmouseleave(this)" id="adad">更换用户<div></div></li><li onmouseenter="leftonmouseenter(this)" onmouseleave="leftonmouseleave(this)" id="adad">退出系统<div></div></li></ul></div>
+</div>
+<div id="page-left-content-right" class="page-left-content-right" onmousemove="">
+
+<iframe scrolling="auto" frameborder="0" src="workSpace.html"  style="width:100%;height:100%;background-color:transparent;"></iframe>
+	
+</div>
+<!-- END 页面主体 -->
+<!-- BEGIN 页脚 -->
+
+<!-- END 页脚 -->
+<!-- BEGIN 页面参数 -->
+<div>
+	<input type="hidden" id="listType" value="">
+</div>
+
+
+
+<!-- END 页面参数 -->
+<!-- BEGIN JAVASCRIPTS -->
+<!-- BEGIN 核心JS库 -->
+<script type="text/javascript" src="./mianboard_files/jquery-1.11.0.js"></script>
+<!-- 注意! jquery-ui-1.10.3.custom.min.js 必须在 bootstrap.min.js 之前导入，bootstrap.min.js使用了jquery ui中的若干方法 -->
+<script type="text/javascript" src="./mianboard_files/bootstrap.min.js"></script>
+<!-- END 核心JS库 -->
+
+<!-- BEGIN 页面JS -->
+<script type="text/javascript" src="./mianboard_files/mainboard.js"></script>
+
+
+<script>
+jQuery(document).ready(function() {
+	// 初始化页面
+	ElderList.init({
+		"listType" : $('#listType').val()
+	});
+	
+	
+	
+});
+</script>
+<!-- END 页面JS -->
+<!-- END JAVASCRIPTS -->
+
+<!-- END BODY -->
+<table id="columnMenu" class="columnMenu" style="display: none; left: 0px; top: 0px;"><tbody><tr><td></td></tr></tbody></table><div id="nearPagesBar" class="nearPagesBar" style="display: none;"></div></body></html>
