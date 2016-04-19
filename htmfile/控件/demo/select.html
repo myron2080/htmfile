@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="../../js/control/select2/3.4/select2-bootstrap.css" rel="stylesheet"/>
+<link href="../../js/control/select2/3.4/select2.min.css" rel="stylesheet"/>
+<script src="../../js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../../js/control/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/control/select2/3.4/select2.min.js"></script>
+<style type="text/css">
+.input-select2{
+	width:100px;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+	  //$(".input-select2").select2();
+	$("#input-select2").select2();
+	$("#input-select2").bind("change",function(){
+		console.log($("#input-select2").val());	
+	});
+});
+</script>
+</head>
+<body>
+	<select id="input-select2" class="input-select2">
+		<option value="0"></option>
+		<option value="1">菜单1</option>
+		<option value="2">菜单2</option>
+		<option value="3">菜单3</option>
+		<option value="4">菜单4</option>
+	</select>
+</body>
+</html>

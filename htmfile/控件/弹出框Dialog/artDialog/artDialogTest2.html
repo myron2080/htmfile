@@ -10,21 +10,35 @@
     <script src="artDialog-6.0.4/lib/jquery-1.10.2.js"></script>
     <script src="artDialog-6.0.4/dist/dialog-min.js"></script>
 
+    <script src="artDialogCustom.js"></script>
 
-    <script type="text/javascript">
-
-
-    </script>
 
 </head>
 
 <body>
 
 
-<div id="textOne">artDialogTest2222222</div>
+<button onclick="addAccount()" type="button">&nbsp;&nbsp;打开</button>
+<button onclick="getUpdata()" type="button">&nbsp;&nbsp;传值</button>
+<input id="getUpdata2" type="text"  />
+
+<script type="text/javascript">
+    var pageii = "add";
+    function addAccount() {
+        $.frontEngineDialog.executeIframeDialog('add2', '新增角色', 'artDialogTest3.html?ifid='+pageii, '800', '510');
 
 
+    }
 
+    function getUpdata() {
+
+        var getUpdataTxt=$("#getUpdata").val();
+        console.log($('div[aria-labelledby="title:add"] button[i="close"]'));
+        $('div[aria-labelledby="title:add"] button[i="close"]').click();
+
+
+    }
+</script>
 
 <!--<script src="artDialog-6.0.4/lib/sea.js"></script>-->
 

@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="artDialog-6.0.4/css/ui-dialog.css" />
 
 <script src="artDialog-6.0.4/dist/dialog-plus.js"></script>
+<script src="artDialogCustom.js"></script>
 
 <!--
 
@@ -27,20 +28,27 @@
 -->
 
 
+<button onclick="addAccount()" type="button">&nbsp;&nbsp;打开</button>
+<button onclick="getUpdata()" type="button">&nbsp;&nbsp;传值</button>
+<input id="getUpdata3" type="text"  />
+
 <script type="text/javascript">
 
-
-    $(function(){
-        dialog({
-            fixed: true,
-            title: '消息',
-            content: '请拖动滚动条查看'
-        }).show();
+    var pageii = "add2";
+    function addAccount() {
+        $.frontEngineDialog.executeIframeDialog('add3', '新增角色', 'artDialogTest.html?ifid='+pageii, '600', '410');
 
 
-    })
+    }
+
+    function getUpdata() {
+
+        var getUpdataTxt=$("#getUpdata").val();
+        console.log(parent);
+        $('div[aria-labelledby="title:add2"] button[i="close"]').click();
 
 
+    }
 </script>
 
 </body>

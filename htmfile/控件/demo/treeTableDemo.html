@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>树表控件</title>
+        <link href="demo.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+        table,td,th {  border: 1px solid #8DB9DB; padding:5px; border-collapse: collapse; font-size:16px; }
+        </style>
+
+        <!--引用的文件 Begin-->
+        <script src="../jquery.js" type="text/javascript"></script>
+		<script src="../control/treetable/jquery.treeTable.js" type="text/javascript"></script>
+        <!--引用的文件 End-->
+        <script type="text/javascript">
+        $(function(){
+            var option = {
+                theme:'vsStyle',
+                expandLevel : 4,
+                beforeExpand : function($treeTable, id) {
+                    //判断id是否已经有了孩子节点，如果有了就不再加载，这样就可以起到缓存的作用
+                    if ($('.' + id, $treeTable).length) { return; }
+                    //这里的html可以是ajax请求
+                    var html = '<tr id="8" pId="6"><td>5.1</td><td>可以是ajax请求来的内容</td></tr>'
+                             + '<tr id="9" pId="6"><td>5.2</td><td>动态的内容</td></tr>';
+
+                    $treeTable.addChilds(html);
+                },
+                onSelect : function($treeTable, id) {
+                    window.console && console.log('onSelect:' + id);
+                    
+                }
+
+            };
+            $('#treeTable1').treeTable(option);
+
+            option.theme = 'default';
+            $('#treeTable2').treeTable(option);
+        });
+        </script>
+    </head>
+    <body>
+    <div id="page">
+            <table id="treeTable1" style="width:100%">
+                <tr>
+                    <td style="width:200px;">标题</td>
+                    <td>内容</td>
+                </tr>
+                <tr id="1">
+                    <td><span controller="true">1</span></td>
+                    <td>内容</td></tr>
+                <tr id="2" pId="1">
+                    <td><span controller="true">2</span></td>
+                    <td>内容</td></tr>
+                <tr id="3" pId="2">
+                    <td>3</td>
+                    <td>内容</td>
+                </tr>
+                <tr id="4" pId="2">
+                    <td>4</td>
+                    <td>内容</td>
+                </tr>
+                <tr id="5" pId="4">
+                    <td>4.1</td>
+                    <td>内容</td>
+                </tr>
+                <tr id="6" pId="1" hasChild="true">
+                    <td>5</td>
+                    <td>注意这个节点是动态加载的</td>
+                </tr>
+                <tr id="7">
+                    <td>8</td>
+                    <td>内容</td>
+                </tr>
+            </table>
+            <hr/>
+            <table id="treeTable2" style="width:100%">
+                <tr>
+                    <td style="width:200px;">标题</td>
+                    <td>内容</td>
+                </tr>
+                <tr id="1">
+                    <td><span controller="true">1</span></td>
+                    <td>内容</td></tr>
+                <tr id="2" pId="1">
+                    <td><span controller="true">2</span></td>
+                    <td>内容</td></tr>
+                <tr id="3" pId="2">
+                    <td>3</td>
+                    <td>内容</td>
+                </tr>
+                <tr id="4" pId="2">
+                    <td>4</td>
+                    <td>内容</td>
+                </tr>
+                <tr id="5" pId="4">
+                    <td>4.1</td>
+                    <td>内容</td>
+                </tr>
+                <tr id="6" pId="1" hasChild="true">
+                    <td>5</td>
+                    <td>注意这个节点是动态加载的</td>
+                </tr>
+                <tr id="7">
+                    <td>8</td>
+                    <td>内容</td>
+                </tr>
+            </table>
+    </body>
+</html>

@@ -43,7 +43,7 @@
             resize: resize,
             drag: drag,
             lock: lock,
-            content:"<iframe src='"+ifurl+"' width='"+ifwidth+"' height='"+ifheight+"' frameborder='0' scrolling='no'></iframe>"
+            content:"<iframe id='"+id+"' name='"+id+"' src='"+ifurl+"' width='"+ifwidth+"' height='"+ifheight+"' frameborder='0' scrolling='no'></iframe>"
         }).showModal();
 
     };
@@ -98,6 +98,15 @@
     };
 
 
+
+
+    var getUrlParameter=function(name){
+        var reg = new RegExp("(^|&)"+name+"=([^&]*)(&|$)");//正则表达式取得url中的参数
+        var r = window.location.search.substr(1).match(reg);
+        if(r != null) return unescape(r[2]); return null;
+    }
+
+
     // ****************************************************************************************************
     // $.frontEngine.methodName形式调用
     // ****************************************************************************************************
@@ -117,6 +126,9 @@
             },
             executeDialogContentTime: function(content,time){
                 return executeDialogContentTime(content,time);
+            },
+            getUrlParameter: function(name){
+                return getUrlParameter(name);
             }
 
         }

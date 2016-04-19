@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css"> 
+  <!--  <link rel="stylesheet" href="css/bootstrap-table.min.css">-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- BEGIN 搜索框 -->
+<div id="datagrid-search" class="datagrid-search">
+    <div id="datagrid-toolbar-customize" class="datagrid-toolbar-customize"></div>
+</div>
+<!-- END 搜索框 -->
+
+<!-- BEGIN 列表 -->
+<!--<table id="datagrid" class="table table-condensed"></table>-->
+<table id="datagrid" class="table table-hover table-striped bor2 table-common">
+<!-- END 列表 -->
+
+<!--表格修改2--start-->
+    <!--
+    <table id="datagrid" class="table table-hover table-striped bor2 table-common">
+        <thead>
+        <tr>
+            <th width="1px"></th>
+            <th width="15px"><input type="checkbox"></th>
+            <th>操作</th>
+            <th>姓名</th>
+            <th>登录名</th>
+            <th>工号</th>
+            <th>归属公司</th>
+            <th>归属部门</th>
+            <th>邮箱</th>
+            <th>电话</th>
+            <th>手机</th>
+            <th>用户类型</th>
+            <th>最后登陆IP</th>
+            <th class="tab-td-center">是否启用</th>
+            <th>登陆日期</th>
+            <th>修改时间</th>
+            <th>创建时间</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+                <tr>
+                    <td>item_index+1</td>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <a href="${BasePath !}/user/form.do?id=${(item.id) !}">编辑</a> |
+                        <a href="javascript:isEnabled('item.id')" >loginFlag 禁用 启用</a>
+
+                    | <a name="delete_item" href="${BasePath !}/user/delete.do?id=${(item.id) !}">删除</a>
+
+                | <a href="javascript:showAllrole('${(item.id) !}')">分配角色</a> |
+                <a href="javascript:showAlluserGroup('${(item.id) !}')">分配用户组</a>
+
+            </td>
+            <td>item.name</td>
+            <td>item.loginName</td>
+            <td>item.no</td>
+            <td>item.company.name</td>
+            <td>item.office.name</td>
+            <td>item.email</td>
+            <td>item.phone</td>
+            <td>item.mobile</td>
+            <td></td>
+            <td align="center">启用 禁用</td>
+            <td></td>
+            </tr>
+        </tbody>
+    </table>
+    -->
+
+
+
+
+
+
+
+
+
+
+<!-- BEGIN JAVASCRIPTS -->
+<!-- BEGIN 核心JS库 -->
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/front-engine.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- END 核心JS库 -->
+<!-- BEGIN 页面JS -->
+<script type="text/javascript" src="js/index/index2.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        // 初始化页面
+        List.init({
+            basePath: ''
+        });
+    });
+</script>
+<!-- END 页面JS -->
+</body>
+</html>

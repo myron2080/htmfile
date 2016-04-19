@@ -41,7 +41,8 @@
      * successfn 成功回调函数
      * errorfn 失败回调函数
      */
-    var executeAjax=function(url, type, data, successfn, errorfn, dataType, async){
+
+    var executeAjax=function(url, type, data, successfn, errorfn, dataType, async) {
         async = (async==null || async=="" || typeof(async)=="undefined")? "true" : async;
         type = (type==null || type=="" || typeof(type)=="undefined")? "post" : type;
         dataType = (dataType==null || dataType=="" || typeof(dataType)=="undefined")? "json" : dataType;
@@ -58,9 +59,7 @@
                 successfn(d);
             },
             error: function(e){
-                //console.log(e);
                 errorfn(e);
-               // $.frontEngineDialog.executeDialogContent('提示',e);
             }
         });
     };

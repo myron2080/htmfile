@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+div.zTreeDemoBackground {
+	width: 200px; height: 350px; text-align: left; margin-bottom: 40px;
+}
+ul.ztree {
+	margin-top: 10px; border: 1px solid #DDD; background: #ffffff; width: 400px; height: 100%; overflow-y: scroll;
+	overflow-x: auto;
+}
+.ztree li span.button.add {margin-left:2px; margin-right: -1px; background-position:-144px 0; vertical-align:top; *vertical-align:middle}

@@ -41,6 +41,16 @@
             var MyMar=setInterval(Marquee,speed);
             tab.onmouseover=function() {clearInterval(MyMar)};//鼠标移上时清除定时器达到滚动停止的目的
             tab.onmouseout=function() {MyMar=setInterval(Marquee,speed)};//鼠标移开时重设定时器
+
+
+
+
+            /*function closureExample(objID, text, timedelay) {
+                setTimeout(function() {
+                    document.getElementById(objID).innerHTML = text;
+                }, timedelay);
+            }
+            closureExample('myDiv', 'Closure is created', 500);*/
         })
     </script>
 </head>

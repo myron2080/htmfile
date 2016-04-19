@@ -17,6 +17,7 @@
     <script src="2222.js"></script>
     <script src="artDialogCustom.js"></script>
 
+    <script src="role_list.js"></script>
 
     <style type="text/css">
 
@@ -75,7 +76,7 @@
 
 
             //$.frontEngineDialog.executeIframeDialog('add','新增用户','artDialogTest2.html','100%','400');
-             $.frontEngineDialog.executeDialog('add','新增用户','liuyu','100%','100%',function(){dialog({content: '成功',quickClose: true}).show();});
+            // $.frontEngineDialog.executeDialog('add','新增用户','liuyu','100%','100%',function(){dialog({content: '成功',quickClose: true}).show();});
             // $.frontEngineDialog.executeDialog('add','新增用户','liuyu','100%','100%',callback);
             //$.frontEngineDialog.executeDialogOK('新增用户','成功！','200');
             //$.frontEngineDialog.executeDialogContentTime('出错啦！');
@@ -103,7 +104,9 @@
 
 <body>
 
-
+<button onclick="addAccount()" type="button">&nbsp;&nbsp;打开</button>
+<button onclick="getUpdata()" type="button">&nbsp;&nbsp;传值</button>
+<input id="getUpdata1" type="text"  />
 
 </body>
 </html>
